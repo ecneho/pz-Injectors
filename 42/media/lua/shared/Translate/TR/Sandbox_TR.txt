@@ -1,0 +1,5 @@
+Sandbox_TR = {
+	Sandbox_Injectors = "Injectors",
+	Sandbox_Injectors_config_notice 		  = "Ayar dosyaları 'media/lua/server/Config' klasörüne taşındı."
+	Sandbox_Injectors_config_notice_tooltip   = ".lua dosyalarıyla çalışmak çok daha kolaydır ve hatta daha iyi anlaşılabilmesi için açıklamalar ve ipuçları da içerir :3",
+}

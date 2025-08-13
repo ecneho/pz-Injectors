@@ -1,0 +1,8 @@
+VERSION = 1,
+
+option Injectors.ConfigNotice {
+    type = boolean,
+    default = true,
+    page = Injectors,
+    translation = Injectors_config_notice,
+}

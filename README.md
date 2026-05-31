@@ -8,4 +8,4 @@
   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3437429771"><img alt="Release Date" src="https://img.shields.io/steam/release-date/3437429771?logo=steam&color=goldenrod&labelColor=1b2838"></a>
 </span>
 
-## Packaged and compatible with [ZBundler](https://github.com/ecneho/zbun).
+## Fallback repo is currently not compatible with [ZBundler](https://github.com/ecneho/zbun).

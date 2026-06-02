@@ -1,0 +1,33 @@
+module injectors {
+    imports {
+        Base
+    }
+
+    model hemostatic-closed
+    {
+        mesh    = injectorclosed,
+        texture = WorldItems/hemostatic,
+        scale   = 0.17,
+    }
+
+    model epinephrine-closed
+    {
+        mesh    = injectorclosed,
+        texture = WorldItems/epinephrine,
+        scale   = 0.17,
+    }
+
+    model propital-closed
+    {
+        mesh    = injectorclosed,
+        texture = WorldItems/propital,
+        scale   = 0.17,
+    }
+
+    model injector-empty
+    {
+        mesh    = injectorclosed,
+        texture = WorldItems/empty,
+        scale   = 0.17,
+    }
+}

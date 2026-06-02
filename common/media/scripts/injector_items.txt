@@ -1,0 +1,68 @@
+module Injectors {
+    imports {
+        Base
+    }
+
+    item injector_epinephrine
+    {
+        DisplayName = Epinephrine Injector,
+        ItemType = base:food,
+        DisplayCategory = FirstAid,
+        Icon = epinephrine,
+        WorldStaticModel = epinephrine-closed,
+        Tooltip = Tooltip_epinephrine,
+        OnEat = Epinephrine_OnInject,
+        StaticModel = Injector,
+        EatType = Injector,
+        HungerChange = 0,
+        Weight = 0.05,
+        CustomContextMenu = Inject,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_hemostatic
+    {
+        DisplayName = Hemostatic Injector,
+        ItemType = base:food,
+        DisplayCategory = FirstAid,
+        Icon = hemostatic,
+        WorldStaticModel = hemostatic-closed,
+        Tooltip = Tooltip_hemostatic,
+        OnEat = Hemostatic_OnInject,
+        StaticModel = Injector,
+        EatType = Injector,
+        HungerChange = 0,
+        Weight = 0.05,
+        CustomContextMenu = Inject,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_propital
+    {
+        DisplayName = Propital Injector,
+        ItemType = base:food,
+        DisplayCategory = FirstAid,
+        Icon = propital,
+        WorldStaticModel = propital-closed,
+        Tooltip = Tooltip_propital,
+        OnEat = Propital_OnInject,
+        StaticModel = Injector,
+        EatType = Injector,
+        HungerChange = 0,
+        Weight = 0.05,
+        CustomContextMenu = Inject,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_empty
+    {
+        DisplayName = Empty Injector Cartridge,
+        DisplayCategory = Junk,
+        ItemType = base:normal,
+        Icon = empty,
+        WorldStaticModel = injector-empty,
+    }
+}

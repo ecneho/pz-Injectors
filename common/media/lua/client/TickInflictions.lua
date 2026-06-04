@@ -1,36 +1,42 @@
-local ticks = 0
+local TICKS = 60
 
-local function TickInflictions(player)
+local function TickInflictions()
+    local multiplier = getGameTime():getMultiplier()
+    if multiplier <= 0 then return end
+
+    local player = getPlayer()
+    if not player or player:isDead() then return end
+
     local modData = player:getModData()
-    local inflictions = modData.inflictions or {}
-
-    --- If all inflictions are processed in one go it may cause huge lag spikes if there are too many effects active at once.
-    --- To avoid it, each tick is responsible for processing it's own indexed batch of effects. In this case inflictions are always distributed equally between 60 ticks.
-    --- Still not sure if it is a good solution considering the fact that the local tick counter resets on relog.
-    local spreadTick = ticks % 60
+    local inflictions = modData.inflictions
+    if not inflictions or #inflictions == 0 then return end
 
     for i = #inflictions, 1, -1 do
-        if i % 60 == spreadTick then
-            local inf = inflictions[i]
-            if inf and inf.delay ~= nil and inf.duration ~= nil then
-                --- print("Infliction [" .. tostring(inf.func) .. "] #" .. i .. ": " .. tostring(inf.delay) .. " | " .. tostring(inf.duration))
+        local inf = inflictions[i]
 
-                if inf.delay > 0 then
-                    inf.delay = inf.delay - 1
-                else
-                    inf.duration = inf.duration - 1
-                    if inf.duration < 0 then
-                        table.remove(inflictions, i)
-                    else
-                        ApplyEffect(inf, player)
-                    end
+        if inf and inf.delay ~= nil and inf.duration ~= nil then
+            local step = multiplier / TICKS
+            if inf.delay > 0 then
+                inf.delay = inf.delay - step
+
+            else
+                if inf.tick == nil then
+                    inf.tick = inf.rate or 1
+                end
+
+                inf.tick = inf.tick - step
+                if inf.tick <= 0 then
+                    ApplyEffect(inf, player)
+                    inf.tick = inf.rate or 1
+                end
+
+                inf.duration = inf.duration - step
+                if inf.duration <= 0 then
+                    table.remove(inflictions, i)
                 end
             end
         end
     end
-
-    modData.inflictions = inflictions
-    ticks = ticks + 1
 end
 
-Events.OnPlayerUpdate.Add(TickInflictions)
+Events.OnTick.Add(TickInflictions)

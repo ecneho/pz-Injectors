@@ -1,15 +1,18 @@
 --- @param iso IsoPlayer
 function MendWounds(iso, deviation)
+    -- this should be moved to sandbox vars
+    -- multiplier for deep wounds
+    local multiplier = 0.5
     local parts = iso:getBodyDamage():getBodyParts()
     for index = 0, parts:size() - 1 do
         local part = parts:get(index) ---@type BodyPart
 
         if (part:isDeepWounded()) then
-            local deepTime = part:getDeepWoundTime() - deviation;
+            local deepTime = part:getDeepWoundTime() - deviation * multiplier;
             part:setDeepWoundTime(math.max(deepTime, 0));
 
-            -- For some reason, 0 progress does not remove wounds on it's own.
-            if (part:getDeepWoundTime() <= 0) then
+            -- deep wounds seem to force cancel any value in the 0-3 range
+            if (part:getDeepWoundTime() <= 3) then
                 part:setDeepWounded(false);
             end
         end

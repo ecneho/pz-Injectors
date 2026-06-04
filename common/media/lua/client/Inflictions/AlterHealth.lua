@@ -1,15 +1,20 @@
---- B42.17 revision
 --- @param iso IsoPlayer
 function AlterHealth(iso, deviation)
     local damage = iso:getBodyDamage()
     local health = damage:getOverallBodyHealth()
-    local value = health + deviation
-
-    if deviation >= 0 then
-        if value < 100 then
-            damage:AddGeneralHealth(deviation)
-        end
-    else
-        damage:ReduceGeneralHealth(math.abs(deviation))
+    -- this should be moved to sandbox vars
+    -- normalize: 0 is min, 100 is max
+    local min = 0
+    local max = 100
+    local norm = (health - min) / (max - min)
+    norm = Clamp(norm, 0, 1)
+    local inverted = 1 - norm
+    -- this should be moved too
+    -- min: 2.00x, max: 0.75x
+    local scale = 0.75 + inverted * 2.0
+    local value = Clamp(health + (deviation * scale), 0, 100)
+    local delta = value - health
+    if delta > 0 then
+        damage:AddGeneralHealth(delta)
     end
 end

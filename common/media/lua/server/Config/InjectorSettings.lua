@@ -1,26 +1,29 @@
 Propital_S = {
     Heal = {
         delay = 1,
-        duration = 1,
+        rate = 1,
+        duration = 100,
         func = AlterHealth,
-        args = {20}
+        args = {3}
     }
 }
 
 Epinephrine_S = {
     Painkill = {
-        delay = 1,
+        delay = 5,
+        rate = 1,
         duration = 120,
         func = Painkill,
-        args = {0.8}
+        args = {5}
     }
 }
 
 Hemostatic_S = {
     Mend = {
         delay = 1,
+        rate = 1,
         duration = 60,
         func = MendWounds,
-        args = {0.1}
+        args = {1}
     }
 }

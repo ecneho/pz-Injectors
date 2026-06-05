@@ -36,12 +36,50 @@ function InitSandboxVariables()
         [BodyPartType.Foot_R] = SandboxVars.Injectors.HEMOSTATIC_RIGHT_FOOT_BLEEDING_COEFFICIENT
     }
 
+    Hemostatic.MEND_DEEPWOUND_RATE = SandboxVars.Injectors.HEMOSTATIC_MEND_DEEPWOUND_RATE
+    Hemostatic.MEND_DEEPWOUND_DELAY = SandboxVars.Injectors.HEMOSTATIC_MEND_DEEPWOUND_DELAY
+    Hemostatic.MEND_DEEPWOUND_DURATION = SandboxVars.Injectors.HEMOSTATIC_MEND_DEEPWOUND_DURATION
+    Hemostatic.MEND_DEEPWOUND_BASEDELTA = SandboxVars.Injectors.HEMOSTATIC_MEND_DEEPWOUND_BASEDELTA
+    Hemostatic.DEEPWOUND_COEFFICIENTS = {
+        [BodyPartType.Head] = SandboxVars.Injectors.HEMOSTATIC_HEAD_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.Neck] = SandboxVars.Injectors.HEMOSTATIC_NECK_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.Torso_Upper] = SandboxVars.Injectors.HEMOSTATIC_UPPER_TORSO_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.Torso_Lower] = SandboxVars.Injectors.HEMOSTATIC_LOWER_TORSO_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.UpperArm_L] = SandboxVars.Injectors.HEMOSTATIC_LEFT_UPPERARM_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.UpperArm_R] = SandboxVars.Injectors.HEMOSTATIC_RIGHT_UPPERARM_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.ForeArm_L] = SandboxVars.Injectors.HEMOSTATIC_LEFT_FOREARM_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.ForeArm_R] = SandboxVars.Injectors.HEMOSTATIC_RIGHT_FOREARM_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.Hand_L] = SandboxVars.Injectors.HEMOSTATIC_LEFT_HAND_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.Hand_R] = SandboxVars.Injectors.HEMOSTATIC_RIGHT_HAND_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.Groin] = SandboxVars.Injectors.HEMOSTATIC_GROIN_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.UpperLeg_L] = SandboxVars.Injectors.HEMOSTATIC_LEFT_UPPERLEG_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.UpperLeg_R] = SandboxVars.Injectors.HEMOSTATIC_RIGHT_UPPERLEG_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.LowerLeg_L] = SandboxVars.Injectors.HEMOSTATIC_LEFT_LOWERLEG_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.LowerLeg_R] = SandboxVars.Injectors.HEMOSTATIC_RIGHT_LOWERLEG_DEEPWOUND_COEFFICIENT,
+
+        [BodyPartType.Foot_L] = SandboxVars.Injectors.HEMOSTATIC_LEFT_FOOT_DEEPWOUND_COEFFICIENT,
+        [BodyPartType.Foot_R] = SandboxVars.Injectors.HEMOSTATIC_RIGHT_FOOT_DEEPWOUND_COEFFICIENT
+    }
+
     Hemostatic_S = {
-        Mend = {
+        Bleeding = {
             rate = Hemostatic.MEND_BLEEDING_RATE,
             delay = Hemostatic.MEND_BLEEDING_DELAY,
             duration = Hemostatic.MEND_BLEEDING_DURATION,
             func = MendBleeding
+        },
+        DeepWound = {
+            rate = Hemostatic.MEND_DEEPWOUND_RATE,
+            delay = Hemostatic.MEND_DEEPWOUND_DELAY,
+            duration = Hemostatic.MEND_DEEPWOUND_DURATION,
+            func = MendDeepWounds
         }
     }
 end

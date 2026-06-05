@@ -1,8 +1,8 @@
 VERSION = 1,
 
 option Injectors.hemostatic_fake_header_mendbleeding_timing {
-    type = string,
-    default = ,
+    type = boolean,
+    default = false,
 
     page = Injectors_hemostatic,
     translation = Injectors_hemostatic_fake_header_mendbleeding_timing,
@@ -38,9 +38,21 @@ option Injectors.HEMOSTATIC_MEND_BLEEDING_DURATION {
     translation = Injectors_hemostatic_mendbleeding_duration,
 }
 
+
+
+
+
+option Injectors.hemostatic_fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_fake_gap,
+}
+
 option Injectors.hemostatic_fake_header_mendbleeding_modifiers {
-    type = string,
-    default = ,
+    type = boolean,
+    default = false,
 
     page = Injectors_hemostatic,
     translation = Injectors_hemostatic_fake_header_mendbleeding_modifiers,
@@ -207,4 +219,243 @@ option Injectors.HEMOSTATIC_RIGHT_FOOT_BLEEDING_COEFFICIENT {
     max = 2.0,
     page = Injectors_hemostatic,
     translation = Injectors_hemostatic_right_foot_bleeding_coefficient,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+option Injectors.hemostatic_fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_fake_gap,
+}
+
+option Injectors.hemostatic_fake_header_menddeepwound_timing {
+    type = boolean,
+    default = false,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_fake_header_menddeepwound_timing,
+}
+
+option Injectors.HEMOSTATIC_MEND_DEEPWOUND_DELAY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_menddeepwound_delay,
+}
+
+option Injectors.HEMOSTATIC_MEND_DEEPWOUND_RATE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_menddeepwound_rate,
+}
+
+option Injectors.HEMOSTATIC_MEND_DEEPWOUND_DURATION {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_menddeepwound_duration,
+}
+
+
+
+option Injectors.hemostatic_fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_fake_gap,
+}
+
+option Injectors.hemostatic_fake_header_menddeepwound_modifiers {
+    type = boolean,
+    default = false,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_fake_header_menddeepwound_modifiers,
+}
+
+option Injectors.HEMOSTATIC_MEND_DEEPWOUND_BASEDELTA {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_menddeepwound_basedelta,
+}
+
+option Injectors.HEMOSTATIC_HEAD_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_head_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_NECK_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_neck_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_UPPER_TORSO_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_upper_torso_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_LOWER_TORSO_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_lower_torso_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_LEFT_UPPERARM_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_upper_arm_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_RIGHT_UPPERARM_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_upper_arm_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_LEFT_FOREARM_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_forearm_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_RIGHT_FOREARM_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_forearm_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_LEFT_HAND_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_hand_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_RIGHT_HAND_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_hand_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_GROIN_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_groin_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_LEFT_UPPERLEG_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_upper_leg_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_RIGHT_UPPERLEG_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_upper_leg_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_LEFT_LOWERLEG_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_lower_leg_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_RIGHT_LOWERLEG_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_lower_leg_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_LEFT_FOOT_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_foot_deepwound_coefficient,
+}
+
+option Injectors.HEMOSTATIC_RIGHT_FOOT_DEEPWOUND_COEFFICIENT {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 2.0,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_foot_deepwound_coefficient,
 }

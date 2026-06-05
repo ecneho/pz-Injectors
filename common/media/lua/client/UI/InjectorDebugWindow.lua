@@ -4,19 +4,39 @@ require "ISUI/ISContextMenu"
 
 -- very crude ui for easier debugging. not for production
 
+local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
+
 local function giveItem(itemType)
     local player = getSpecificPlayer(0)
     if not player then return end
     player:getInventory():AddItem(itemType)
 end
 
+local function formatTime(seconds, negative)
+    seconds = math.max(0, math.floor(seconds))
+
+    local m = math.floor(seconds / 60)
+    local s = seconds % 60
+    local str = string.format("%02d:%02d", m, s)
+
+    if negative and seconds > 0 then
+        return "- " .. str
+    else
+        return "  " .. str
+    end
+end
+
 InjectorDebugWindow = ISCollapsableWindow:derive("InjectorDebugWindow")
 
 function InjectorDebugWindow:createChildren()
     ISCollapsableWindow.createChildren(self)
-    self.listBox = ISScrollingListBox:new(0, self:titleBarHeight(), self.width, self.height - self:titleBarHeight())
 
+    local listHeight = self.height - self:titleBarHeight() - 18
+
+    self.listBox = ISScrollingListBox:new(0, self:titleBarHeight(), self.width, listHeight)
     self.listBox:initialise()
+    self.listBox.anchorBottom = true
+    self.listBox.anchorRight = true
     self.listBox.itemheight = 24
     self.listBox.font = UIFont.Small
 
@@ -77,8 +97,8 @@ function InjectorDebugWindow:populateList()
         local health = damage:getOverallBodyHealth()
         local pain = stats:get(CharacterStat.PAIN)
 
-        self.listBox:addItem(string.format("Health: %d", health), nil)
-        self.listBox:addItem(string.format("Pain: %d", pain), nil)
+        self.listBox:addItem(string.format("Health: %.2f", health), nil)
+        self.listBox:addItem(string.format("Pain: %.2f", pain), nil)
 
         local modData = player:getModData()
         local inflictions = modData.inflictions
@@ -90,7 +110,15 @@ function InjectorDebugWindow:populateList()
                     local name = tostring(inf.func or "Function")
                     local delay = math.max(0, math.floor(tonumber(inf.delay) or 0))
                     local duration = math.max(0, math.floor(tonumber(inf.duration) or 0))
-                    local text = string.format("[%d] %s Delay: %d Duration: %d", i, name, delay, duration)
+
+                    local str
+                    if delay > 0 then
+                        str = formatTime(delay, true)
+                    else
+                        str = formatTime(duration, false)
+                    end
+
+                    local text = string.format("[%d] %s : %s", i, str, name)
                     self.listBox:addItem(text, inf)
                 end
             end

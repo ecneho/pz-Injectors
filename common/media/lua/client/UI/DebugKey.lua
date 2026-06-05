@@ -12,10 +12,7 @@ function Debug_PrintData(player)
         )
     end
 
-    print("========================")
-
-    print(Propital.MEND_BLEEDING_BASEDELTA)
-    print(Propital.COEFFICIENTS[BodyPartType.ForeArm_L])
+    print(SandboxVars.Injectors.HEMOSTATIC_MEND_BLEEDING_RATE)
 
     print("========================")
 end
@@ -25,6 +22,7 @@ Events.OnKeyPressed.Add(function(key)
         local player = getPlayer()
         if player then
             Debug_PrintData(player)
+            InitSandboxVariables()
         end
     end
 end)

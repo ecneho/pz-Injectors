@@ -2,14 +2,14 @@
 --- @param iso IsoPlayer
 function MendBleeding(iso)
     local parts = iso:getBodyDamage():getBodyParts()
-    local baseDelta = Propital.MEND_BLEEDING_BASEDELTA
+    local baseDelta = Hemostatic.MEND_BLEEDING_BASEDELTA
 
     for i = 0, parts:size() - 1 do
         local part = parts:get(i)
 
         if part:bleeding() then
             local partType = part:getType()
-            local coef = Propital.COEFFICIENTS[partType] or 0.0 -- fallback if nothing's found
+            local coef = Hemostatic.BLEEDING_COEFFICIENTS[partType] or 0.0 -- fallback if nothing's found
             local bleedTime = part:getBleedingTime() - (baseDelta * coef)
             part:setBleedingTime(math.max(0, bleedTime))
         end

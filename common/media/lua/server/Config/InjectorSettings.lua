@@ -17,13 +17,3 @@ Epinephrine_S = {
         args = {5}
     }
 }
-
-Hemostatic_S = {
-    Mend = {
-        delay = 1,
-        rate = 1,
-        duration = 60,
-        func = MendWounds,
-        args = {1}
-    }
-}

@@ -1,164 +1,210 @@
 VERSION = 1,
 
-option Injectors.PROPITAL_MEND_BLEEDING_BASEDELTA {
+option Injectors.hemostatic_fake_header_mendbleeding_timing {
+    type = string,
+    default = ,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_fake_header_mendbleeding_timing,
+}
+
+option Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_mendbleeding_delay,
+}
+
+option Injectors.HEMOSTATIC_MEND_BLEEDING_RATE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_mendbleeding_rate,
+}
+
+option Injectors.HEMOSTATIC_MEND_BLEEDING_DURATION {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_mendbleeding_duration,
+}
+
+option Injectors.hemostatic_fake_header_mendbleeding_modifiers {
+    type = string,
+    default = ,
+
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_fake_header_mendbleeding_modifiers,
+}
+
+option Injectors.HEMOSTATIC_MEND_BLEEDING_BASEDELTA {
     type = double,
     default = 1.0,
     min = 0.0,
     max = 10.0,
 
-    page = Injectors,
-    translation = Injectors_propital_mendbleeding_basedelta,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_mendbleeding_basedelta,
 }
 
-option Injectors.PROPITAL_HEAD_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_HEAD_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_head_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_head_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_NECK_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_NECK_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_neck_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_neck_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_UPPER_TORSO_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_UPPER_TORSO_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_upper_torso_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_upper_torso_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_LOWER_TORSO_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_LOWER_TORSO_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_lower_torso_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_lower_torso_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_LEFT_UPPERARM_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_LEFT_UPPERARM_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_left_upper_arm_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_upper_arm_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_RIGHT_UPPERARM_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_RIGHT_UPPERARM_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_right_upper_arm_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_upper_arm_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_LEFT_FOREARM_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_LEFT_FOREARM_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_left_forearm_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_forearm_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_RIGHT_FOREARM_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_RIGHT_FOREARM_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_right_forearm_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_forearm_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_LEFT_HAND_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_LEFT_HAND_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_left_hand_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_hand_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_RIGHT_HAND_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_RIGHT_HAND_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_right_hand_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_hand_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_GROIN_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_GROIN_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_groin_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_groin_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_LEFT_UPPERLEG_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_LEFT_UPPERLEG_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_left_upper_leg_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_upper_leg_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_RIGHT_UPPERLEG_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_RIGHT_UPPERLEG_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_right_upper_leg_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_upper_leg_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_LEFT_LOWERLEG_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_LEFT_LOWERLEG_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_left_lower_leg_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_lower_leg_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_RIGHT_LOWERLEG_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_RIGHT_LOWERLEG_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_right_lower_leg_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_lower_leg_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_LEFT_FOOT_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_LEFT_FOOT_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_left_foot_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_left_foot_bleeding_coefficient,
 }
 
-option Injectors.PROPITAL_RIGHT_FOOT_BLEEDING_COEFFICIENT {
+option Injectors.HEMOSTATIC_RIGHT_FOOT_BLEEDING_COEFFICIENT {
     type = double,
     default = 0.0,
     min = 0.0,
     max = 2.0,
-    page = Injectors,
-    translation = Injectors_propital_right_foot_bleeding_coefficient,
+    page = Injectors_hemostatic,
+    translation = Injectors_hemostatic_right_foot_bleeding_coefficient,
 }

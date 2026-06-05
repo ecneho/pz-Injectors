@@ -3,8 +3,17 @@ local Infliction = require("Infliction")
 --- @param iso IsoPlayer
 function BuildInjector(iso, settings)
     local inflictions = {}
+
     for _, infliction in pairs(settings) do
-        table.insert(inflictions, Infliction:new(infliction.delay, infliction.duration, infliction.func, unpack(infliction.args)))
+        table.insert(
+            inflictions,
+            Infliction:new(
+                infliction.delay,
+                infliction.duration,
+                infliction.func
+            )
+        )
     end
+
     ApplyInflictions(iso, unpack(inflictions))
 end

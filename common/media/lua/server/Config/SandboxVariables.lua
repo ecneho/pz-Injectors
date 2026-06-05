@@ -1,5 +1,8 @@
 Hemostatic = Hemostatic or {} -- hemostatic variables
+Propital = Propital or {} -- propital variables
+
 Hemostatic_S = Hemostatic_S or {} -- hemostatic settings
+Propital_S = Propital_S or {} -- propital settings
 
 -- if there are any changes that don't trigger OnSave, this must be reloaded manually
 function InitSandboxVariables()
@@ -80,6 +83,20 @@ function InitSandboxVariables()
             delay = Hemostatic.MEND_DEEPWOUND_DELAY,
             duration = Hemostatic.MEND_DEEPWOUND_DURATION,
             func = MendDeepWounds
+        }
+    }
+
+    Propital.FLAT_HEALING_RATE = SandboxVars.Injectors.PROPITAL_FLAT_HEALING_RATE
+    Propital.FLAT_HEALING_DELAY = SandboxVars.Injectors.PROPITAL_FLAT_HEALING_DELAY
+    Propital.FLAT_HEALING_DURATION = SandboxVars.Injectors.PROPITAL_FLAT_HEALING_DURATION
+    Propital.FLAT_HEALING_BASEDELTA = SandboxVars.Injectors.PROPITAL_FLAT_HEALING_BASEDELTA
+
+    Propital_S = {
+        Heal = {
+            delay = Propital.FLAT_HEALING_DELAY,
+            rate = Propital.FLAT_HEALING_RATE,
+            duration = Propital.FLAT_HEALING_DURATION,
+            func = AddHealth
         }
     }
 end

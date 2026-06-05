@@ -108,6 +108,7 @@ function InjectorDebugWindow:populateList()
                 local inf = inflictions[i]
                 if inf then
                     local name = tostring(inf.func or "Function")
+                    local timer = inf.tick or 0.0
                     local delay = math.max(0, math.floor(tonumber(inf.delay) or 0))
                     local duration = math.max(0, math.floor(tonumber(inf.duration) or 0))
 
@@ -118,7 +119,7 @@ function InjectorDebugWindow:populateList()
                         str = formatTime(duration, false)
                     end
 
-                    local text = string.format("[%d] %s : %s", i, str, name)
+                    local text = string.format("[%d] %s : %s | %.2f", i, str, name, timer)
                     self.listBox:addItem(text, inf)
                 end
             end

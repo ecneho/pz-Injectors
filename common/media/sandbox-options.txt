@@ -42,12 +42,12 @@ option Injectors.HEMOSTATIC_MEND_BLEEDING_DURATION {
 
 
 
-option Injectors.hemostatic_fake_gap {
+option Injectors.fake_gap {
     type = boolean,
     default = false,
 
     page = Injectors_hemostatic,
-    translation = Injectors_hemostatic_fake_gap,
+    translation = Injectors_fake_gap,
 }
 
 option Injectors.hemostatic_fake_header_mendbleeding_modifiers {
@@ -233,12 +233,12 @@ option Injectors.HEMOSTATIC_RIGHT_FOOT_BLEEDING_COEFFICIENT {
 
 
 
-option Injectors.hemostatic_fake_gap {
+option Injectors.fake_gap {
     type = boolean,
     default = false,
 
     page = Injectors_hemostatic,
-    translation = Injectors_hemostatic_fake_gap,
+    translation = Injectors_fake_gap,
 }
 
 option Injectors.hemostatic_fake_header_menddeepwound_timing {
@@ -281,12 +281,12 @@ option Injectors.HEMOSTATIC_MEND_DEEPWOUND_DURATION {
 
 
 
-option Injectors.hemostatic_fake_gap {
+option Injectors.fake_gap {
     type = boolean,
     default = false,
 
     page = Injectors_hemostatic,
-    translation = Injectors_hemostatic_fake_gap,
+    translation = Injectors_fake_gap,
 }
 
 option Injectors.hemostatic_fake_header_menddeepwound_modifiers {
@@ -458,4 +458,85 @@ option Injectors.HEMOSTATIC_RIGHT_FOOT_DEEPWOUND_COEFFICIENT {
     max = 2.0,
     page = Injectors_hemostatic,
     translation = Injectors_hemostatic_right_foot_deepwound_coefficient,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+option Injectors.propital_fake_header_flathealing_timing {
+    type = boolean,
+    default = false,
+
+    page = Injectors_propital,
+    translation = Injectors_propital_fake_header_flathealing_timing,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_DELAY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_propital,
+    translation = Injectors_propital_flathealing_delay,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_RATE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_propital,
+    translation = Injectors_propital_flathealing_rate,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_DURATION {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_propital,
+    translation = Injectors_propital_flathealing_duration,
+}
+
+
+
+
+option Injectors.fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_propital,
+    translation = Injectors_fake_gap,
+}
+
+option Injectors.propital_fake_header_flathealing_modifiers {
+    type = boolean,
+    default = false,
+
+    page = Injectors_propital,
+    translation = Injectors_propital_fake_header_flathealing_modifiers,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_BASEDELTA {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_propital,
+    translation = Injectors_propital_flathealing_basedelta,
 }

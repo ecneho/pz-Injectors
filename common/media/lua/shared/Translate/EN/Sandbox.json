@@ -1,6 +1,6 @@
 {
 	"Sandbox_Injectors_hemostatic": "Injectors [Hemostatic]",
-	"Sandbox_Injectors_hemostatic_fake_gap": "",
+	"Sandbox_Injectors_fake_gap": "",
 	
 	"Sandbox_Injectors_hemostatic_fake_header_mendbleeding_timing": "= [ Bleeding Treatment Timing ] =",
 	"Sandbox_Injectors_hemostatic_fake_header_mendbleeding_timing_tooltip": "This value is not used and acts as a header.",
@@ -98,5 +98,22 @@
 	"Sandbox_Injectors_hemostatic_left_foot_deepwound_coefficient": "Left Foot Deep wound Coefficient",
 	"Sandbox_Injectors_hemostatic_left_foot_deepwound_coefficient_tooltip": "Multiplier applied to deep wound time reduction effectiveness for left foot wounds.",
 	"Sandbox_Injectors_hemostatic_right_foot_deepwound_coefficient": "Right Foot Deep wound Coefficient",
-	"Sandbox_Injectors_hemostatic_right_foot_deepwound_coefficient_tooltip": "Multiplier applied to deep wound time reduction effectiveness for right foot wounds."
+	"Sandbox_Injectors_hemostatic_right_foot_deepwound_coefficient_tooltip": "Multiplier applied to deep wound time reduction effectiveness for right foot wounds.",
+
+
+
+	"Sandbox_Injectors_propital": "Injectors [Propital]",
+	"Sandbox_Injectors_propital_fake_header_flathealing_timing": "= [ Flat Healing Timing ] =",
+	"Sandbox_Injectors_propital_fake_header_flathealing_timing_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors_propital_flathealing_delay": "Healing Delay",
+	"Sandbox_Injectors_propital_flathealing_delay_tooltip": "Time interval before the effect starts (in seconds).",
+	"Sandbox_Injectors_propital_flathealing_rate": "Healing Rate",
+	"Sandbox_Injectors_propital_flathealing_rate_tooltip": "Time interval between applications of the effect (in seconds).",
+	"Sandbox_Injectors_propital_flathealing_duration": "Healing Duration",
+	"Sandbox_Injectors_propital_flathealing_duration_tooltip": "Total duration of the effect (in seconds).",
+
+	"Sandbox_Injectors_propital_fake_header_flathealing_modifiers": "= [ Flat Healing Modifiers ] =",
+	"Sandbox_Injectors_propital_fake_header_flathealing_modifiers_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors_propital_flathealing_basedelta": "Base Increment",
+	"Sandbox_Injectors_propital_flathealing_basedelta_tooltip": "Base amount by which general health is increased per application of the effect."
 }

@@ -1,5 +1,5 @@
 --- @param iso IsoPlayer
-function AlterHealth(iso, deviation)
+function AddHealth(iso)
     local damage = iso:getBodyDamage()
     local health = damage:getOverallBodyHealth()
     -- this should be moved to sandbox vars
@@ -12,7 +12,7 @@ function AlterHealth(iso, deviation)
     -- this should be moved too
     -- min: 2.00x, max: 0.75x
     local scale = 0.75 + inverted * 2.0
-    local value = Clamp(health + (deviation * scale), 0, 100)
+    local value = Clamp(health + (Propital.FLAT_HEALING_BASEDELTA * scale), 0, 100)
     local delta = value - health
     if delta > 0 then
         damage:AddGeneralHealth(delta)

@@ -10,7 +10,8 @@ function BuildInjector(iso, settings)
             Infliction:new(
                 infliction.delay,
                 infliction.duration,
-                infliction.func
+                infliction.func,
+                infliction.rate
             )
         )
     end

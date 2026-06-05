@@ -10,12 +10,13 @@ local function getFunctionName(func)
     return nil
 end
 
-function Infliction:new(delay, duration, func, ...)
+function Infliction:new(delay, duration, func, rate, ...)
     local name = getFunctionName(func)
     local obj = {
         func = name or function(entity) end,
         delay = delay or 0,
         duration = duration or 0,
+        rate = rate or 0,
         args = {...}
     }
     setmetatable(obj, self)

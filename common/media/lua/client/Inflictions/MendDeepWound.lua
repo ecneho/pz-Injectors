@@ -1,7 +1,7 @@
 --- @param iso IsoPlayer
-function MendDeepWounds(iso)
+function MendDeepWound(iso)
     local parts = iso:getBodyDamage():getBodyParts()
-    local baseDelta = Hemostatic.MEND_DEEPWOUND_BASEDELTA
+    local baseDelta = Hemostatic.MEND_DEEP_WOUND_BASE_REDUCTION
 
     for i = 0, parts:size() - 1 do
         local part = parts:get(i) ---@type BodyPart

@@ -12,7 +12,7 @@ function AddHealth(iso)
     -- this should be moved too
     -- min: 2.00x, max: 0.75x
     local scale = 0.75 + inverted * 2.0
-    local value = Clamp(health + (Propital.FLAT_HEALING_BASEDELTA * scale), 0, 100)
+    local value = Clamp(health + (Propital.FLAT_HEALING_BASE_ADDITION * scale), 0, 100)
     local delta = value - health
     if delta > 0 then
         damage:AddGeneralHealth(delta)

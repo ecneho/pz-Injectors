@@ -1,20 +1,28 @@
---- @param iso IsoPlayer
+---@param iso IsoPlayer
 function AddHealth(iso)
     local damage = iso:getBodyDamage()
     local health = damage:getOverallBodyHealth()
-    -- this should be moved to sandbox vars
-    -- normalize: 0 is min, 100 is max
-    local min = 0
-    local max = 100
-    local norm = (health - min) / (max - min)
-    norm = Clamp(norm, 0, 1)
-    local inverted = 1 - norm
-    -- this should be moved too
-    -- min: 2.00x, max: 0.75x
-    local scale = 0.75 + inverted * 2.0
-    local value = Clamp(health + (Propital.FLAT_HEALING_BASE_ADDITION * scale), 0, 100)
-    local delta = value - health
-    if delta > 0 then
-        damage:AddGeneralHealth(delta)
+
+    local base = Propital.FLAT_HEALING_BASE_ADDITION
+    local minRange = Propital.FLAT_HEALING_MIN_LINEAR_RANGE
+    local maxRange = Propital.FLAT_HEALING_MAX_LINEAR_RANGE
+    local minScale = Propital.FLAT_HEALING_MIN_LINEAR_SCALE
+    local maxScale = Propital.FLAT_HEALING_MAX_LINEAR_SCALE
+
+    local scale = 0.0
+
+    if health <= minRange then
+        scale = minScale
+    elseif health >= maxRange then
+        scale = maxScale
+    else
+        local norm = (health - minRange) / (maxRange - minRange)
+        scale = minScale + norm * (maxScale - minScale)
+    end
+
+    local final = base * scale
+
+    if final > 0 then
+        damage:AddGeneralHealth(final)
     end
 end

@@ -9,7 +9,7 @@ function MendBleeding(iso)
 
         if part:bleeding() then
             local partType = part:getType()
-            local coef = Hemostatic.BLEEDING_COEFFICIENTS[partType] or 0.0
+            local coef = Hemostatic.BLEEDING_COEFFICIENTS[partType]
 
             local bleedTime = part:getBleedingTime() - (baseDelta * coef)
             part:setBleedingTime(math.max(0, bleedTime))

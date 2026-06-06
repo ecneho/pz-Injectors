@@ -98,6 +98,10 @@ function InitSandboxVariables()
     Propital.FLAT_HEALING_DELAY = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_DELAY)
     Propital.FLAT_HEALING_DURATION = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_DURATION)
     Propital.FLAT_HEALING_BASE_ADDITION = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_BASE_ADDITION)
+    Propital.FLAT_HEALING_MIN_LINEAR_RANGE = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_MIN_LINEAR_RANGE)
+    Propital.FLAT_HEALING_MAX_LINEAR_RANGE = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_RANGE)
+    Propital.FLAT_HEALING_MIN_LINEAR_SCALE = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_MIN_LINEAR_SCALE)
+    Propital.FLAT_HEALING_MAX_LINEAR_SCALE = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE)
 
     Propital_S = {
         Heal = {

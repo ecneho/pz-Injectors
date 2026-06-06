@@ -8,7 +8,7 @@ function MendDeepWound(iso)
 
         if part:isDeepWounded() then
             local partType = part:getType()
-            local coef = Hemostatic.DEEP_WOUND_COEFFICIENTS[partType] or 0.0
+            local coef = Hemostatic.DEEP_WOUND_COEFFICIENTS[partType]
 
             local deepTime = part:getDeepWoundTime() - (baseDelta * coef)
             part:setDeepWoundTime(math.max(0, deepTime))

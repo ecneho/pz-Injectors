@@ -569,8 +569,48 @@ option Injectors.PROPITAL_FLAT_HEALING_BASE_ADDITION {
     type = double,
     default = 1.0,
     min = 0.0,
-    max = 10.0,
+    max = 100.0,
 
     page = Injectors_propital,
     translation = Injectors.PROPITAL_FLAT_HEALING_BASE_ADDITION,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_MIN_LINEAR_RANGE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_propital,
+    translation = Injectors.PROPITAL_FLAT_HEALING_MIN_LINEAR_RANGE,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_RANGE {
+    type = double,
+    default = 100.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_propital,
+    translation = Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_RANGE,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_MIN_LINEAR_SCALE {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_propital,
+    translation = Injectors.PROPITAL_FLAT_HEALING_MIN_LINEAR_SCALE,
+}
+
+option Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_propital,
+    translation = Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE,
 }

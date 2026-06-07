@@ -20,9 +20,9 @@ function AddHealth(iso)
         scale = minScale + norm * (maxScale - minScale)
     end
 
-    local final = base * scale
+    local delta = base * scale
 
-    if final > 0 then
-        damage:AddGeneralHealth(final)
+    if delta > 0 then
+        damage:AddGeneralHealth(delta)
     end
 end

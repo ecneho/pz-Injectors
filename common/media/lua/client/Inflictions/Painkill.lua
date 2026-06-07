@@ -1,16 +1,29 @@
---- @param iso IsoPlayer
-function Painkill(iso, deviation)
+---@param iso IsoPlayer
+function Painkill(iso)
     local stats = iso:getStats()
     local pain = stats:get(CharacterStat.PAIN)
-    -- this should be moved to sandbox vars
-    -- normalize: 0 is min, 25 is max
-    local min = 0
-    local max = 25
-    local norm = (pain - min) / (max - min)
-    norm = Clamp(norm, 0, 1)
-    -- this should be moved too
-    -- min: 0.75x, max: 3.0x
-    local scale = 0.75 + norm * 3.0
-    local value = Clamp(pain - (deviation * scale), 0, 100)
+
+    local base = Epinephrine.PAINKILL_BASE_REDUCTION
+    local minRange = Epinephrine.PAINKILL_MIN_LINEAR_RANGE
+    local maxRange = Epinephrine.PAINKILL_MAX_LINEAR_RANGE
+    local minScale = Epinephrine.PAINKILL_MIN_LINEAR_SCALE
+    local maxScale = Epinephrine.PAINKILL_MAX_LINEAR_SCALE
+
+    local scale = 0.0
+
+    if pain <= minRange then
+        scale = minScale
+    elseif pain >= maxRange then
+        scale = maxScale
+    else
+        local norm = (pain - minRange) / (maxRange - minRange)
+        scale = minScale + norm * (maxScale - minScale)
+    end
+
+    local delta = base * scale
+    local value = Clamp(pain - delta, 0, 100)
+
+    print("Changing pain value by: " .. value)
+
     stats:set(CharacterStat.PAIN, value)
 end

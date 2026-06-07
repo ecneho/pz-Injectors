@@ -1,8 +1,10 @@
 Hemostatic = Hemostatic or {} -- hemostatic variables
 Propital = Propital or {} -- propital variables
+Epinephrine = Epinephrine or {} -- epinephrine variables
 
 Hemostatic_S = Hemostatic_S or {} -- hemostatic settings
 Propital_S = Propital_S or {} -- propital settings
+Epinephrine_S = Epinephrine_S or {} -- epinephrine settings
 
 -- nil check, throws error
 local function ensure(value, message)
@@ -109,6 +111,24 @@ function InitSandboxVariables()
             delay = Propital.FLAT_HEALING_DELAY,
             duration = Propital.FLAT_HEALING_DURATION,
             func = AddHealth
+        }
+    }
+
+    Epinephrine.PAINKILL_RATE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_RATE)
+    Epinephrine.PAINKILL_DELAY = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_DELAY)
+    Epinephrine.PAINKILL_DURATION = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_DURATION)
+    Epinephrine.PAINKILL_BASE_REDUCTION = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_BASE_REDUCTION)
+    Epinephrine.PAINKILL_MIN_LINEAR_RANGE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_RANGE)
+    Epinephrine.PAINKILL_MAX_LINEAR_RANGE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_RANGE)
+    Epinephrine.PAINKILL_MIN_LINEAR_SCALE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_SCALE)
+    Epinephrine.PAINKILL_MAX_LINEAR_SCALE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE)
+
+    Epinephrine_S = {
+        Painkill = {
+            rate = Epinephrine.PAINKILL_RATE,
+            delay = Epinephrine.PAINKILL_DELAY,
+            duration = Epinephrine.PAINKILL_DURATION,
+            func = Painkill
         }
     }
 end

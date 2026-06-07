@@ -614,3 +614,126 @@ option Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE {
     page = Injectors_propital,
     translation = Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE,
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+option Injectors.EPINEPHRINE_HEADER_PAINKILL_TIMING {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_HEADER_PAINKILL_TIMING,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_DELAY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_DELAY,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_RATE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_RATE,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_DURATION {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_DURATION,
+}
+
+
+
+
+option Injectors.fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors_fake_gap,
+}
+
+option Injectors.EPINEPHRINE_HEADER_PAINKILL_MODIFIERS {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_HEADER_PAINKILL_MODIFIERS,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_BASE_REDUCTION {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_BASE_REDUCTION,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_RANGE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_RANGE,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_RANGE {
+    type = double,
+    default = 100.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_RANGE,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_SCALE {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_SCALE,
+}
+
+option Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE,
+}

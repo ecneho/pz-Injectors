@@ -97,11 +97,14 @@ function InjectorDebugWindow:populateList()
         local health = damage:getOverallBodyHealth()
         local pain = stats:get(CharacterStat.PAIN)
 
+        local modData = player:getModData()
+
+        local inflictions = modData.inflictions
+        local overdose = modData.overdose or 0
+
         self.listBox:addItem(string.format("Health: %.2f", health), nil)
         self.listBox:addItem(string.format("Pain: %.2f", pain), nil)
-
-        local modData = player:getModData()
-        local inflictions = modData.inflictions
+        self.listBox:addItem(string.format("Overdose: %.2f", overdose), nil)
 
         if inflictions and #inflictions > 0 then
             for i = 1, #inflictions do

@@ -1,3 +1,4 @@
+InjectorVars = InjectorVars or {} -- global variables
 Hemostatic = Hemostatic or {} -- hemostatic variables
 Propital = Propital or {} -- propital variables
 Epinephrine = Epinephrine or {} -- epinephrine variables
@@ -122,6 +123,8 @@ function InitSandboxVariables()
     Epinephrine.PAINKILL_MAX_LINEAR_RANGE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_RANGE)
     Epinephrine.PAINKILL_MIN_LINEAR_SCALE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_SCALE)
     Epinephrine.PAINKILL_MAX_LINEAR_SCALE = ensure(SandboxVars.Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE)
+    Epinephrine.OVERDOSE_PENALTY = ensure(SandboxVars.Injectors.EPINEPHRINE_OVERDOSE_PENALTY)
+    Epinephrine.OVERDOSE_DELAY = ensure(SandboxVars.Injectors.EPINEPHRINE_OVERDOSE_DELAY)
 
     Epinephrine_S = {
         Painkill = {
@@ -129,8 +132,19 @@ function InitSandboxVariables()
             delay = Epinephrine.PAINKILL_DELAY,
             duration = Epinephrine.PAINKILL_DURATION,
             func = Painkill
+        },
+        -- occurs once
+        Overdose = {
+            rate = 0,
+            delay = Epinephrine.OVERDOSE_DELAY,
+            duration = 0,
+            func = IncrementOverdose
         }
     }
+
+    InjectorVars.OVERDOSE_DECAY = ensure(SandboxVars.Injectors.GLOBAL_OVERDOSE_DECAY)
+    InjectorVars.OVERDOSE_THRESHOLD = ensure(SandboxVars.Injectors.GLOBAL_OVERDOSE_THRESHOLD)
+    InjectorVars.PAINKILLERS_OVERDOSE_PENALTY = ensure(SandboxVars.Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY)
 end
 
 Events.OnInitGlobalModData.Add(InitSandboxVariables)

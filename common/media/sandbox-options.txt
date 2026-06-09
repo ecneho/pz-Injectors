@@ -1,5 +1,51 @@
 VERSION = 1,
 
+option Injectors.GLOBAL_HEADER_OVERDOSE {
+    type = boolean,
+    default = false,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_HEADER_OVERDOSE,
+}
+
+option Injectors.GLOBAL_OVERDOSE_DECAY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_OVERDOSE_DECAY,
+}
+
+option Injectors.GLOBAL_OVERDOSE_THRESHOLD {
+    type = double,
+    default = -1.0,
+    min = -1.0,
+    max = 1000.0,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_OVERDOSE_THRESHOLD,
+}
+
+option Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY,
+}
+
+
+
+
+
+
+
+
+
 option Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING {
     type = boolean,
     default = false,
@@ -736,4 +782,45 @@ option Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE {
 
     page = Injectors_epinephrine,
     translation = Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE,
+}
+
+
+
+
+
+
+option Injectors.fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors_fake_gap,
+}
+
+option Injectors.EPINEPHRINE_HEADER_OVERDOSE_MODIFIERS {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_HEADER_OVERDOSE_MODIFIERS,
+}
+
+option Injectors.EPINEPHRINE_OVERDOSE_PENALTY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_OVERDOSE_PENALTY,
+}
+
+option Injectors.EPINEPHRINE_OVERDOSE_DELAY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_OVERDOSE_DELAY,
 }

@@ -1,5 +1,15 @@
 {
 	"Sandbox_Injectors_fake_gap": "",
+	"Sandbox_Injectors_global": "Injectors [Global]",
+	"Sandbox_Injectors.GLOBAL_HEADER_OVERDOSE": "= [ Overdose ] =",
+	"Sandbox_Injectors.GLOBAL_HEADER_OVERDOSE_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_DECAY": "Decay Over Time",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_DECAY_tooltip": "Rate at which character overdose value decreases each second.",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_THRESHOLD": "Death Threshold",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_THRESHOLD_tooltip": "Overdose level that results in character death. Set to -1 to disable.",
+	"Sandbox_Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY": "Painkillers Penalty",
+	"Sandbox_Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY_tooltip": "Amount of overdose added per consumed vanilla painkiller.",
+
 	"Sandbox_Injectors_hemostatic": "Injectors [Hemostatic]",
 
 	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING": "= [ Bleeding Treatment Timing ] =",
@@ -156,5 +166,11 @@
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_SCALE": "Minimum Efficiency Multiplier",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_MIN_LINEAR_SCALE_tooltip": "Multiplier applied at the start of the linear scaling range.<BR>As pain approaches the minimum threshold, efficiency approaches this value.",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE": "Maximum Efficiency Multiplier",
-	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE_tooltip": "Multiplier applied at the end of the linear scaling range.<BR>As pain approaches the maximum threshold, efficiency approaches this value."
+	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE_tooltip": "Multiplier applied at the end of the linear scaling range.<BR>As pain approaches the maximum threshold, efficiency approaches this value.",
+
+	"Sandbox_Injectors.EPINEPHRINE_HEADER_OVERDOSE_MODIFIERS": "= [ Overdose Modifiers ] =",
+	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_DELAY": "Overdose Delay",
+	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_DELAY_tooltip": "Time interval before the overdose value is applied (in seconds).",
+	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_PENALTY": "Overdose Penalty",
+	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_PENALTY_tooltip": "Amount of overdose added per used injector."
 }

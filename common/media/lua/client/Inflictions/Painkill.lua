@@ -23,7 +23,5 @@ function Painkill(iso)
     local delta = base * scale
     local value = Clamp(pain - delta, 0, 100)
 
-    print("Changing pain value by: " .. value)
-
     stats:set(CharacterStat.PAIN, value)
 end

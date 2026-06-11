@@ -1,7 +1,7 @@
 -- cached vanilla function
 local original_ISTakePillAction_perform = ISTakePillAction.perform
 
--- overdose penalty
+-- overdose penalty - FIX: client-sided, unsafe!!!
 local function onUsePainkillers(player, item)
     if not player or player:isDead() then return end
 

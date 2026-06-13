@@ -29,6 +29,7 @@ local myDistribution = {
     }
 }
 
+---@diagnostic disable-next-line Undefined field `list`
 local ProceduralDistributions_list = ProceduralDistributions.list
 local table_insert = table.insert
 

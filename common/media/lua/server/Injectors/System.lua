@@ -2,8 +2,8 @@
 if not isServer() then return end
 
 local System = {}
-local Data = require "Data"
-local Logging = require "Logging"
+local Data = require "Injectors/Utils/Data"
+local Logging = require "Injectors/Utils/Logging"
 
 function System.AddPlayerEffect(username, durationInTicks)
     if type(durationInTicks) ~= "number" or durationInTicks <= 0 then return end

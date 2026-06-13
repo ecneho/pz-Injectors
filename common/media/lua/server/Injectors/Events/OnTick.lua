@@ -1,8 +1,8 @@
 -- server only
 if not isServer() then return end
 
-local Data = require "Data"
-local Logging = require "Logging"
+local Data = require "Injectors/Utils/Data"
+local Logging = require "Injectors/Utils/Logging"
 
 local function onTick()
     local activeList = Data.GetActiveList()

@@ -1,7 +1,7 @@
 -- server only
 if not isServer() then return end
 
-local System = require "System"
+local System = require "Injectors/System"
 
 ---@param module string The module the command was sent with
 ---@param command string The command the command was sent with

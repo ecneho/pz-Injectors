@@ -3,13 +3,23 @@ if not isServer() then return end
 
 local System = require "Injectors/System"
 
----@param module string The module the command was sent with
----@param command string The command the command was sent with
----@param player IsoPlayer The player who sent the command
----@param args table|nil The arguments table the command was sent with or nil
-local function OnClientCommand(module, command, player, args)
+local function OnHungerTick(player, ticksLeft, args)
+    -- player:getStats():setHunger(player:getStats():getHunger() - args.amount)
+    print("placeholder")
+end
+
+System.RegisterEffect("ChangeHungerEffect", OnHungerTick)
+
+---@param module string
+---@param command string
+---@param player IsoPlayer
+---@param clientArgs table|nil
+local function OnClientCommand(module, command, player, clientArgs)
     if module == "InjectorsModule" and command == "ChangeHunger" then
-        System.AddPlayerEffect(player:getUsername(), 5000)
+
+        local effectArgs = { amount = 0.05 }
+
+        System.AddPlayerEffect(player:getUsername(), "ChangeHungerEffect", 3000, 10, 10, effectArgs)
     end
 end
 

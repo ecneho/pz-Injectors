@@ -1,6 +1,7 @@
 -- server only
 if not isServer() then return end
 
+local System = require "Injectors/System"
 local Data = require "Injectors/Utils/Data"
 local Logging = require "Injectors/Utils/Logging"
 
@@ -16,24 +17,37 @@ local function onTick()
         local effects = activeList[username]
 
         if effects and #effects > 0 then
-
-            Logging.Header("Tick Update for " .. username)
-            Logging.Info("Active effects: " .. tostring(#effects))
-
             for j = #effects, 1, -1 do
-                effects[j] = effects[j] - 1
+                local effect = effects[j]
 
-                Logging.Info("Effect[" .. j .. "]: " .. effects[j] .. " ticks left")
+                if effect.delayLeft > 0 then
+                    effect.delayLeft = effect.delayLeft - 1
+                else
+                    if effect.procCounter <= 0 then
+                        local effectFunction = System.EffectRegistry[effect.effectId]
 
-                if effects[j] <= 0 then
-                    table.remove(effects, j)
-                    Logging.Info("Effect[" .. j .. "]: expired")
+                        if type(effectFunction) == "function" then
+                            effectFunction(player, effect.ticksLeft, effect.customArgs)
+                        else
+                            Logging.Info("Error: Missing function for effect ID '" .. tostring(effect.effectId) .. "'")
+                        end
+
+                        effect.procCounter = effect.procRate - 1
+                    else
+                        effect.procCounter = effect.procCounter - 1
+                    end
+
+                    effect.ticksLeft = effect.ticksLeft - 1
+
+                    if effect.ticksLeft <= 0 then
+                        table.remove(effects, j)
+                        Logging.Info("Effect[" .. j .. "] expired for " .. username)
+                    end
                 end
             end
 
             if #effects == 0 then
                 activeList[username] = nil
-                Logging.Info("All effects ended")
             end
         end
     end

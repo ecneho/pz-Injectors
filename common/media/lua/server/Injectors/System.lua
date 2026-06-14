@@ -47,7 +47,9 @@ function System.AddPlayerEffect(username, effectId, duration, delay, procRate, c
     Logging.Header("Effect Added")
     Logging.Info("Player: " .. username)
     Logging.Info("Effect ID: " .. effectId)
-    Logging.Info("Duration: " .. tostring(duration) .. " | Delay: " .. tostring(delay) .. " | Rate: " .. tostring(procRate))
+    Logging.Info("Duration: " .. tostring(duration))
+    Logging.Info("Delay: " .. tostring(delay))
+    Logging.Info("Rate: " .. tostring(procRate))
 end
 
 ---@param username string

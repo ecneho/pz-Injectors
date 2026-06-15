@@ -5,7 +5,12 @@ local System = require "Injectors/System"
 
 local HUNGER_STAT = CharacterStat.HUNGER
 
---- @param player IsoPlayer
+---@class HungerTickArgs
+---@field amount number
+
+---@param player IsoPlayer
+---@param ticks number
+---@param args HungerTickArgs
 local function OnHungerTick(player, ticks, args)
     local stats = player:getStats()
     local hunger = stats:get(HUNGER_STAT)

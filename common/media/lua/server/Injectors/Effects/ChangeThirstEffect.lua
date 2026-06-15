@@ -5,7 +5,12 @@ local System = require "Injectors/System"
 
 local THIRST_STAT = CharacterStat.THIRST
 
---- @param player IsoPlayer
+---@class ThirstTickArgs
+---@field amount number
+
+---@param player IsoPlayer
+---@param ticks number
+---@param args ThirstTickArgs
 local function OnThirstTick(player, ticks, args)
     local stats = player:getStats()
     local thirst = stats:get(THIRST_STAT)

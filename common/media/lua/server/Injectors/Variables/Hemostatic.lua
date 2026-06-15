@@ -2,6 +2,7 @@
 if not isServer() then return end
 
 local Hemostatic = {}
+local Logging = require "Injectors/Utils/Logging"
 
 -- nil check, throws error
 local function ensure(value, message)
@@ -12,7 +13,7 @@ local function ensure(value, message)
 end
 
 function Hemostatic.InitVariables()
-    print("[Injectors:Hemostatic] Loading sandbox variables...")
+    Logging.Info("[Hemostatic] Loading sandbox variables...")
 
     Hemostatic.MEND_BLEEDING_RATE = ensure(SandboxVars.Injectors.HEMOSTATIC_MEND_BLEEDING_RATE)
     Hemostatic.MEND_BLEEDING_DELAY = ensure(SandboxVars.Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY)
@@ -77,6 +78,37 @@ function Hemostatic.InitVariables()
         [BodyPartType.Foot_L] = ensure(SandboxVars.Injectors.HEMOSTATIC_LEFT_FOOT_MEND_DEEP_WOUND_COEFFICIENT),
         [BodyPartType.Foot_R] = ensure(SandboxVars.Injectors.HEMOSTATIC_RIGHT_FOOT_MEND_DEEP_WOUND_COEFFICIENT)
     }
+end
+
+local function flatten(t)
+    local out = {}
+    for bodyPart, value in pairs(t) do
+        out[tostring(bodyPart)] = value
+    end
+    return out
+end
+
+function Hemostatic.DumpVariables()
+    local dumpData = {
+        MEND_BLEEDING_RATE = Hemostatic.MEND_BLEEDING_RATE,
+        MEND_BLEEDING_DELAY = Hemostatic.MEND_BLEEDING_DELAY,
+        MEND_BLEEDING_DURATION = Hemostatic.MEND_BLEEDING_DURATION,
+        MEND_BLEEDING_BASE_REDUCTION = Hemostatic.MEND_BLEEDING_BASE_REDUCTION,
+        MEND_DEEP_WOUND_RATE = Hemostatic.MEND_DEEP_WOUND_RATE,
+        MEND_DEEP_WOUND_DELAY = Hemostatic.MEND_DEEP_WOUND_DELAY,
+        MEND_DEEP_WOUND_DURATION = Hemostatic.MEND_DEEP_WOUND_DURATION,
+        MEND_DEEP_WOUND_BASE_REDUCTION = Hemostatic.MEND_DEEP_WOUND_BASE_REDUCTION,
+    }
+
+    Logging.Table("Hemostatic Sandbox Variables Dump", dumpData)
+
+    Logging.Table("Hemostatic Bleeding Coefficients (body parts)",
+        flatten(Hemostatic.BLEEDING_COEFFICIENTS)
+    )
+
+    Logging.Table("Hemostatic Deep Wound Coefficients (body parts)",
+        flatten(Hemostatic.DEEPWOUND_COEFFICIENTS)
+    )
 end
 
 return Hemostatic

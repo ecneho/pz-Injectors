@@ -24,7 +24,7 @@ function System.AddPlayerEffect(username, effectId, duration, delay, procRate, c
     if type(duration) ~= "number" or duration <= 0 then return end
 
     if not System.EffectRegistry[effectId] then
-        Logging.Info("Error: No registered effect found for ID '" .. tostring(effectId) .. "'.")
+        Logging.Error("No registered effect found for ID '" .. tostring(effectId) .. "'.")
         return
     end
 
@@ -44,7 +44,6 @@ function System.AddPlayerEffect(username, effectId, duration, delay, procRate, c
         customArgs = customArgs or {}
     })
 
-    Logging.Header("Effect Added")
     Logging.Info("Player: " .. username)
     Logging.Info("Effect ID: " .. effectId)
     Logging.Info("Duration: " .. tostring(duration))
@@ -58,7 +57,6 @@ function System.RemovePlayerEffect(username)
 
     if activeList[username] then
         activeList[username] = nil
-        Logging.Header("Effects Removed")
         Logging.Info("Player: " .. username)
     end
 end

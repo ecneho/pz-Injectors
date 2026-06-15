@@ -5,6 +5,7 @@ local System = require "Injectors/System"
 local Data = require "Injectors/Utils/Data"
 local Logging = require "Injectors/Utils/Logging"
 
+-- TODO: possibly tps dependent, needs deltatime
 local function onTick()
     local activeList = Data.GetActiveList()
     local onlinePlayers = getOnlinePlayers()

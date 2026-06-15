@@ -40,7 +40,19 @@ function InjectorsAdminWindow:createChildren()
         {
             text = "Apply Propital Effect",
             command = "UsePropitalIgnoreSafety"
-        }
+        },
+        {
+            text = "Reduce General Health by ~20%",
+            command = "ReduceGeneralHealth"
+        },
+        {
+            text = "Apply Bleeding and Deep Wounds",
+            command = "ApplyBleedingDeepWounds"
+        },
+        {
+            text = "Set Maximum Applicable Pain",
+            command = "SetMaximumPain"
+        },
     }
 
     for _, config in ipairs(commands) do

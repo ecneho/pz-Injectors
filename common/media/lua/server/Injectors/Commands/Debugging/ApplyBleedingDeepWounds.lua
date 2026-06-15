@@ -26,6 +26,7 @@ local function OnClientCommand(module, command, player, clientArgs)
             for _, partType in ipairs(bleedingParts) do
                 local part = bodyDamage:getBodyPart(partType)
                 part:setBleeding(true)
+                part:setBleedingTime(10)
             end
 
             local deepWoundParts = {
@@ -39,9 +40,8 @@ local function OnClientCommand(module, command, player, clientArgs)
             for _, partType in ipairs(deepWoundParts) do
                 local part = bodyDamage:getBodyPart(partType)
                 part:setDeepWounded(true)
+                part:setDeepWoundTime(10)
             end
-
-            player:sendObjectChange('state')
 
             Logging.Info(username .. " applied bleeding and deep wounds (Debug)")
         else

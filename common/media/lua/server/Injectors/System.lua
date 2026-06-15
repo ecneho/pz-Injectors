@@ -57,7 +57,6 @@ function System.RemovePlayerEffect(username)
 
     if activeList[username] then
         activeList[username] = nil
-        Logging.Info("Player: " .. username)
     end
 end
 

@@ -42,7 +42,11 @@ function InjectorsAdminWindow:createChildren()
             command = "UsePropitalIgnoreSafety"
         },
         {
-            text = "Reduce General Health by ~20%",
+            text = "Clear Injector Effects",
+            command = "ClearEffects"
+        },
+        {
+            text = "Reduce General Health",
             command = "ReduceGeneralHealth"
         },
         {
@@ -77,9 +81,9 @@ function InjectorsAdminWindow:createChildren()
         width = math.max(width, child:getWidth())
     end
 
-    table.sort(self.buttons, function(a, b)
-        return string.sort(b.title, a.title)
-    end)
+    -- table.sort(self.buttons, function(a, b)
+    --     return string.sort(b.title, a.title)
+    -- end)
 
     for _, child in ipairs(self.buttons) do
         child:setWidth(width)

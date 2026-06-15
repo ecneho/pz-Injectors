@@ -12,7 +12,7 @@ function Settings.Used(player)
 
     ---@type PainTickArgs
     local painTickArgs = {
-        base = Epinephrine.PAINKILL_BASE_REDUCTION,
+        base = -Epinephrine.PAINKILL_BASE_REDUCTION,
         minRange = Epinephrine.PAINKILL_MIN_LINEAR_RANGE,
         maxRange = Epinephrine.PAINKILL_MAX_LINEAR_RANGE,
         minScale = Epinephrine.PAINKILL_MIN_LINEAR_SCALE,

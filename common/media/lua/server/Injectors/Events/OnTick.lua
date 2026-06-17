@@ -78,6 +78,10 @@ local function onOverdoseTick()
             if type(currentOverdose) == "number" and currentOverdose > 0 then
                 overdoseList[username] = math.max(0, currentOverdose - Common.OVERDOSE_DECAY)
 
+                if overdoseList[username] > Common.OVERDOSE_THRESHOLD then
+                    player:getBodyDamage():ReduceGeneralHealth(999)
+                end
+
                 if overdoseList[username] == 0 then
                     overdoseList[username] = nil
                     Logging.Info("Overdose fully decayed for " .. username)

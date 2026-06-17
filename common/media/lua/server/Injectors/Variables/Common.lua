@@ -16,6 +16,7 @@ function Common.InitVariables()
     Logging.Info("[Common] Loading sandbox variables...")
 
     Common.OVERDOSE_DECAY = ensure(SandboxVars.Injectors.GLOBAL_OVERDOSE_DECAY)
+    Common.OVERDOSE_RATE = ensure(SandboxVars.Injectors.GLOBAL_OVERDOSE_RATE)
     Common.OVERDOSE_THRESHOLD = ensure(SandboxVars.Injectors.GLOBAL_OVERDOSE_THRESHOLD)
     Common.PAINKILLERS_OVERDOSE_PENALTY = ensure(SandboxVars.Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY)
 end
@@ -23,6 +24,7 @@ end
 function Common.DumpVariables()
     Logging.Table("Common Sandbox Variables Dump", {
         OVERDOSE_DECAY = Common.OVERDOSE_DECAY,
+        OVERDOSE_RATE = Common.OVERDOSE_RATE,
         OVERDOSE_THRESHOLD = Common.OVERDOSE_THRESHOLD,
         PAINKILLERS_OVERDOSE_PENALTY = Common.PAINKILLERS_OVERDOSE_PENALTY
     })

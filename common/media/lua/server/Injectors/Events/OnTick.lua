@@ -4,9 +4,10 @@ if not isServer() then return end
 local System = require "Injectors/System"
 local Data = require "Injectors/Utils/Data"
 local Logging = require "Injectors/Utils/Logging"
+local Common = require "Injectors/Variables/Common"
 
--- TODO: possibly tps dependent, needs deltatime
-local function onTick()
+-- effect ticking
+local function onEffectTick()
     local activeList = Data.GetActiveList()
     local onlinePlayers = getOnlinePlayers()
 
@@ -54,4 +55,39 @@ local function onTick()
     end
 end
 
-Events.OnTick.Add(onTick)
+local decayTickCounter = 0
+
+local function onOverdoseTick()
+    decayTickCounter = decayTickCounter + 1
+
+    if decayTickCounter >= Common.OVERDOSE_RATE then
+        local onlinePlayers = getOnlinePlayers()
+
+        if not onlinePlayers or onlinePlayers:size() == 0 then
+            decayTickCounter = 0
+            return
+        end
+
+        local overdoseList = Data.GetOverdoseList()
+
+        for i = 0, onlinePlayers:size() - 1 do
+            local player = onlinePlayers:get(i)
+            local username = player:getUsername()
+            local currentOverdose = overdoseList[username]
+
+            if type(currentOverdose) == "number" and currentOverdose > 0 then
+                overdoseList[username] = math.max(0, currentOverdose - Common.OVERDOSE_DECAY)
+
+                if overdoseList[username] == 0 then
+                    overdoseList[username] = nil
+                    Logging.Info("Overdose fully decayed for " .. username)
+                end
+            end
+        end
+
+        decayTickCounter = 0
+    end
+end
+
+Events.OnTick.Add(onEffectTick)
+Events.OnTick.Add(onOverdoseTick)

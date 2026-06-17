@@ -30,6 +30,10 @@ function InjectorsAdminWindow:createChildren()
             command = "DumpVariables"
         },
         {
+            text = "Dump Overdose Value",
+            command = "DumpOverdose"
+        },
+        {
             text = "Apply Epinephrine Effect",
             command = "UseEpinephrineIgnoreSafety"
         },

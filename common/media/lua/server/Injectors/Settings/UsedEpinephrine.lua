@@ -24,6 +24,15 @@ function Settings.Used(player)
         Epinephrine.PAINKILL_DELAY,
         Epinephrine.PAINKILL_RATE,
         painTickArgs)
+
+    ---@type OverdoseTickArgs
+    local overdoseTickArgs = {
+        base = Epinephrine.OVERDOSE_PENALTY,
+    }
+
+    System.AddPlayerEffect(username, "ChangeOverdoseEffect",
+        1, Epinephrine.OVERDOSE_DELAY, 1,
+        overdoseTickArgs)
 end
 
 return Settings

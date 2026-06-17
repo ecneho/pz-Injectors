@@ -18,6 +18,16 @@ option Injectors.GLOBAL_OVERDOSE_DECAY {
     translation = Injectors.GLOBAL_OVERDOSE_DECAY,
 }
 
+option Injectors.GLOBAL_OVERDOSE_RATE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_OVERDOSE_RATE,
+}
+
 option Injectors.GLOBAL_OVERDOSE_THRESHOLD {
     type = double,
     default = -1.0,

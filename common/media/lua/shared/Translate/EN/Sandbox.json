@@ -41,7 +41,7 @@
 	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING": "= [ Bleeding Treatment Timing ] =",
 	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY": "Treatment Delay",
-	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY_tooltop": "Time interval before the effect starts (in ticks).",
+	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY_tooltip": "Time interval before the effect starts (in ticks).",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_RATE": "Treatment Rate",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_RATE_tooltip": "Time interval between applications of the effect (in ticks).",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DURATION": "Treatment Duration",

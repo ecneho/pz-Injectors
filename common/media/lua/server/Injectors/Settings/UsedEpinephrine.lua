@@ -25,6 +25,21 @@ function Settings.Used(player)
         Epinephrine.PAINKILL_RATE,
         painTickArgs)
 
+    ---@type GeneralHealthTickArgs
+    local generalHealthTickArgs = {
+        base = Epinephrine.FLAT_HEALING_BASE_ADDITION,
+        minRange = Epinephrine.FLAT_HEALING_MIN_LINEAR_RANGE,
+        maxRange = Epinephrine.FLAT_HEALING_MAX_LINEAR_RANGE,
+        minScale = Epinephrine.FLAT_HEALING_MIN_LINEAR_SCALE,
+        maxScale = Epinephrine.FLAT_HEALING_MAX_LINEAR_SCALE,
+    }
+
+    System.AddPlayerEffect(username, "ChangeGeneralHealthEffect",
+        Epinephrine.FLAT_HEALING_DURATION,
+        Epinephrine.FLAT_HEALING_DELAY,
+        Epinephrine.FLAT_HEALING_RATE,
+        generalHealthTickArgs)
+
     ---@type OverdoseTickArgs
     local overdoseTickArgs = {
         base = Epinephrine.OVERDOSE_PENALTY,

@@ -1257,6 +1257,132 @@ option Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE {
 
 
 
+
+
+
+
+option Injectors.fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors_fake_gap,
+}
+
+option Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_TIMING {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_TIMING,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_DELAY {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_DELAY,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_RATE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_RATE,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_DURATION {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 600.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_DURATION,
+}
+
+option Injectors.fake_gap {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors_fake_gap,
+}
+
+option Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_MODIFIERS {
+    type = boolean,
+    default = false,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_MODIFIERS,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_BASE_ADDITION {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_BASE_ADDITION,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_MIN_LINEAR_RANGE {
+    type = double,
+    default = 0.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_MIN_LINEAR_RANGE,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_MAX_LINEAR_RANGE {
+    type = double,
+    default = 100.0,
+    min = 0.0,
+    max = 100.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_MAX_LINEAR_RANGE,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_MIN_LINEAR_SCALE {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_MIN_LINEAR_SCALE,
+}
+
+option Injectors.EPINEPHRINE_FLAT_HEALING_MAX_LINEAR_SCALE {
+    type = double,
+    default = 1.0,
+    min = 0.0,
+    max = 10.0,
+
+    page = Injectors_epinephrine,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_MAX_LINEAR_SCALE,
+}
+
+
+
+
+
+
+
+
+
+
+
 option Injectors.fake_gap {
     type = boolean,
     default = false,

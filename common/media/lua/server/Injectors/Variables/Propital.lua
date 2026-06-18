@@ -23,6 +23,19 @@ function Propital.InitVariables()
     Propital.FLAT_HEALING_MAX_LINEAR_RANGE = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_RANGE)
     Propital.FLAT_HEALING_MIN_LINEAR_SCALE = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_MIN_LINEAR_SCALE)
     Propital.FLAT_HEALING_MAX_LINEAR_SCALE = ensure(SandboxVars.Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE)
+
+    Propital.OVERDOSE_PENALTY = ensure(SandboxVars.Injectors.PROPITAL_OVERDOSE_PENALTY)
+    Propital.OVERDOSE_DELAY = ensure(SandboxVars.Injectors.PROPITAL_OVERDOSE_DELAY)
+
+    Propital.HUNGER_DELAY = ensure(SandboxVars.Injectors.PROPITAL_HUNGER_DELAY)
+    Propital.HUNGER_RATE = ensure(SandboxVars.Injectors.PROPITAL_HUNGER_RATE)
+    Propital.HUNGER_DURATION = ensure(SandboxVars.Injectors.PROPITAL_HUNGER_DURATION)
+    Propital.HUNGER_BASE_PENALTY = ensure(SandboxVars.Injectors.PROPITAL_HUNGER_BASE_PENALTY)
+
+    Propital.THIRST_DELAY = ensure(SandboxVars.Injectors.PROPITAL_THIRST_DELAY)
+    Propital.THIRST_RATE = ensure(SandboxVars.Injectors.PROPITAL_THIRST_RATE)
+    Propital.THIRST_DURATION = ensure(SandboxVars.Injectors.PROPITAL_THIRST_DURATION)
+    Propital.THIRST_BASE_PENALTY = ensure(SandboxVars.Injectors.PROPITAL_THIRST_BASE_PENALTY)
 end
 
 function Propital.DumpVariables()
@@ -35,6 +48,19 @@ function Propital.DumpVariables()
         FLAT_HEALING_MAX_LINEAR_RANGE = Propital.FLAT_HEALING_MAX_LINEAR_RANGE,
         FLAT_HEALING_MIN_LINEAR_SCALE = Propital.FLAT_HEALING_MIN_LINEAR_SCALE,
         FLAT_HEALING_MAX_LINEAR_SCALE = Propital.FLAT_HEALING_MAX_LINEAR_SCALE,
+
+        OVERDOSE_PENALTY = Propital.OVERDOSE_PENALTY,
+        OVERDOSE_DELAY = Propital.OVERDOSE_DELAY,
+
+        HUNGER_DELAY = Propital.HUNGER_DELAY,
+        HUNGER_RATE = Propital.HUNGER_RATE,
+        HUNGER_DURATION = Propital.HUNGER_DURATION,
+        HUNGER_BASE_PENALTY = Propital.HUNGER_BASE_PENALTY,
+
+        THIRST_DELAY = Propital.THIRST_DELAY,
+        THIRST_RATE = Propital.THIRST_RATE,
+        THIRST_DURATION = Propital.THIRST_DURATION,
+        THIRST_BASE_PENALTY = Propital.THIRST_BASE_PENALTY,
     })
 end
 

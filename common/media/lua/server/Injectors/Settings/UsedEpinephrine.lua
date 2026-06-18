@@ -33,6 +33,28 @@ function Settings.Used(player)
     System.AddPlayerEffect(username, "ChangeOverdoseEffect",
         1, Epinephrine.OVERDOSE_DELAY, 1,
         overdoseTickArgs)
+
+    ---@type HungerTickArgs
+    local hungerTickArgs = {
+        amount = Epinephrine.HUNGER_BASE_PENALTY,
+    }
+
+    System.AddPlayerEffect(username, "ChangeHungerEffect",
+        Epinephrine.HUNGER_DURATION,
+        Epinephrine.HUNGER_DELAY,
+        Epinephrine.HUNGER_RATE,
+        hungerTickArgs)
+
+    ---@type ThirstTickArgs
+    local thirstTickArgs = {
+        amount = Epinephrine.THIRST_BASE_PENALTY,
+    }
+
+    System.AddPlayerEffect(username, "ChangeThirstEffect",
+        Epinephrine.THIRST_DURATION,
+        Epinephrine.THIRST_DELAY,
+        Epinephrine.THIRST_RATE,
+        thirstTickArgs)
 end
 
 return Settings

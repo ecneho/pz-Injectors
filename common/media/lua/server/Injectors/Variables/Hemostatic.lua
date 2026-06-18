@@ -78,6 +78,19 @@ function Hemostatic.InitVariables()
         [BodyPartType.Foot_L] = ensure(SandboxVars.Injectors.HEMOSTATIC_LEFT_FOOT_MEND_DEEP_WOUND_COEFFICIENT),
         [BodyPartType.Foot_R] = ensure(SandboxVars.Injectors.HEMOSTATIC_RIGHT_FOOT_MEND_DEEP_WOUND_COEFFICIENT)
     }
+
+    Hemostatic.OVERDOSE_PENALTY = ensure(SandboxVars.Injectors.HEMOSTATIC_OVERDOSE_PENALTY)
+    Hemostatic.OVERDOSE_DELAY = ensure(SandboxVars.Injectors.HEMOSTATIC_OVERDOSE_DELAY)
+
+    Hemostatic.HUNGER_DELAY = ensure(SandboxVars.Injectors.HEMOSTATIC_HUNGER_DELAY)
+    Hemostatic.HUNGER_RATE = ensure(SandboxVars.Injectors.HEMOSTATIC_HUNGER_RATE)
+    Hemostatic.HUNGER_DURATION = ensure(SandboxVars.Injectors.HEMOSTATIC_HUNGER_DURATION)
+    Hemostatic.HUNGER_BASE_PENALTY = ensure(SandboxVars.Injectors.HEMOSTATIC_HUNGER_BASE_PENALTY)
+
+    Hemostatic.THIRST_DELAY = ensure(SandboxVars.Injectors.HEMOSTATIC_THIRST_DELAY)
+    Hemostatic.THIRST_RATE = ensure(SandboxVars.Injectors.HEMOSTATIC_THIRST_RATE)
+    Hemostatic.THIRST_DURATION = ensure(SandboxVars.Injectors.HEMOSTATIC_THIRST_DURATION)
+    Hemostatic.THIRST_BASE_PENALTY = ensure(SandboxVars.Injectors.HEMOSTATIC_THIRST_BASE_PENALTY)
 end
 
 local function flatten(t)
@@ -98,6 +111,19 @@ function Hemostatic.DumpVariables()
         MEND_DEEP_WOUND_DELAY = Hemostatic.MEND_DEEP_WOUND_DELAY,
         MEND_DEEP_WOUND_DURATION = Hemostatic.MEND_DEEP_WOUND_DURATION,
         MEND_DEEP_WOUND_BASE_REDUCTION = Hemostatic.MEND_DEEP_WOUND_BASE_REDUCTION,
+
+        OVERDOSE_PENALTY = Hemostatic.OVERDOSE_PENALTY,
+        OVERDOSE_DELAY = Hemostatic.OVERDOSE_DELAY,
+
+        HUNGER_DELAY = Hemostatic.HUNGER_DELAY,
+        HUNGER_RATE = Hemostatic.HUNGER_RATE,
+        HUNGER_DURATION = Hemostatic.HUNGER_DURATION,
+        HUNGER_BASE_PENALTY = Hemostatic.HUNGER_BASE_PENALTY,
+
+        THIRST_DELAY = Hemostatic.THIRST_DELAY,
+        THIRST_RATE = Hemostatic.THIRST_RATE,
+        THIRST_DURATION = Hemostatic.THIRST_DURATION,
+        THIRST_BASE_PENALTY = Hemostatic.THIRST_BASE_PENALTY,
     }
 
     Logging.Table("Hemostatic Sandbox Variables Dump", dumpData)

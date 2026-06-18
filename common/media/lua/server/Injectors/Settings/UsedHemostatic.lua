@@ -35,6 +35,37 @@ function Settings.Used(player)
         Hemostatic.MEND_DEEP_WOUND_RATE,
         mendDeepWoundTickArgs
     )
+
+    ---@type OverdoseTickArgs
+    local overdoseTickArgs = {
+        base = Hemostatic.OVERDOSE_PENALTY,
+    }
+
+    System.AddPlayerEffect(username, "ChangeOverdoseEffect",
+        1, Hemostatic.OVERDOSE_DELAY, 1,
+        overdoseTickArgs)
+
+    ---@type HungerTickArgs
+    local hungerTickArgs = {
+        amount = Hemostatic.HUNGER_BASE_PENALTY,
+    }
+
+    System.AddPlayerEffect(username, "ChangeHungerEffect",
+        Hemostatic.HUNGER_DURATION,
+        Hemostatic.HUNGER_DELAY,
+        Hemostatic.HUNGER_RATE,
+        hungerTickArgs)
+
+    ---@type ThirstTickArgs
+    local thirstTickArgs = {
+        amount = Hemostatic.THIRST_BASE_PENALTY,
+    }
+
+    System.AddPlayerEffect(username, "ChangeThirstEffect",
+        Hemostatic.THIRST_DURATION,
+        Hemostatic.THIRST_DELAY,
+        Hemostatic.THIRST_RATE,
+        thirstTickArgs)
 end
 
 return Settings

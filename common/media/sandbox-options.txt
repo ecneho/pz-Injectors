@@ -2,7 +2,7 @@ VERSION = 1,
 
 option Injectors.GLOBAL_HEADER_OVERDOSE {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_global,
     translation = Injectors.GLOBAL_HEADER_OVERDOSE,
@@ -28,16 +28,6 @@ option Injectors.GLOBAL_OVERDOSE_RATE {
     translation = Injectors.GLOBAL_OVERDOSE_RATE,
 }
 
-option Injectors.GLOBAL_OVERDOSE_THRESHOLD {
-    type = double,
-    default = -1.0,
-    min = -1.0,
-    max = 1000.0,
-
-    page = Injectors_global,
-    translation = Injectors.GLOBAL_OVERDOSE_THRESHOLD,
-}
-
 option Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY {
     type = double,
     default = 0.0,
@@ -48,27 +38,44 @@ option Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY {
     translation = Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY,
 }
 
+option Injectors.GLOBAL_OVERDOSE_THRESHOLD {
+    type = double,
+    default = 100.0,
+    min = 0.0,
+    max = 1000.0,
 
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_OVERDOSE_THRESHOLD,
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-option Injectors.HEMOSTATIC_HEADER_HUNGER {
+option Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED,
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+option Injectors.HEMOSTATIC_HUNGER_ENABLED {
+    type = boolean,
+    default = true,
 
     page = Injectors_hemostatic,
-    translation = Injectors.HEMOSTATIC_HEADER_HUNGER,
+    translation = Injectors.HEMOSTATIC_HUNGER_ENABLED,
 }
 
 option Injectors.HEMOSTATIC_HUNGER_BASE_PENALTY {
@@ -119,12 +126,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.HEMOSTATIC_HEADER_THIRST {
+option Injectors.HEMOSTATIC_THIRST_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_hemostatic,
-    translation = Injectors.HEMOSTATIC_HEADER_THIRST,
+    translation = Injectors.HEMOSTATIC_THIRST_ENABLED,
 }
 
 option Injectors.HEMOSTATIC_THIRST_BASE_PENALTY {
@@ -175,12 +182,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING {
+option Injectors.HEMOSTATIC_MEND_BLEEDING_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_hemostatic,
-    translation = Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING,
+    translation = Injectors.HEMOSTATIC_MEND_BLEEDING_ENABLED,
 }
 
 option Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY {
@@ -434,12 +441,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_TIMING {
+option Injectors.HEMOSTATIC_MEND_DEEP_WOUND_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_hemostatic,
-    translation = Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_TIMING,
+    translation = Injectors.HEMOSTATIC_MEND_DEEP_WOUND_ENABLED,
 }
 
 option Injectors.HEMOSTATIC_MEND_DEEP_WOUND_DELAY {
@@ -679,12 +686,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.HEMOSTATIC_HEADER_OVERDOSE_MODIFIERS {
+option Injectors.HEMOSTATIC_OVERDOSE_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_hemostatic,
-    translation = Injectors.HEMOSTATIC_HEADER_OVERDOSE_MODIFIERS,
+    translation = Injectors.HEMOSTATIC_OVERDOSE_ENABLED,
 }
 
 option Injectors.HEMOSTATIC_OVERDOSE_PENALTY {
@@ -737,12 +744,12 @@ option Injectors.HEMOSTATIC_OVERDOSE_DELAY {
 
 
 
-option Injectors.PROPITAL_HEADER_HUNGER {
+option Injectors.PROPITAL_HUNGER_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_propital,
-    translation = Injectors.PROPITAL_HEADER_HUNGER,
+    translation = Injectors.PROPITAL_HUNGER_ENABLED,
 }
 
 option Injectors.PROPITAL_HUNGER_BASE_PENALTY {
@@ -793,12 +800,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.PROPITAL_HEADER_THIRST {
+option Injectors.PROPITAL_THIRST_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_propital,
-    translation = Injectors.PROPITAL_HEADER_THIRST,
+    translation = Injectors.PROPITAL_THIRST_ENABLED,
 }
 
 option Injectors.PROPITAL_THIRST_BASE_PENALTY {
@@ -849,12 +856,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.PROPITAL_HEADER_FLAT_HEALING_TIMING {
+option Injectors.PROPITAL_FLAT_HEALING_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_propital,
-    translation = Injectors.PROPITAL_HEADER_FLAT_HEALING_TIMING,
+    translation = Injectors.PROPITAL_FLAT_HEALING_ENABLED,
 }
 
 option Injectors.PROPITAL_FLAT_HEALING_DELAY {
@@ -968,12 +975,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.PROPITAL_HEADER_OVERDOSE_MODIFIERS {
+option Injectors.PROPITAL_OVERDOSE_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_propital,
-    translation = Injectors.PROPITAL_HEADER_OVERDOSE_MODIFIERS,
+    translation = Injectors.PROPITAL_OVERDOSE_ENABLED,
 }
 
 option Injectors.PROPITAL_OVERDOSE_PENALTY {
@@ -1033,12 +1040,12 @@ option Injectors.PROPITAL_OVERDOSE_DELAY {
 
 
 
-option Injectors.EPINEPHRINE_HEADER_HUNGER {
+option Injectors.EPINEPHRINE_HUNGER_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_epinephrine,
-    translation = Injectors.EPINEPHRINE_HEADER_HUNGER,
+    translation = Injectors.EPINEPHRINE_HUNGER_ENABLED,
 }
 
 option Injectors.EPINEPHRINE_HUNGER_BASE_PENALTY {
@@ -1089,12 +1096,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.EPINEPHRINE_HEADER_THIRST {
+option Injectors.EPINEPHRINE_THIRST_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_epinephrine,
-    translation = Injectors.EPINEPHRINE_HEADER_THIRST,
+    translation = Injectors.EPINEPHRINE_THIRST_ENABLED,
 }
 
 option Injectors.EPINEPHRINE_THIRST_BASE_PENALTY {
@@ -1145,12 +1152,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.EPINEPHRINE_HEADER_PAINKILL_TIMING {
+option Injectors.EPINEPHRINE_PAINKILL_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_epinephrine,
-    translation = Injectors.EPINEPHRINE_HEADER_PAINKILL_TIMING,
+    translation = Injectors.EPINEPHRINE_PAINKILL_ENABLED,
 }
 
 option Injectors.EPINEPHRINE_PAINKILL_DELAY {
@@ -1269,12 +1276,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_TIMING {
+option Injectors.EPINEPHRINE_FLAT_HEALING_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_epinephrine,
-    translation = Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_TIMING,
+    translation = Injectors.EPINEPHRINE_FLAT_HEALING_ENABLED,
 }
 
 option Injectors.EPINEPHRINE_FLAT_HEALING_DELAY {
@@ -1391,12 +1398,12 @@ option Injectors.fake_gap {
     translation = Injectors_fake_gap,
 }
 
-option Injectors.EPINEPHRINE_HEADER_OVERDOSE_MODIFIERS {
+option Injectors.EPINEPHRINE_OVERDOSE_ENABLED {
     type = boolean,
-    default = false,
+    default = true,
 
     page = Injectors_epinephrine,
-    translation = Injectors.EPINEPHRINE_HEADER_OVERDOSE_MODIFIERS,
+    translation = Injectors.EPINEPHRINE_OVERDOSE_ENABLED,
 }
 
 option Injectors.EPINEPHRINE_OVERDOSE_PENALTY {

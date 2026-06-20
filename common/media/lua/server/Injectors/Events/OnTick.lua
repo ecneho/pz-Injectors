@@ -57,6 +57,7 @@ end
 
 local decayTickCounter = 0
 
+--- TODO: overdose % rework
 local function onOverdoseTick()
     decayTickCounter = decayTickCounter + 1
 
@@ -78,7 +79,7 @@ local function onOverdoseTick()
             if type(currentOverdose) == "number" and currentOverdose > 0 then
                 overdoseList[username] = math.max(0, currentOverdose - Common.OVERDOSE_DECAY)
 
-                if Common.OVERDOSE_THRESHOLD ~= -1 and overdoseList[username] > Common.OVERDOSE_THRESHOLD then
+                if Common.OVERDOSE_DEATH_ENABLED and overdoseList[username] >= Common.OVERDOSE_THRESHOLD then
                     player:getBodyDamage():ReduceGeneralHealth(999)
                 end
 

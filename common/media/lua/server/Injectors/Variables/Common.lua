@@ -6,6 +6,7 @@ local Common = {}
 
 Loader.Populate(Common, "GLOBAL",
 {
+    "OVERDOSE_DEATH_ENABLED",
     "OVERDOSE_DECAY",
     "OVERDOSE_RATE",
     "OVERDOSE_THRESHOLD",

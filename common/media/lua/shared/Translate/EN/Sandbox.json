@@ -3,21 +3,24 @@
 
 	"Sandbox_Injectors_global": "Injectors [Global]",
 
-	"Sandbox_Injectors.GLOBAL_HEADER_OVERDOSE": "= [ Overdose ] =",
+	"Sandbox_Injectors.GLOBAL_HEADER_OVERDOSE": "OVERDOSE",
 	"Sandbox_Injectors.GLOBAL_HEADER_OVERDOSE_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_DECAY": "Decay Amount",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_DECAY_tooltip": "Amount at which character overdose value decreases.",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_RATE": "Decay Rate",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_RATE_tooltip": "Rate at which character overdose value decreases.",
-	"Sandbox_Injectors.GLOBAL_OVERDOSE_THRESHOLD": "Death Threshold",
-	"Sandbox_Injectors.GLOBAL_OVERDOSE_THRESHOLD_tooltip": "Overdose level that results in character death. Set to -1 to disable.",
 	"Sandbox_Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY": "Painkillers Penalty",
 	"Sandbox_Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY_tooltip": "Amount of overdose added per consumed vanilla painkiller.",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_THRESHOLD": "Overdose Threshold",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_THRESHOLD_tooltip": "Maximum character overdose level.",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED": "Overdose Death",
+	"Sandbox_Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED_tooltip": "Whether to force character death when overdose reaches 100%.",
+
 
 	"Sandbox_Injectors_hemostatic": "Injectors [Hemostatic]",
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_HUNGER": "= [ Hunger Penalty ] =",
-    "Sandbox_Injectors.HEMOSTATIC_HEADER_HUNGER_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.HEMOSTATIC_HUNGER_ENABLED": "HUNGER PENALTY",
+    "Sandbox_Injectors.HEMOSTATIC_HUNGER_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.HEMOSTATIC_HUNGER_BASE_PENALTY": "Hunger Base Penalty",
     "Sandbox_Injectors.HEMOSTATIC_HUNGER_BASE_PENALTY_tooltip": "Base amount of hunger added per application of the effect.",
     "Sandbox_Injectors.HEMOSTATIC_HUNGER_DELAY": "Hunger Delay",
@@ -27,8 +30,8 @@
     "Sandbox_Injectors.HEMOSTATIC_HUNGER_DURATION": "Hunger Duration",
     "Sandbox_Injectors.HEMOSTATIC_HUNGER_DURATION_tooltip": "Total duration of the hunger penalty (in ticks).",
 
-    "Sandbox_Injectors.HEMOSTATIC_HEADER_THIRST": "= [ Thirst Penalty ] =",
-    "Sandbox_Injectors.HEMOSTATIC_HEADER_THIRST_tooltip": "This value is not used and acts as a header.",
+    "Sandbox_Injectors.HEMOSTATIC_THIRST_ENABLED": "THIRST PENALTY",
+    "Sandbox_Injectors.HEMOSTATIC_THIRST_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.HEMOSTATIC_THIRST_BASE_PENALTY": "Thirst Base Penalty",
     "Sandbox_Injectors.HEMOSTATIC_THIRST_BASE_PENALTY_tooltip": "Base amount of thirst added per application of the effect.",
     "Sandbox_Injectors.HEMOSTATIC_THIRST_DELAY": "Thirst Delay",
@@ -38,8 +41,8 @@
     "Sandbox_Injectors.HEMOSTATIC_THIRST_DURATION": "Thirst Duration",
     "Sandbox_Injectors.HEMOSTATIC_THIRST_DURATION_tooltip": "Total duration of the thirst penalty (in ticks).",
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING": "= [ Bleeding Treatment Timing ] =",
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_TIMING_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_ENABLED": "BLEEDING TREATMENT",
+	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY": "Treatment Delay",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DELAY_tooltip": "Time interval before the effect starts (in ticks).",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_RATE": "Treatment Rate",
@@ -47,12 +50,12 @@
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DURATION": "Treatment Duration",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_DURATION_tooltip": "Total duration of the effect (in ticks).",
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_MODIFIERS": "= [ Bleeding Treatment Modifiers ] =",
+	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_MODIFIERS": "|    Bleeding Treatment Modifiers",
 	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_MODIFIERS_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_BASE_REDUCTION": "Base Reduction",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_BLEEDING_BASE_REDUCTION_tooltip": "Base amount by which wound bleeding time is reduced per application of the effect. Multiplied by body part coefficients.",
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_BODYPART_MODIFIERS": "= [ Bleeding Treatment Body Part Modifiers ] =",
+	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_BODYPART_MODIFIERS": "|    Bleeding Treatment Body Part Modifiers",
 	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_BLEEDING_BODYPART_MODIFIERS_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.HEMOSTATIC_HEAD_MEND_BLEEDING_COEFFICIENT": "Head Bleeding Coefficient",
 	"Sandbox_Injectors.HEMOSTATIC_HEAD_MEND_BLEEDING_COEFFICIENT_tooltip": "Multiplier applied to bleeding time reduction effectiveness for head wounds.",
@@ -90,8 +93,8 @@
 	"Sandbox_Injectors.HEMOSTATIC_RIGHT_FOOT_MEND_BLEEDING_COEFFICIENT_tooltip": "Multiplier applied to bleeding time reduction effectiveness for right foot wounds.",
 
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_TIMING": "= [ Deep Wound Treatment Timing ] =",
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_TIMING_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_ENABLED": "DEEP WOUND TREATMENT",
+	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_DELAY": "Treatment Delay",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_DELAY_tooltip": "Time interval before the effect starts (in ticks).",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_RATE": "Treatment Rate",
@@ -99,12 +102,12 @@
 	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_DURATION": "Treatment Duration",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_DURATION_tooltip": "Total duration of the effect (in ticks).",
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_MODIFIERS": "= [ Deep Wound Treatment Modifiers ] =",
+	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_MODIFIERS": "|    Deep Wound Treatment Modifiers",
 	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_MODIFIERS_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_BASE_REDUCTION": "Base Reduction",
 	"Sandbox_Injectors.HEMOSTATIC_MEND_DEEP_WOUND_BASE_REDUCTION_tooltip": "Base amount by which deep wound healing time is reduced per application of the effect. Multiplied by body part coefficients.",
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_BODYPART_MODIFIERS": "= [ Deep Wound Treatment Body Part Modifiers ] =",
+	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_BODYPART_MODIFIERS": "|    Deep Wound Treatment Body Part Modifiers",
 	"Sandbox_Injectors.HEMOSTATIC_HEADER_MEND_DEEP_WOUND_BODYPART_MODIFIERS_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.HEMOSTATIC_HEAD_MEND_DEEP_WOUND_COEFFICIENT": "Head Deep Wound Coefficient",
 	"Sandbox_Injectors.HEMOSTATIC_HEAD_MEND_DEEP_WOUND_COEFFICIENT_tooltip": "Multiplier applied to deep wound healing time reduction effectiveness for head wounds.",
@@ -141,10 +144,11 @@
 	"Sandbox_Injectors.HEMOSTATIC_RIGHT_FOOT_MEND_DEEP_WOUND_COEFFICIENT": "Right Foot Deep Wound Coefficient",
 	"Sandbox_Injectors.HEMOSTATIC_RIGHT_FOOT_MEND_DEEP_WOUND_COEFFICIENT_tooltip": "Multiplier applied to deep wound healing time reduction effectiveness for right foot wounds.",
 
-	"Sandbox_Injectors.HEMOSTATIC_HEADER_OVERDOSE_MODIFIERS": "= [ Overdose Modifiers ] =",
+	"Sandbox_Injectors.HEMOSTATIC_OVERDOSE_ENABLED": "OVERDOSE PENALTY",
+	"Sandbox_Injectors.HEMOSTATIC_OVERDOSE_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.HEMOSTATIC_OVERDOSE_DELAY": "Overdose Delay",
 	"Sandbox_Injectors.HEMOSTATIC_OVERDOSE_DELAY_tooltip": "Time interval before the overdose value is applied (in ticks).",
-	"Sandbox_Injectors.HEMOSTATIC_OVERDOSE_PENALTY": "Overdose Penalty",
+	"Sandbox_Injectors.HEMOSTATIC_OVERDOSE_PENALTY": "Overdose Base Penalty",
 	"Sandbox_Injectors.HEMOSTATIC_OVERDOSE_PENALTY_tooltip": "Amount of overdose added per used injector.",
 
 
@@ -152,10 +156,10 @@
 
 	"Sandbox_Injectors_propital": "Injectors [Propital]",
 	
-	"Sandbox_Injectors.PROPITAL_HEADER_HUNGER": "= [ Hunger Penalty ] =",
+	"Sandbox_Injectors.PROPITAL_HUNGER_ENABLED": "HUNGER PENALTY",
+    "Sandbox_Injectors.PROPITAL_HUNGER_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.PROPITAL_HUNGER_BASE_PENALTY": "Hunger Base Penalty",
     "Sandbox_Injectors.PROPITAL_HUNGER_BASE_PENALTY_tooltip": "Base amount of hunger added per application of the effect.",
-    "Sandbox_Injectors.PROPITAL_HEADER_HUNGER_tooltip": "This value is not used and acts as a header.",
     "Sandbox_Injectors.PROPITAL_HUNGER_DELAY": "Hunger Delay",
     "Sandbox_Injectors.PROPITAL_HUNGER_DELAY_tooltip": "Time interval before the hunger penalty starts (in ticks).",
     "Sandbox_Injectors.PROPITAL_HUNGER_RATE": "Hunger Rate",
@@ -163,10 +167,10 @@
     "Sandbox_Injectors.PROPITAL_HUNGER_DURATION": "Hunger Duration",
     "Sandbox_Injectors.PROPITAL_HUNGER_DURATION_tooltip": "Total duration of the hunger penalty (in ticks).",
 
-    "Sandbox_Injectors.PROPITAL_HEADER_THIRST": "= [ Thirst Penalty ] =",
+    "Sandbox_Injectors.PROPITAL_THIRST_ENABLED": "THIRST PENALTY",
+    "Sandbox_Injectors.PROPITAL_THIRST_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.PROPITAL_THIRST_BASE_PENALTY": "Thirst Base Penalty",
     "Sandbox_Injectors.PROPITAL_THIRST_BASE_PENALTY_tooltip": "Base amount of thirst added per application of the effect.",
-    "Sandbox_Injectors.PROPITAL_HEADER_THIRST_tooltip": "This value is not used and acts as a header.",
     "Sandbox_Injectors.PROPITAL_THIRST_DELAY": "Thirst Delay",
     "Sandbox_Injectors.PROPITAL_THIRST_DELAY_tooltip": "Time interval before the thirst penalty starts (in ticks).",
     "Sandbox_Injectors.PROPITAL_THIRST_RATE": "Thirst Rate",
@@ -174,8 +178,8 @@
     "Sandbox_Injectors.PROPITAL_THIRST_DURATION": "Thirst Duration",
     "Sandbox_Injectors.PROPITAL_THIRST_DURATION_tooltip": "Total duration of the thirst penalty (in ticks).",
 
-	"Sandbox_Injectors.PROPITAL_HEADER_FLAT_HEALING_TIMING": "= [ Flat Healing Timing ] =",
-	"Sandbox_Injectors.PROPITAL_HEADER_FLAT_HEALING_TIMING_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_ENABLED": "FLAT HEALING",
+	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_DELAY": "Healing Delay",
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_DELAY_tooltip": "Time interval before the effect starts (in ticks).",
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_RATE": "Healing Rate",
@@ -183,7 +187,7 @@
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_DURATION": "Healing Duration",
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_DURATION_tooltip": "Total duration of the effect (in ticks).",
 
-	"Sandbox_Injectors.PROPITAL_HEADER_FLAT_HEALING_MODIFIERS": "= [ Flat Healing Modifiers ] =",
+	"Sandbox_Injectors.PROPITAL_HEADER_FLAT_HEALING_MODIFIERS": "|    Flat Healing Modifiers",
 	"Sandbox_Injectors.PROPITAL_HEADER_FLAT_HEALING_MODIFIERS_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_BASE_ADDITION": "Base Increment",
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_BASE_ADDITION_tooltip": "Base amount of general health restored per application of the effect. Affected by linear scaling.",
@@ -196,10 +200,11 @@
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE": "Maximum Efficiency Multiplier",
 	"Sandbox_Injectors.PROPITAL_FLAT_HEALING_MAX_LINEAR_SCALE_tooltip": "Multiplier applied at the end of the linear scaling range.<BR>As general health approaches the maximum threshold, efficiency approaches this value.",
 
-	"Sandbox_Injectors.PROPITAL_HEADER_OVERDOSE_MODIFIERS": "= [ Overdose Modifiers ] =",
+	"Sandbox_Injectors.PROPITAL_OVERDOSE_ENABLED": "OVERDOSE PENALTY",
+	"Sandbox_Injectors.PROPITAL_OVERDOSE_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.PROPITAL_OVERDOSE_DELAY": "Overdose Delay",
 	"Sandbox_Injectors.PROPITAL_OVERDOSE_DELAY_tooltip": "Time interval before the overdose value is applied (in ticks).",
-	"Sandbox_Injectors.PROPITAL_OVERDOSE_PENALTY": "Overdose Penalty",
+	"Sandbox_Injectors.PROPITAL_OVERDOSE_PENALTY": "Overdose Base Penalty",
 	"Sandbox_Injectors.PROPITAL_OVERDOSE_PENALTY_tooltip": "Amount of overdose added per used injector.",
 
 
@@ -207,8 +212,8 @@
 
 	"Sandbox_Injectors_epinephrine": "Injectors [Epinephrine]",
 	
-	"Sandbox_Injectors.EPINEPHRINE_HEADER_HUNGER": "= [ Hunger Penalty ] =",
-    "Sandbox_Injectors.EPINEPHRINE_HEADER_HUNGER_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.EPINEPHRINE_HUNGER_ENABLED": "HUNGER PENALTY",
+    "Sandbox_Injectors.EPINEPHRINE_HUNGER_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.EPINEPHRINE_HUNGER_BASE_PENALTY": "Hunger Base Penalty",
     "Sandbox_Injectors.EPINEPHRINE_HUNGER_BASE_PENALTY_tooltip": "Base amount of hunger added per application of the effect.",
     "Sandbox_Injectors.EPINEPHRINE_HUNGER_DELAY": "Hunger Delay",
@@ -218,10 +223,10 @@
     "Sandbox_Injectors.EPINEPHRINE_HUNGER_DURATION": "Hunger Duration",
     "Sandbox_Injectors.EPINEPHRINE_HUNGER_DURATION_tooltip": "Total duration of the hunger penalty (in ticks).",
 
-    "Sandbox_Injectors.EPINEPHRINE_HEADER_THIRST": "= [ Thirst Penalty ] =",
+    "Sandbox_Injectors.EPINEPHRINE_THIRST_ENABLED": "THIRST PENALTY",
+    "Sandbox_Injectors.EPINEPHRINE_THIRST_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.EPINEPHRINE_THIRST_BASE_PENALTY": "Thirst Base Penalty",
     "Sandbox_Injectors.EPINEPHRINE_THIRST_BASE_PENALTY_tooltip": "Base amount of thirst added per application of the effect.",
-    "Sandbox_Injectors.EPINEPHRINE_HEADER_THIRST_tooltip": "This value is not used and acts as a header.",
     "Sandbox_Injectors.EPINEPHRINE_THIRST_DELAY": "Thirst Delay",
     "Sandbox_Injectors.EPINEPHRINE_THIRST_DELAY_tooltip": "Time interval before the thirst penalty starts (in ticks).",
     "Sandbox_Injectors.EPINEPHRINE_THIRST_RATE": "Thirst Rate",
@@ -229,8 +234,8 @@
     "Sandbox_Injectors.EPINEPHRINE_THIRST_DURATION": "Thirst Duration",
     "Sandbox_Injectors.EPINEPHRINE_THIRST_DURATION_tooltip": "Total duration of the thirst penalty (in ticks).",
 
-	"Sandbox_Injectors.EPINEPHRINE_HEADER_PAINKILL_TIMING": "= [ Painkill Timing ] =",
-	"Sandbox_Injectors.EPINEPHRINE_HEADER_PAINKILL_TIMING_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_ENABLED": "PAINKILL",
+	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_DELAY": "Painkill Delay",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_DELAY_tooltip": "Time interval before the effect starts (in ticks).",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_RATE": "Painkill Rate",
@@ -238,7 +243,7 @@
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_DURATION": "Painkill Duration",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_DURATION_tooltip": "Total duration of the effect (in ticks).",
 
-	"Sandbox_Injectors.EPINEPHRINE_HEADER_PAINKILL_MODIFIERS": "= [ Painkill Modifiers ] =",
+	"Sandbox_Injectors.EPINEPHRINE_HEADER_PAINKILL_MODIFIERS": "|    Painkill Modifiers",
 	"Sandbox_Injectors.EPINEPHRINE_HEADER_PAINKILL_MODIFIERS_tooltip": "This value is not used and acts as a header.",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_BASE_REDUCTION": "Base Reduction",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_BASE_REDUCTION_tooltip": "Base amount of pain reduced per application of the effect. Affected by linear scaling.",
@@ -251,8 +256,8 @@
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE": "Maximum Efficiency Multiplier",
 	"Sandbox_Injectors.EPINEPHRINE_PAINKILL_MAX_LINEAR_SCALE_tooltip": "Multiplier applied at the end of the linear scaling range.<BR>As pain approaches the maximum threshold, efficiency approaches this value.",
 
-	"Sandbox_Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_TIMING": "= [ Flat Healing Timing ] =",
-    "Sandbox_Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_TIMING_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_ENABLED": "FLAT HEALING",
+    "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_ENABLED_tooltip": "Whether this mechanic is enabled.",
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_DELAY": "Healing Delay",
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_DELAY_tooltip": "Time interval before the effect starts (in ticks).",
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_RATE": "Healing Rate",
@@ -260,7 +265,7 @@
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_DURATION": "Healing Duration",
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_DURATION_tooltip": "Total duration of the effect (in ticks).",
 
-    "Sandbox_Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_MODIFIERS": "= [ Flat Healing Modifiers ] =",
+    "Sandbox_Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_MODIFIERS": "|    Flat Healing Modifiers",
     "Sandbox_Injectors.EPINEPHRINE_HEADER_FLAT_HEALING_MODIFIERS_tooltip": "This value is not used and acts as a header.",
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_BASE_ADDITION": "Base Increment",
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_BASE_ADDITION_tooltip": "Base amount of general health restored per application of the effect. Affected by linear scaling.",
@@ -273,9 +278,10 @@
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_MAX_LINEAR_SCALE": "Maximum Efficiency Multiplier",
     "Sandbox_Injectors.EPINEPHRINE_FLAT_HEALING_MAX_LINEAR_SCALE_tooltip": "Multiplier applied at the end of the linear scaling range.<BR>As general health approaches the maximum threshold, efficiency approaches this value.",
 
-	"Sandbox_Injectors.EPINEPHRINE_HEADER_OVERDOSE_MODIFIERS": "= [ Overdose Modifiers ] =",
+	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_ENABLED": "OVERDOSE PENALTY",
+	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_ENABLED_tooltip": "Whether this mechanic is enabled.",
 	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_DELAY": "Overdose Delay",
 	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_DELAY_tooltip": "Time interval before the overdose value is applied (in ticks).",
-	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_PENALTY": "Overdose Penalty",
+	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_PENALTY": "Overdose Base Penalty",
 	"Sandbox_Injectors.EPINEPHRINE_OVERDOSE_PENALTY_tooltip": "Amount of overdose added per used injector."
 }

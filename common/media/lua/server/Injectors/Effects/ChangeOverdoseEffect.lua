@@ -3,6 +3,7 @@ if not isServer() then return end
 
 local System = require "Injectors/System"
 local Data = require "Injectors/Utils/Data"
+local Common = require "Injectors/Variables/Common"
 
 ---@class OverdoseTickArgs
 ---@field base number
@@ -18,7 +19,7 @@ local function OnOverdoseTick(player, ticks, args)
 
     local updated = overdose + args.base
 
-    local clamped = math.max(0, math.min(100, updated))
+    local clamped = math.max(0, math.min(Common.OVERDOSE_THRESHOLD + 10, updated))
     local changed = clamped ~= overdose
 
     if changed then

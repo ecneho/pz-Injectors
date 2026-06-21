@@ -34,6 +34,10 @@ function InjectorsAdminWindow:createChildren()
             command = "DumpOverdose"
         },
         {
+            text = "Test External Logs",
+            command = "TestExternalLogs"
+        },
+        {
             text = "Apply Epinephrine Effect",
             command = "UseEpinephrineIgnoreSafety"
         },

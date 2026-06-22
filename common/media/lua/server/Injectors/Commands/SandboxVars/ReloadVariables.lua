@@ -13,19 +13,23 @@ local Propital = require "Injectors/Variables/Propital"
 ---@param player IsoPlayer
 ---@param clientArgs table|nil
 local function OnClientCommand(module, command, player, clientArgs)
-    if module == "InjectorsModule" and command == "ReloadVariables" then
-        local username = player:getUsername()
-        if Roles.hasCapability(player, Capability.SandboxOptions) then
-            Logging.Info(username .. " reloading Sandbox Variables...")
-            Common.InitVariables()
-            Propital.InitVariables()
-            Epinephrine.InitVariables()
-            Hemostatic.InitVariables()
-            Logging.Info(username .. " reloaded Sandbox Variables.")
-        else
-            Logging.Warning(username .. " denied sandbox reload: missing SandboxOptions capability")
-        end
+    if module ~= "InjectorsModule" then return end
+    if command ~= "ReloadVariables" then return end
+
+    if not player then return end
+    local username = player:getUsername()
+
+    if not Roles.hasCapability(player, Capability.SandboxOptions) then
+        Logging.Warning(username .. " denied sandbox reload: missing SandboxOptions capability")
+        return
     end
+
+    Logging.Info(username .. " reloading Sandbox Variables...")
+    Common.InitVariables()
+    Propital.InitVariables()
+    Epinephrine.InitVariables()
+    Hemostatic.InitVariables()
+    Logging.Info(username .. " reloaded Sandbox Variables.")
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

@@ -5,6 +5,7 @@ local System = require "Injectors/System"
 local Data = require "Injectors/Utils/Data"
 local Logging = require "Injectors/Utils/Logging"
 local Common = require "Injectors/Variables/Common"
+local Overdose = require "Injectors/Player/Overdose"
 
 -- effect ticking
 local function onEffectTick()
@@ -61,37 +62,39 @@ local decayTickCounter = 0
 local function onOverdoseTick()
     decayTickCounter = decayTickCounter + 1
 
-    if decayTickCounter >= Common.OVERDOSE_RATE then
-        local onlinePlayers = getOnlinePlayers()
+    if decayTickCounter < Common.OVERDOSE_RATE then
+        return
+    end
 
-        if not onlinePlayers or onlinePlayers:size() == 0 then
-            decayTickCounter = 0
-            return
-        end
+    local onlinePlayers = getOnlinePlayers()
 
-        local overdoseList = Data.GetOverdoseList()
+    if not onlinePlayers or onlinePlayers:size() == 0 then
+        decayTickCounter = 0
+        return
+    end
 
-        for i = 0, onlinePlayers:size() - 1 do
-            local player = onlinePlayers:get(i)
-            local username = player:getUsername()
-            local currentOverdose = overdoseList[username]
+    for i = 0, onlinePlayers:size() - 1 do
+        local player = onlinePlayers:get(i)
+        local username = player:getUsername()
+        local current = Overdose.Get(username)
 
-            if type(currentOverdose) == "number" and currentOverdose > 0 then
-                overdoseList[username] = math.max(0, currentOverdose - Common.OVERDOSE_DECAY)
+        if current > 0 then
+            local next = math.max(0, current - Common.OVERDOSE_DECAY)
 
-                if Common.OVERDOSE_DEATH_ENABLED and overdoseList[username] >= Common.OVERDOSE_THRESHOLD then
-                    player:getBodyDamage():ReduceGeneralHealth(999)
-                end
+            if next == 0 then
+                Logging.Info("Overdose fully decayed for " .. username)
+                Overdose.Clear(username)
+            else
+                Overdose.Set(username, next)
+            end
 
-                if overdoseList[username] == 0 then
-                    overdoseList[username] = nil
-                    Logging.Info("Overdose fully decayed for " .. username)
-                end
+            if Common.OVERDOSE_DEATH_ENABLED and next >= Common.OVERDOSE_THRESHOLD then
+                player:getBodyDamage():ReduceGeneralHealth(999)
             end
         end
-
-        decayTickCounter = 0
     end
+
+    decayTickCounter = 0
 end
 
 Events.OnTick.Add(onEffectTick)

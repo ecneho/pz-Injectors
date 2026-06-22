@@ -13,18 +13,22 @@ local Propital = require "Injectors/Variables/Propital"
 ---@param player IsoPlayer
 ---@param clientArgs table|nil
 local function OnClientCommand(module, command, player, clientArgs)
-    if module == "InjectorsModule" and command == "DumpVariables" then
-        local username = player:getUsername()
-        if Roles.hasCapability(player, Capability.SandboxOptions) then
-            Logging.Info(username .. " dumping sandbox variables...")
-            Common.DumpVariables()
-            Propital.DumpVariables()
-            Epinephrine.DumpVariables()
-            Hemostatic.DumpVariables()
-        else
-            Logging.Warning(username .. " denied variables dump: missing SandboxOptions capability")
-        end
+    if module ~= "InjectorsModule" then return end
+    if command ~= "DumpVariables" then return end
+
+    if not player then return end
+    local username = player:getUsername()
+
+    if not Roles.hasCapability(player, Capability.SandboxOptions) then
+        Logging.Warning(username .. " denied variables dump: missing SandboxOptions capability")
+        return
     end
+
+    Logging.Info(username .. " dumping sandbox variables...")
+    Common.DumpVariables()
+    Propital.DumpVariables()
+    Epinephrine.DumpVariables()
+    Hemostatic.DumpVariables()
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

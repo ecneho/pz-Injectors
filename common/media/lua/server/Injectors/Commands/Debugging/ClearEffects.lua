@@ -10,17 +10,19 @@ local Logging = require "Injectors/Utils/Logging"
 ---@param player IsoPlayer
 ---@param clientArgs table|nil
 local function OnClientCommand(module, command, player, clientArgs)
-    if module == "InjectorsModule" and command == "ClearEffects" then
-        local username = player:getUsername()
+    if module ~= "InjectorsModule" then return end
+    if command ~= "ClearEffects" then return end
 
-        if Roles.hasCapability(player, Capability.CanMedicalCheat) then
-            System.RemovePlayerEffect(username)
+    if not player then return end
+    local username = player:getUsername()
 
-            Logging.Info(username .. " cleared effects (Debug)")
-        else
-            Logging.Warning(username .. " denied clear effects: missing CanMedicalCheat capability")
-        end
+    if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
+        Logging.Warning(username .. " denied clear effects: missing CanMedicalCheat capability")
+        return
     end
+
+    System.RemovePlayerEffect(username)
+    Logging.Info(username .. " cleared effects (Debug)")
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

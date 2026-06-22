@@ -9,17 +9,22 @@ local Logging = require "Injectors/Utils/Logging"
 ---@param player IsoPlayer
 ---@param clientArgs table|nil
 local function OnClientCommand(module, command, player, clientArgs)
-    if module == "InjectorsModule" and command == "ReduceGeneralHealth" then
-        local username = player:getUsername()
+    if module ~= "InjectorsModule" then return end
+    if command ~= "ReduceGeneralHealth" then return end
 
-        if Roles.hasCapability(player, Capability.CanMedicalCheat) then
-            player:getBodyDamage():ReduceGeneralHealth(20)
+    if not player then return end
+    local username = player:getUsername()
 
-            Logging.Info(username .. " reduced general health (Debug)")
-        else
-            Logging.Warning(username .. " denied reduce general health: missing CanMedicalCheat capability")
-        end
+    if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
+        Logging.Warning(username .. " denied reduce general health: missing CanMedicalCheat capability")
+        return
     end
+
+    local bodyDamage = player:getBodyDamage()
+    if not bodyDamage then return end
+
+    bodyDamage:ReduceGeneralHealth(20)
+    Logging.Info(username .. " reduced general health (Debug)")
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

@@ -10,15 +10,19 @@ local Propital = require "Injectors/Settings/UsedPropital"
 ---@param player IsoPlayer
 ---@param clientArgs table|nil
 local function OnClientCommand(module, command, player, clientArgs)
-    if module == "InjectorsModule" and command == "UsePropitalIgnoreSafety" then
-        local username = player:getUsername()
-        if Roles.hasCapability(player, Capability.CanMedicalCheat) then
-            Logging.Info(username .. " used Propital (Admin Override)")
-            Propital.Used(player)
-        else
-            Logging.Warning(username .. " denied Propital admin override: missing CanMedicalCheat capability")
-        end
+    if module ~= "InjectorsModule" then return end
+    if command ~= "UsePropitalIgnoreSafety" then return end
+
+    if not player then return end
+    local username = player:getUsername()
+
+    if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
+        Logging.Warning(username .. " denied Propital admin override: missing CanMedicalCheat capability")
+        return
     end
+
+    Logging.Info(username .. " used Propital (Admin Override)")
+    Propital.Used(player)
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

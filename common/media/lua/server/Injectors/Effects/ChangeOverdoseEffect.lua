@@ -2,8 +2,8 @@
 if not isServer() then return end
 
 local System = require "Injectors/System"
-local Data = require "Injectors/Utils/Data"
 local Common = require "Injectors/Variables/Common"
+local Overdose = require "Injectors/Models/Overdose"
 
 ---@class OverdoseTickArgs
 ---@field base number
@@ -13,17 +13,13 @@ local Common = require "Injectors/Variables/Common"
 ---@param args OverdoseTickArgs
 local function OnOverdoseTick(player, ticks, args)
     local username = player:getUsername()
-    local overdoseList = Data.GetOverdoseList()
-
-    local overdose = overdoseList[username] or 0
+    local overdose = Overdose.Get(username)
 
     local updated = overdose + args.base
-
     local clamped = math.max(0, math.min(Common.OVERDOSE_THRESHOLD + 10, updated))
-    local changed = clamped ~= overdose
 
-    if changed then
-        overdoseList[username] = clamped
+    if clamped ~= overdose then
+        Overdose.Set(username, clamped)
     end
 
     print("---- Overdose Args ----")

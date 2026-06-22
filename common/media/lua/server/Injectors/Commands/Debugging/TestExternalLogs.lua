@@ -10,15 +10,19 @@ local Roles = require "Injectors/Utils/Roles"
 ---@param player IsoPlayer
 ---@param clientArgs table|nil
 local function OnClientCommand(module, command, player, clientArgs)
-    if module == "InjectorsModule" and command == "TestExternalLogs" then
-        local username = player:getUsername()
-        if Roles.hasCapability(player, Capability.GeneralCheats) then
-            FileLogger.Info("external log")
-            Logging.Info(username .. " testing external logs...")
-        else
-            Logging.Warning(username .. " denied test external logs: missing GeneralCheats capability")
-        end
+    if module ~= "InjectorsModule" then return end
+    if command ~= "TestExternalLogs" then return end
+
+    if not player then return end
+    local username = player:getUsername()
+
+    if not Roles.hasCapability(player, Capability.GeneralCheats) then
+        Logging.Warning(username .. " denied test external logs: missing GeneralCheats capability")
+        return
     end
+
+    FileLogger.Info("external log")
+    Logging.Info(username .. " creating external logs...")
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

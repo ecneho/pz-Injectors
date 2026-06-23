@@ -3,8 +3,8 @@ require "TimedActions/ISBaseTimedAction"
 ISInjectMedicationAction = ISBaseTimedAction:derive("ISInjectMedicationAction");
 
 local Modules = {
-    ["Injectors.injector_epinephrine"] = "Injectors/Settings/UsedEpinephrine",
-    ["Injectors.injector_propital"]    = "Injectors/Settings/UsedPropital",
+    ["Injectors.injector_epinephrine"] = "Injectors/Validation/EpinephrineContainer",
+    ["Injectors.injector_propital"]    = "Injectors/Settings/UsedPropital", -- TODO: change those
     ["Injectors.injector_hemostatic"]  = "Injectors/Settings/UsedHemostatic"
 }
 
@@ -43,11 +43,11 @@ function ISInjectMedicationAction:complete()
 
         if modulePath then
             local Injector = require(modulePath)
-            if Injector and Injector.Used then
-                Injector.Used(self.character)
+            if Injector and Injector.Apply then
+                Injector.Apply(self.character)
             else
                 -- TODO: inject proper logging
-                print("Error: Could not find Used() function in " .. modulePath)
+                print("Error: Could not find function in " .. modulePath)
             end
         end
     end

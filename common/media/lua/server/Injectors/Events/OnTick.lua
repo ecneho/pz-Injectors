@@ -5,7 +5,7 @@ local System = require "Injectors/System"
 local Data = require "Injectors/Utils/Data"
 local Logging = require "Injectors/Utils/Logging"
 local Common = require "Injectors/Variables/Common"
-local Overdose = require "Injectors/Player/Overdose"
+local Overdose = require "Injectors/Models/Overdose"
 
 -- effect ticking
 local function onEffectTick()

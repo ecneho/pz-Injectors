@@ -1,10 +1,7 @@
 -- server only
 if not isServer() then return end
 
-local sha2 = require "Modules/sha2"
-
--- TODO: move to the cached lua file or sandbox vars
-local SERVER_SECRET_KEY = "private-key"
+local hash = require "Injectors/Utils/Hash"
 
 local injectors = {
     { Id = "Injectors.injector_hemostatic" },
@@ -27,12 +24,11 @@ local function ReplaceDummies(container)
             local spawned = container:AddItem(replacement.Id)
 
             if spawned then
-                local itemId = spawned:getID()
-
-                local publicSignature = sha2.hmac_sha256(SERVER_SECRET_KEY, itemId)
+                local itemID = spawned:getID()
+                local signed = hash.Sign(itemID)
                 local modData = spawned:getModData()
 
-                modData.serverSignature = publicSignature
+                modData.serverSignature = signed
             end
         end
     end

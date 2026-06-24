@@ -1,14 +1,15 @@
+print("ISInjectMedicationAction.lua")
+
 require "TimedActions/ISBaseTimedAction"
 
 ISInjectMedicationAction = ISBaseTimedAction:derive("ISInjectMedicationAction");
 
-local Modules = {
-    ["Injectors.injector_epinephrine"] = "Injectors/Validation/EpinephrineContainer",
-    ["Injectors.injector_propital"]    = "Injectors/Settings/UsedPropital", -- TODO: change those
-    ["Injectors.injector_hemostatic"]  = "Injectors/Settings/UsedHemostatic"
+local Injectors = {
+    ["Injectors.injector_epinephrine"] = "epinephrine",
+    ["Injectors.injector_morphine"] = "morphine",
+    ["Injectors.injector_adrenaline"] = "adrenaline",
 }
 
--- TODO: add server-side validation instead
 function ISInjectMedicationAction:isValid()
     return true;
 end
@@ -33,26 +34,20 @@ function ISInjectMedicationAction:perform()
 end
 
 -- on server-side finish
--- TODO: replace with server-side checks, add validation container, remove item from inventory, etc
 function ISInjectMedicationAction:complete()
     print("injection done (server).")
 
     if isServer() then
+        local Container = require "Injectors/Utils/_Container" -- load order underscore
         local itemType = self.item:getFullType()
-        local modulePath = Modules[itemType]
+        local injector = Injectors[itemType]
 
-        if modulePath then
-            local Injector = require(modulePath)
-            if Injector and Injector.Apply then
-                Injector.Apply(self.character)
-            else
-                -- TODO: inject proper logging
-                print("Error: Could not find function in " .. modulePath)
-            end
+        if injector then
+            Container.Apply(self.character, injector)
         end
     end
 
-    return true;
+    return true
 end
 
 function ISInjectMedicationAction:getDuration()

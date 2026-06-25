@@ -69,6 +69,10 @@ function InjectorsAdminWindow:createChildren()
             text = "Dump Inventory Items",
             command = "DumpInventoryIDs"
         },
+        {
+            text = "Read Test File",
+            command = "Readfile"
+        },
     }
 
     for _, config in ipairs(commands) do

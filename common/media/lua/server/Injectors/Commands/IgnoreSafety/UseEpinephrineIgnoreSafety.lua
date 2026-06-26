@@ -3,7 +3,7 @@ if not isServer() then return end
 
 local Roles = require "Injectors/Utils/Roles"
 local Logging = require "Injectors/Utils/Logging"
-local Epinephrine = require "Injectors/Settings/UsedEpinephrine"
+local UsedInjector = require "Injectors/Settings/UsedInjector"
 
 ---@param module string
 ---@param command string
@@ -22,7 +22,7 @@ local function OnClientCommand(module, command, player, clientArgs)
     end
 
     Logging.Info(username .. " used Epinephrine (Admin Override)")
-    Epinephrine.Used(player)
+    UsedInjector.Used(player, "injector_blue")
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

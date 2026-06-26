@@ -1,6 +1,9 @@
 -- server only
 if not isServer() then return end
 
+local Ini = require "Injectors/Utils/Ini"
+local Injectors = require "Injectors/Models/Injectors"
+
 local function readAllLines(path)
     local reader = getFileReader(path, false)
     if not reader then
@@ -27,7 +30,7 @@ local function readFile(module, command, player, args)
 
     print("reading test file...")
 
-    local fileName = "Injectors/testfile.txt"
+    local fileName = "Injectors/red_injector.ini"
 
     local lines = readAllLines(fileName)
     if not lines then return end
@@ -37,17 +40,16 @@ local function readFile(module, command, player, args)
     for i, line in ipairs(lines) do
         print(i .. ": " .. line)
     end
+
+    local ini = Ini.parse(lines)
+
+    print(ini)
+    print(ini.Effects)
+    print(ini.effects)
+
+    Injectors.Set("injector_red", ini)
+    Injectors.Set("injector_blue", ini)
+    Injectors.Set("injector_green", ini)
 end
 
 Events.OnClientCommand.Add(readFile)
-
--- TODO: parse scripting syntax, similar to sql
--- DEFINE <injector>
--- APPLY <effect>
---  EACH <n ticks, rate> t
---  FOR <n ticks, duration> t
---  AFTER <n ticks, delay> t
--- VALUES
---  base 10
--- measure time in ticks, frames (60 ticks), segments (60 frames) and cycles (24 segments)
--- units are sandbox variables

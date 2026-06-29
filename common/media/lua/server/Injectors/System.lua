@@ -39,6 +39,8 @@ function System.AddPlayerEffect(username, effectId, duration, delay, procRate, c
         effectId = effectId,
         ticksLeft = duration,
         delayLeft = delay,
+        delay = delay,
+        duration = duration,
         procRate = procRate,
         procCounter = 0,
         customArgs = customArgs or {}

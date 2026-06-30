@@ -1,10 +1,16 @@
 -- non-server only
 if isServer() then return end
 
+local counter = 0
+
 local function onTick()
-    print("RequestInjectorEffectData")
-    sendClientCommand("InjectorsModule", "RequestInjectorEffectData", {})
+    local rate = SandboxVars.Injectors.GLOBAL_EFFECT_POLLING_RATE
+    if not rate then return end
+
+    counter = counter + 1
+    if counter % rate == 0 then
+        sendClientCommand("InjectorsModule", "RequestEffects", {})
+    end
 end
 
--- TODO: poll less
 Events.OnTick.Add(onTick)

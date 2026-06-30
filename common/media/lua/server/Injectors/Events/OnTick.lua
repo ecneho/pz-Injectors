@@ -35,7 +35,7 @@ local function onEffectTick()
                             Logging.Info("Error: Missing function for effect ID '" .. tostring(effect.effectId) .. "'")
                         end
 
-                        effect.procCounter = effect.procRate - 1
+                        effect.procCounter = effect.rate - 1
                     else
                         effect.procCounter = effect.procCounter - 1
                     end

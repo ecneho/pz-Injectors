@@ -1,5 +1,3 @@
--- TODO: add networking
-
 require "ISUI/ISCollapsableWindow"
 require "ISUI/ISScrollingListBox"
 require "ISUI/ISComboBox"
@@ -14,68 +12,14 @@ local UI_BORDER_SPACING = 10
 local BUTTON_HGT = FONT_HGT_SMALL + 6
 local COMBO_HGT = FONT_HGT_SMALL + 8
 
--- mock file system
-local MOCK_FILE_SYSTEM = {
-    injector_red = {
-        id = "injector_red",
-        Effects = {
-            ChangeHungerEffect = {
-                duration = 30,
-                delay = 10,
-                rate = 1,
-                amount = 0.1
-            }
-        }
-    },
-
-    injector_blue = {
-        id = "injector_blue",
-        Effects = {}
-    },
-
-    injector_green = {
-        id = "injector_green",
-        Effects = {}
-    }
-}
-
-local function LOAD_INI(id)
-    print("REPLACE_THIS: Loading INI for " .. tostring(id))
-
-    if not MOCK_FILE_SYSTEM[id] then
-        MOCK_FILE_SYSTEM[id] = { id = id, Effects = {} }
-    end
-
-    local copy = { id = MOCK_FILE_SYSTEM[id].id, Effects = {} }
-    for effName, effData in pairs(MOCK_FILE_SYSTEM[id].Effects) do
-        copy.Effects[effName] = {}
-        for k, v in pairs(effData) do
-            copy.Effects[effName][k] = v
-        end
-    end
-
-    return copy
-end
-
-local function SAVE_INI(id, data)
-    print("REPLACE_THIS: Saving INI for " .. tostring(id))
-
-    MOCK_FILE_SYSTEM[id] = data
-
-    for effectName, effectData in pairs(data.Effects) do
-        print("  Saved Effect: " .. effectName)
-        for k, v in pairs(effectData) do
-            print("    " .. k .. " = " .. tostring(v))
-        end
-    end
-end
-
 -- effect schemas
 local EFFECT_SCHEMA = {
     ChangeHungerEffect = { "duration", "delay", "rate", "amount" },
     ChangeThirstEffect = { "duration", "delay", "rate", "amount" },
     ChangePainEffect   = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" }
 }
+
+local ActiveInjectorUI = nil
 
 -- ui class
 InjectorConstructorUI = ISCollapsableWindow:derive("InjectorConstructorUI")
@@ -89,7 +33,6 @@ function InjectorConstructorUI:createChildren()
     ISCollapsableWindow.createChildren(self)
 
     local yOff = self:titleBarHeight() + UI_BORDER_SPACING
-
     local leftPanelWidth = 240
 
     self.injectorCombo = ISComboBox:new(UI_BORDER_SPACING, yOff, 120, COMBO_HGT, self, self.onSelectInjector)
@@ -99,7 +42,9 @@ function InjectorConstructorUI:createChildren()
     self.injectorCombo:addOption("injector_blue")
     self.injectorCombo:addOption("injector_green")
 
-    self.btnLoad = ISButton:new(self.injectorCombo:getRight() + UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, "Load", self, self.onLoad)
+    yOff = self.injectorCombo:getBottom() + UI_BORDER_SPACING
+
+    self.btnLoad = ISButton:new(UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, "Load", self, self.onLoad)
     self.btnLoad:initialise()
     self.btnLoad:instantiate()
     self.btnLoad.borderColor = self.buttonBorderColor
@@ -111,7 +56,13 @@ function InjectorConstructorUI:createChildren()
     self.btnSave.borderColor = self.buttonBorderColor
     self:addChild(self.btnSave)
 
-    yOff = self.injectorCombo:getBottom() + UI_BORDER_SPACING
+    self.btnInvoke = ISButton:new(self.btnSave:getRight() + UI_BORDER_SPACING, yOff, 60, BUTTON_HGT, "Invoke", self, self.onInvoke)
+    self.btnInvoke:initialise()
+    self.btnInvoke:instantiate()
+    self.btnInvoke.borderColor = self.buttonBorderColor
+    self:addChild(self.btnInvoke)
+
+    yOff = self.btnLoad:getBottom() + UI_BORDER_SPACING
 
     local effectListHeight = self.height - yOff - COMBO_HGT - BUTTON_HGT - (UI_BORDER_SPACING * 3)
 
@@ -172,25 +123,21 @@ function InjectorConstructorUI:drawEffectListItem(y, item, alt)
     elseif alt then
         self:drawRect(0, y, self:getWidth(), self.itemheight, 0.3, 0.6, 0.5, 0.5)
     end
-
     self:drawRectBorder(0, y, self:getWidth(), self.itemheight, 0.9, self.borderColor.r, self.borderColor.g, self.borderColor.b)
 
     local fontHgt = getTextManager():getFontHeight(self.font)
     local textY = y + (self.itemheight - fontHgt) / 2
     self:drawText(item.text, UI_BORDER_SPACING, textY, 1, 1, 1, 0.9, self.font)
-
     return y + self.itemheight
 end
 
 function InjectorConstructorUI:buildPropertiesUI(effectName)
     self.propertiesPanel:clearChildren()
     self.dynamicInputs = {}
-
     if not effectName or not self.currentInjectorData.Effects[effectName] then return end
 
     local effectData = self.currentInjectorData.Effects[effectName]
     local schemaFields = EFFECT_SCHEMA[effectName]
-
     if not schemaFields then return end
 
     local innerY = UI_BORDER_SPACING
@@ -218,33 +165,13 @@ function InjectorConstructorUI:buildPropertiesUI(effectName)
     end
 end
 
--- buttons
-function InjectorConstructorUI:onLoad()
-    local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
-    self.currentInjectorData = LOAD_INI(selectedId)
-    self.currentInjectorData.Effects = self.currentInjectorData.Effects or {}
-
-    self:refreshEffectList()
-    self.propertiesPanel:clearChildren()
-    self.selectedEffectName = nil
-end
-
-function InjectorConstructorUI:onSave()
-    self:saveCurrentPropertiesToTable()
-    local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
-    self.currentInjectorData.id = selectedId
-    SAVE_INI(selectedId, self.currentInjectorData)
-end
-
 function InjectorConstructorUI:onAddEffect()
     local effectToAdd = self.effectTypeCombo:getOptionText(self.effectTypeCombo.selected)
-
     if not self.currentInjectorData.Effects[effectToAdd] then
         local newEffectData = {}
         for _, fieldName in ipairs(EFFECT_SCHEMA[effectToAdd]) do
             newEffectData[fieldName] = 0
         end
-
         self.currentInjectorData.Effects[effectToAdd] = newEffectData
         self:refreshEffectList()
     end
@@ -252,7 +179,6 @@ end
 
 function InjectorConstructorUI:onRemoveEffect()
     if not self.selectedEffectName then return end
-
     self.currentInjectorData.Effects[self.selectedEffectName] = nil
     self.selectedEffectName = nil
     self.propertiesPanel:clearChildren()
@@ -275,6 +201,7 @@ end
 -- utility
 function InjectorConstructorUI:refreshEffectList()
     self.effectList:clear()
+    if not self.currentInjectorData.Effects then return end
     for effectName, _ in pairs(self.currentInjectorData.Effects) do
         self.effectList:addItem(effectName, effectName)
     end
@@ -304,7 +231,6 @@ function InjectorConstructorUI:new(x, y, width, height)
     o.title = "Injector Constructor"
     o.resizable = false
     o.moveWithMouse = true
-
     o.borderColor = {r=0.4, g=0.4, b=0.4, a=1}
     o.backgroundColor = {r=0, g=0, b=0, a=0.8}
     o.buttonBorderColor = {r=0.7, g=0.7, b=0.7, a=0.5}
@@ -317,7 +243,47 @@ function OpenInjectorConstructor()
     local ui = InjectorConstructorUI:new(0, 0, 600, 450)
     ui:initialise()
     ui:addToUIManager()
+    ActiveInjectorUI = ui
 end
 
--- TODO: move ui startup to the admin panel
+-- network load request
+function InjectorConstructorUI:onLoad()
+    local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
+
+    self.effectList:clear()
+    self.propertiesPanel:clearChildren()
+    self.selectedEffectName = nil
+
+    sendClientCommand(getPlayer(), "InjectorsModule", "LoadInjectorOptions", { id = selectedId })
+end
+
+-- network save request
+function InjectorConstructorUI:onSave()
+    self:saveCurrentPropertiesToTable()
+    local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
+    self.currentInjectorData.id = selectedId
+
+    sendClientCommand(getPlayer(), "InjectorsModule", "SaveInjectorOptions", { id = selectedId, data = self.currentInjectorData })
+end
+
+-- network invoke request
+function InjectorConstructorUI:onInvoke()
+    local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
+
+    if selectedId then
+        sendClientCommand(getPlayer(), "InjectorsModule", "UseInjectorIgnoreSafety", { id = selectedId })
+    end
+end
+
+-- server commands
+local function OnServerCommand(module, command, args)
+    if module ~= "InjectorsModule" then return end
+    if command == "ReceiveInjectorOptions" and ActiveInjectorUI then
+        ActiveInjectorUI.currentInjectorData = args.data
+        ActiveInjectorUI.currentInjectorData.Effects = ActiveInjectorUI.currentInjectorData.Effects or {}
+        ActiveInjectorUI:refreshEffectList()
+    end
+end
+Events.OnServerCommand.Add(OnServerCommand)
+
 Events.OnGameStart.Add(OpenInjectorConstructor)

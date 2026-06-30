@@ -18,9 +18,9 @@ end
 ---@param effectId string
 ---@param duration number
 ---@param delay number
----@param procRate number
+---@param rate number
 ---@param customArgs table|nil
-function System.AddPlayerEffect(username, effectId, duration, delay, procRate, customArgs)
+function System.AddPlayerEffect(username, effectId, duration, delay, rate, customArgs)
     if type(duration) ~= "number" or duration <= 0 then return end
 
     if not System.EffectRegistry[effectId] then
@@ -28,7 +28,7 @@ function System.AddPlayerEffect(username, effectId, duration, delay, procRate, c
         return
     end
 
-    procRate = math.max(1, procRate or 1)
+    rate = math.max(1, rate)
     local activeList = Data.GetActiveList()
 
     if type(activeList[username]) ~= "table" then
@@ -41,7 +41,7 @@ function System.AddPlayerEffect(username, effectId, duration, delay, procRate, c
         delayLeft = delay,
         delay = delay,
         duration = duration,
-        procRate = procRate,
+        rate = rate,
         procCounter = 0,
         customArgs = customArgs or {}
     })
@@ -50,7 +50,7 @@ function System.AddPlayerEffect(username, effectId, duration, delay, procRate, c
     Logging.Info("Effect ID: " .. effectId)
     Logging.Info("Duration: " .. tostring(duration))
     Logging.Info("Delay: " .. tostring(delay))
-    Logging.Info("Rate: " .. tostring(procRate))
+    Logging.Info("Rate: " .. tostring(rate))
 end
 
 ---@param username string

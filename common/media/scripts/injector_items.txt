@@ -3,9 +3,9 @@ module Injectors {
         Base
     }
 
-    item injector_epinephrine
+    item injector_blue
     {
-        DisplayName = Epinephrine Injector,
+        DisplayName = Blue Injector,
         ItemType = base:food,
         DisplayCategory = FirstAid,
         Icon = epinephrine,
@@ -21,9 +21,9 @@ module Injectors {
         CustomEatSound = ,
     }
 
-    item injector_hemostatic
+    item injector_red
     {
-        DisplayName = Hemostatic Injector,
+        DisplayName = Red Injector,
         ItemType = base:food,
         DisplayCategory = FirstAid,
         Icon = hemostatic,
@@ -39,9 +39,9 @@ module Injectors {
         CustomEatSound = ,
     }
 
-    item injector_propital
+    item injector_green
     {
-        DisplayName = Propital Injector,
+        DisplayName = Green Injector,
         ItemType = base:food,
         DisplayCategory = FirstAid,
         Icon = propital,

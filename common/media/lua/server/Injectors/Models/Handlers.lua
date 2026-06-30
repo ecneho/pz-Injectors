@@ -36,7 +36,7 @@ Handlers.ChangeHungerEffect = function(username, data)
     )
 end
 
-Handlers.ChangeThirst = function(username, data)
+Handlers.ChangeThirstEffect = function(username, data)
     System.AddPlayerEffect(
         username,
         "ChangeThirstEffect",

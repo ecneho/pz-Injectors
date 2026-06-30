@@ -1,11 +1,13 @@
 VERSION = 1,
 
-option Injectors.GLOBAL_HEADER_OVERDOSE {
-    type = boolean,
-    default = true,
+option Injectors.GLOBAL_EFFECT_POLLING_RATE {
+    type = integer,
+    default = 60,
+    min = 1,
+    max = 1000,
 
     page = Injectors_global,
-    translation = Injectors.GLOBAL_HEADER_OVERDOSE,
+    translation = Injectors.GLOBAL_EFFECT_POLLING_RATE,
 }
 
 option Injectors.GLOBAL_OVERDOSE_DECAY {

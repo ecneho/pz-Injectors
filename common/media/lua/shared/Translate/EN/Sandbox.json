@@ -3,8 +3,8 @@
 
 	"Sandbox_Injectors_global": "Injectors [Global]",
 
-	"Sandbox_Injectors.GLOBAL_HEADER_OVERDOSE": "OVERDOSE",
-	"Sandbox_Injectors.GLOBAL_HEADER_OVERDOSE_tooltip": "This value is not used and acts as a header.",
+	"Sandbox_Injectors.GLOBAL_EFFECT_POLLING_RATE": "Effect Polling Rate",
+	"Sandbox_Injectors.GLOBAL_EFFECT_POLLING_RATE_tooltip": "Rate at which player effects are polled. Debug feature.",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_DECAY": "Decay Amount",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_DECAY_tooltip": "Amount at which character overdose value decreases.",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_RATE": "Decay Rate",

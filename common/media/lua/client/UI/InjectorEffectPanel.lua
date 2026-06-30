@@ -86,7 +86,7 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     local contentWidth = self:getWidth() - (UI_BORDER_SPACING * 2)
 
     local titleText = eff.effectId
-    local rateText = string.format("(Rate: %d)", eff.procRate)
+    local rateText = string.format("(Rate: %d)", eff.rate)
     self:drawText(titleText, UI_BORDER_SPACING, innerY, 1, 1, 1, 0.9, UIFont.Medium)
 
     local idWidth = getTextManager():MeasureStringX(UIFont.Medium, titleText)

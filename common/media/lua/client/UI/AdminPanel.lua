@@ -38,18 +38,6 @@ function InjectorsAdminWindow:createChildren()
             command = "TestExternalLogs"
         },
         {
-            text = "Apply Epinephrine Effect",
-            command = "UseEpinephrineIgnoreSafety"
-        },
-        {
-            text = "Apply Hemostatic Effect",
-            command = "UseHemostaticIgnoreSafety"
-        },
-        {
-            text = "Apply Propital Effect",
-            command = "UsePropitalIgnoreSafety"
-        },
-        {
             text = "Clear Injector Effects",
             command = "ClearEffects"
         },
@@ -68,11 +56,7 @@ function InjectorsAdminWindow:createChildren()
         {
             text = "Dump Inventory Items",
             command = "DumpInventoryIDs"
-        },
-        {
-            text = "Read Test File",
-            command = "Readfile"
-        },
+        }
     }
 
     for _, config in ipairs(commands) do

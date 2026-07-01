@@ -16,7 +16,73 @@ local COMBO_HGT = FONT_HGT_SMALL + 8
 local EFFECT_SCHEMA = {
     ChangeHungerEffect = { "duration", "delay", "rate", "amount" },
     ChangeThirstEffect = { "duration", "delay", "rate", "amount" },
-    ChangePainEffect   = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" }
+    ChangeOverdoseEffect = { "duration", "delay", "rate", "base" },
+    -- ChangePainEffect   = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" }
+}
+
+local EFFECT_UI = {
+    ChangeHungerEffect = {
+        notes = "Controls hunger stat value. (range: 0-1)",
+        groups = {
+            Timing = {
+                { value = "duration", notes = "how long the effect lasts" },
+                { value = "delay", notes = "delay before activation" },
+                { value = "rate", notes = "update frequency" }
+            },
+            Values = {
+                { value = "amount", notes = "hunger delta applied each activation" }
+            }
+        }
+    },
+
+    ChangeThirstEffect = {
+        notes = "Controls thirst stat value. (range: 0-1)",
+        groups = {
+            Timing = {
+                { value = "duration", notes = "how long the effect lasts" },
+                { value = "delay", notes = "delay before activation" },
+                { value = "rate", notes = "update frequency" }
+            },
+            Values = {
+                { value = "amount", notes = "thirst delta applied each activation" }
+            }
+        }
+    },
+
+    ChangeOverdoseEffect = {
+        notes = "Applies overdose penalty over time.",
+        groups = {
+            Timing = {
+                { value = "duration", notes = "how long the effect lasts" },
+                { value = "delay", notes = "delay before activation" },
+                { value = "rate", notes = "update frequency" }
+            },
+            Values = {
+                { value = "base", notes = "fixed overdose penalty applied each tick" }
+            }
+        }
+    },
+
+    -- needs scroll support
+    -- ChangePainEffect = {
+    --     notes = "Controls pain stat value. (range: 0-100)",
+    --     groups = {
+    --         Time = {
+    --             { value = "duration", notes = "effect duration" },
+    --             { value = "delay", notes = "activation delay" },
+    --             { value = "rate", notes = "update frequency" }
+    --         },
+    --         Values = {
+    --             { value = "base", notes = "base pain delta applied each activation" }
+    --         },
+    --         Scaling = {
+    --             { value = "minRange", notes = "minimum linear scaling range" },
+    --             { value = "maxRange", notes = "maximum linear scaling range" },
+    --             { value = "minScale", notes = "minimum linear scaling multiplier" },
+    --             { value = "maxScale", notes = "maximum linear scaling multiplier" }
+    --         }
+    --     }
+    -- }
 }
 
 local ActiveInjectorUI = nil
@@ -144,24 +210,76 @@ function InjectorConstructorUI:buildPropertiesUI(effectName)
     local labelWidth = 100
     local inputWidth = 120
 
+    local uiMeta = EFFECT_UI[effectName]
+
     local titleLabel = ISLabel:new(UI_BORDER_SPACING, innerY, FONT_HGT_MEDIUM, effectName, 1, 1, 1, 1, UIFont.Medium, true)
     titleLabel:initialise()
     self.propertiesPanel:addChild(titleLabel)
-
     innerY = innerY + FONT_HGT_MEDIUM + UI_BORDER_SPACING
 
-    for _, fieldName in ipairs(schemaFields) do
-        local label = ISLabel:new(UI_BORDER_SPACING, innerY + 3, FONT_HGT_SMALL, fieldName, 1, 1, 1, 1, UIFont.Small, true)
-        label:initialise()
-        self.propertiesPanel:addChild(label)
+    if uiMeta and uiMeta.notes then
+        local notesLabel = ISLabel:new(UI_BORDER_SPACING, innerY, FONT_HGT_SMALL, uiMeta.notes, 0.55, 0.55, 0.55, 1, UIFont.Small, true)
+        notesLabel:initialise()
+        self.propertiesPanel:addChild(notesLabel)
+        innerY = innerY + FONT_HGT_SMALL + UI_BORDER_SPACING * 2
+    end
 
-        local input = ISTextEntryBox:new(tostring(effectData[fieldName] or "0"), UI_BORDER_SPACING + labelWidth, innerY, inputWidth, BUTTON_HGT)
-        input:initialise()
-        input:instantiate()
-        self.propertiesPanel:addChild(input)
+    if uiMeta and uiMeta.groups then
+        for groupName, fields in pairs(uiMeta.groups) do
 
-        self.dynamicInputs[fieldName] = input
-        innerY = innerY + BUTTON_HGT + (UI_BORDER_SPACING / 2)
+            local groupLabel = ISLabel:new(UI_BORDER_SPACING, innerY, FONT_HGT_SMALL, groupName, 0.6, 0.9, 0.6, 1, UIFont.Small, true)
+            groupLabel:initialise()
+            self.propertiesPanel:addChild(groupLabel)
+            innerY = innerY + FONT_HGT_SMALL + UI_BORDER_SPACING
+
+            for _, fieldDef in ipairs(fields) do
+                local fieldName = fieldDef
+                local fieldNotes = nil
+
+                if type(fieldDef) == "table" then
+                    fieldName = fieldDef.value
+                    fieldNotes = fieldDef.notes
+                end
+
+                if fieldNotes then
+                    local noteLabel = ISLabel:new(UI_BORDER_SPACING, innerY - 1, FONT_HGT_SMALL - 2, fieldNotes, 0.55, 0.55, 0.55, 1, UIFont.Small, true)
+                    noteLabel:initialise()
+                    self.propertiesPanel:addChild(noteLabel)
+                    innerY = innerY + FONT_HGT_SMALL - 2 + UI_BORDER_SPACING * 0.3
+                end
+
+                local label = ISLabel:new(UI_BORDER_SPACING, innerY, FONT_HGT_SMALL, fieldName, 1, 1, 1, 1, UIFont.Small, true)
+                label:initialise()
+                self.propertiesPanel:addChild(label)
+
+                local input = ISTextEntryBox:new(tostring(effectData[fieldName] or "0"), UI_BORDER_SPACING + labelWidth, innerY - 2, inputWidth, BUTTON_HGT)
+                input:initialise()
+                input:instantiate()
+                self.propertiesPanel:addChild(input)
+
+                self.dynamicInputs[fieldName] = input
+
+                innerY = innerY + BUTTON_HGT + UI_BORDER_SPACING
+            end
+
+            innerY = innerY + UI_BORDER_SPACING
+        end
+    else
+        for _, fieldName in ipairs(schemaFields) do
+
+            local label = ISLabel:new(UI_BORDER_SPACING, innerY, FONT_HGT_SMALL, fieldName, 1, 1, 1, 1, UIFont.Small, true)
+            label:initialise()
+            self.propertiesPanel:addChild(label)
+
+            local input = ISTextEntryBox:new(tostring(effectData[fieldName] or "0"), UI_BORDER_SPACING + labelWidth, innerY - 2, inputWidth, BUTTON_HGT)
+            input:initialise()
+            input:instantiate()
+            self.propertiesPanel:addChild(input)
+
+            self.dynamicInputs[fieldName] = input
+
+            innerY = innerY + BUTTON_HGT + UI_BORDER_SPACING
+        end
     end
 end
 

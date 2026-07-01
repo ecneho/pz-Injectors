@@ -86,12 +86,7 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     local contentWidth = self:getWidth() - (UI_BORDER_SPACING * 2)
 
     local titleText = eff.effectId
-    local rateText = string.format("(Rate: %d)", eff.rate)
     self:drawText(titleText, UI_BORDER_SPACING, innerY, 1, 1, 1, 0.9, UIFont.Medium)
-
-    local idWidth = getTextManager():MeasureStringX(UIFont.Medium, titleText)
-    local rateYOffset = (FONT_HGT_MEDIUM - FONT_HGT_SMALL) / 2
-    self:drawText(rateText, UI_BORDER_SPACING + idWidth + 8, innerY + rateYOffset, 0.6, 0.8, 1.0, 0.8, UIFont.Small)
 
     local barR, barG, barB = 0.2, 0.7, 0.2 
     local statusText = ""
@@ -113,7 +108,7 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     fillRatio = math.max(0, math.min(fillRatio, 1.0))
 
     local statusWidth = getTextManager():MeasureStringX(UIFont.Small, statusText)
-    self:drawText(statusText, self:getWidth() - statusWidth - UI_BORDER_SPACING, innerY + rateYOffset, 0.7, 0.7, 0.7, 0.9, UIFont.Small)
+    self:drawText(statusText, self:getWidth() - statusWidth - UI_BORDER_SPACING, innerY + (FONT_HGT_MEDIUM - FONT_HGT_SMALL) / 2, 0.7, 0.7, 0.7, 0.9, UIFont.Small)
 
     innerY = innerY + FONT_HGT_MEDIUM + 4
     local effectBarHeight = 10

@@ -49,4 +49,17 @@ Handlers.ChangeThirstEffect = function(username, data)
     )
 end
 
+Handlers.ChangeOverdoseEffect = function(username, data)
+    System.AddPlayerEffect(
+        username,
+        "ChangeOverdoseEffect",
+        data.duration,
+        data.delay,
+        data.rate,
+        {
+            base = data.base,
+        }
+    )
+end
+
 return Handlers

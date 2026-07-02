@@ -62,4 +62,16 @@ Handlers.ChangeOverdoseEffect = function(username, data)
     )
 end
 
+setmetatable(Handlers, {
+    __index = function(t, key)
+        if type(key) == "string" then
+            local baseName = string.match(key, "^([a-zA-Z]+)")
+            if baseName then
+                return rawget(t, baseName)
+            end
+        end
+        return nil
+    end
+})
+
 return Handlers

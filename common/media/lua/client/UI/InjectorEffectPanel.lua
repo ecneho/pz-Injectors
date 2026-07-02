@@ -3,7 +3,6 @@ require "ISUI/ISScrollingListBox"
 require "ISUI/ISLabel"
 
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
-local FONT_HGT_MEDIUM = getTextManager():getFontHeight(UIFont.Medium)
 local UI_BORDER_SPACING = 10
 
 InjectorEffectPanelUI = ISCollapsableWindow:derive("InjectorEffectPanelUI")
@@ -16,14 +15,18 @@ end
 function InjectorEffectPanelUI:createChildren()
     ISCollapsableWindow.createChildren(self)
 
-    local barSectionHeight = 40
-    local yOff = self:titleBarHeight() + barSectionHeight + UI_BORDER_SPACING
+    local barHeight = 24
+    local barY = self:titleBarHeight() + UI_BORDER_SPACING
+    local yOff = barY + barHeight + UI_BORDER_SPACING
 
-    self.effectList = ISScrollingListBox:new(UI_BORDER_SPACING, yOff, self.width - (UI_BORDER_SPACING * 2), self.height - yOff - UI_BORDER_SPACING)
+    self.effectList = ISScrollingListBox:new(UI_BORDER_SPACING, yOff,
+        self.width - (UI_BORDER_SPACING * 2),
+        self.height - yOff - UI_BORDER_SPACING)
+
     self.effectList:initialise()
     self.effectList:instantiate()
 
-    self.effectList.itemheight = FONT_HGT_MEDIUM + FONT_HGT_SMALL + 12
+    self.effectList.itemheight = FONT_HGT_SMALL + 18
     self.effectList.selected = 0
     self.effectList.doDrawItem = self.drawEffectListItem
     self.effectList.drawBorder = true
@@ -77,44 +80,22 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     if self.selected == item.index then
         self:drawRect(0, y, self:getWidth(), self.itemheight, 0.3, 0.7, 0.35, 0.15)
     elseif alt then
-        self:drawRect(0, y, self:getWidth(), self.itemheight, 0.3, 0.6, 0.5, 0.5)
+        self:drawRect(0, y, self:getWidth(), self.itemheight, 0.15, 1, 1, 1)
     end
-    self:drawRectBorder(0, y, self:getWidth(), self.itemheight, 0.9, self.borderColor.r, self.borderColor.g, self.borderColor.b)
 
     local eff = item.item
-    local innerY = y + 4
     local contentWidth = self:getWidth() - (UI_BORDER_SPACING * 2)
 
-    local titleText = eff.effectId
-    self:drawText(titleText, UI_BORDER_SPACING, innerY, 1, 1, 1, 0.9, UIFont.Medium)
+    local statusText = (eff.delayLeft > 0) and string.format("Delay: %ds", eff.delayLeft) or string.format("Time: %ds", eff.ticksLeft)
+    self:drawText(eff.effectId, UI_BORDER_SPACING, y + 2, 1, 1, 1, 0.9, UIFont.Small)
+    self:drawTextRight(statusText, self:getWidth() - UI_BORDER_SPACING, y + 2, 0.7, 0.7, 0.7, 0.9, UIFont.Small)
 
-    local barR, barG, barB = 0.2, 0.7, 0.2 
-    local statusText = ""
-    local fillRatio = 0
+    local fillRatio = math.max(0, math.min((eff.delayLeft > 0) and (eff.delayLeft / math.max(1, eff.delay)) or (eff.ticksLeft / math.max(1, eff.duration)), 1.0))
+    local barR, barG, barB = (eff.delayLeft > 0) and 0.8 or 0.2, (eff.delayLeft > 0) and 0.5 or 0.7, 0.1
 
-    if eff.delayLeft > 0 then
-        local delayRemaining = eff.delayLeft
-
-        fillRatio = delayRemaining / math.max(1, eff.delay)
-        barR, barG, barB = 0.8, 0.5, 0.1
-        statusText = string.format("Delayed: %d/%d", delayRemaining, eff.delay)
-    else
-        local activeRemaining = eff.ticksLeft
-
-        fillRatio = activeRemaining / math.max(1, eff.duration)
-        statusText = string.format("Active: %d/%d", activeRemaining, eff.duration)
-    end
-
-    fillRatio = math.max(0, math.min(fillRatio, 1.0))
-
-    local statusWidth = getTextManager():MeasureStringX(UIFont.Small, statusText)
-    self:drawText(statusText, self:getWidth() - statusWidth - UI_BORDER_SPACING, innerY + (FONT_HGT_MEDIUM - FONT_HGT_SMALL) / 2, 0.7, 0.7, 0.7, 0.9, UIFont.Small)
-
-    innerY = innerY + FONT_HGT_MEDIUM + 4
-    local effectBarHeight = 10
-    self:drawRect(UI_BORDER_SPACING, innerY, contentWidth, effectBarHeight, 1, 0.05, 0.05, 0.05)
-    self:drawRect(UI_BORDER_SPACING, innerY, contentWidth * fillRatio, effectBarHeight, 1, barR, barG, barB)
-    self:drawRectBorder(UI_BORDER_SPACING, innerY, contentWidth, effectBarHeight, 1, 0.3, 0.3, 0.3)
+    local barY = y + FONT_HGT_SMALL + 6
+    self:drawRect(UI_BORDER_SPACING, barY, contentWidth, 6, 0.5, 0.1, 0.1, 0.1)
+    self:drawRect(UI_BORDER_SPACING, barY, contentWidth * fillRatio, 6, 0.8, barR, barG, barB)
 
     return y + self.itemheight
 end

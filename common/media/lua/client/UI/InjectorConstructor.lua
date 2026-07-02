@@ -17,7 +17,7 @@ local EFFECT_SCHEMA = {
     ChangeHungerEffect = { "duration", "delay", "rate", "amount" },
     ChangeThirstEffect = { "duration", "delay", "rate", "amount" },
     ChangeOverdoseEffect = { "duration", "delay", "rate", "base" },
-    -- ChangePainEffect   = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" }
+    ChangePainEffect   = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" }
 }
 
 local EFFECT_UI = {
@@ -63,26 +63,25 @@ local EFFECT_UI = {
         }
     },
 
-    -- needs scroll support
-    -- ChangePainEffect = {
-    --     notes = "Controls pain stat value. (range: 0-100)",
-    --     groups = {
-    --         Time = {
-    --             { value = "duration", notes = "effect duration" },
-    --             { value = "delay", notes = "activation delay" },
-    --             { value = "rate", notes = "update frequency" }
-    --         },
-    --         Values = {
-    --             { value = "base", notes = "base pain delta applied each activation" }
-    --         },
-    --         Scaling = {
-    --             { value = "minRange", notes = "minimum linear scaling range" },
-    --             { value = "maxRange", notes = "maximum linear scaling range" },
-    --             { value = "minScale", notes = "minimum linear scaling multiplier" },
-    --             { value = "maxScale", notes = "maximum linear scaling multiplier" }
-    --         }
-    --     }
-    -- }
+    ChangePainEffect = {
+        notes = "Controls pain stat value. (range: 0-100)",
+        groups = {
+            Time = {
+                { value = "duration", notes = "effect duration" },
+                { value = "delay", notes = "activation delay" },
+                { value = "rate", notes = "update frequency" }
+            },
+            Values = {
+                { value = "base", notes = "base pain delta applied each activation" }
+            },
+            Scaling = {
+                { value = "minRange", notes = "minimum linear scaling range" },
+                { value = "maxRange", notes = "maximum linear scaling range" },
+                { value = "minScale", notes = "minimum linear scaling multiplier" },
+                { value = "maxScale", notes = "maximum linear scaling multiplier" }
+            }
+        }
+    }
 }
 
 local ActiveInjectorUI = nil
@@ -173,12 +172,28 @@ function InjectorConstructorUI:createChildren()
     self.propertiesPanel = ISPanel:new(propPanelX, self:titleBarHeight() + UI_BORDER_SPACING, self.width - propPanelX - UI_BORDER_SPACING, self.height - self:titleBarHeight() - (UI_BORDER_SPACING * 2))
     self.propertiesPanel:initialise()
     self.propertiesPanel.borderColor = self.borderColor
-    self:addChild(self.propertiesPanel)
 
+    self.propertiesPanel.prerender = function(panel)
+        ISPanel.prerender(panel)
+        panel:setStencilRect(0, 0, panel.width, panel.height)
+    end
+    self.propertiesPanel.render = function(panel)
+        ISPanel.render(panel)
+        panel:clearStencilRect()
+    end
+
+    self.propertiesPanel.onMouseWheel = function(_self, del)
+        if _self:getScrollHeight() > 0 then
+            _self:setYScroll(_self:getYScroll() - (del * 40))
+            return true
+        end
+        return false
+    end
+
+    self:addChild(self.propertiesPanel)
     self.dynamicInputs = {}
     self.currentInjectorData = { id = "injector_red", Effects = {} }
     self.selectedEffectName = nil
-
     self:onLoad()
 end
 
@@ -193,28 +208,58 @@ function InjectorConstructorUI:drawEffectListItem(y, item, alt)
 
     local fontHgt = getTextManager():getFontHeight(self.font)
     local textY = y + (self.itemheight - fontHgt) / 2
-    self:drawText(item.text, UI_BORDER_SPACING, textY, 1, 1, 1, 0.9, self.font)
+
+    local baseName, index = string.match(item.text, "^([a-zA-Z]+)_(%d+)$")
+    baseName = baseName or item.text
+
+    self:drawText(baseName, UI_BORDER_SPACING, textY, 1, 1, 1, 0.9, self.font)
+
+    if index then
+        local indexText = "#" .. index
+        self:drawTextRight(indexText, self:getWidth() - UI_BORDER_SPACING, textY, 0.5, 0.5, 0.5, 0.6, self.font)
+    end
+
     return y + self.itemheight
 end
 
-function InjectorConstructorUI:buildPropertiesUI(effectName)
+function InjectorConstructorUI:buildPropertiesUI(effectKey)
     self.propertiesPanel:clearChildren()
-    self.dynamicInputs = {}
-    if not effectName or not self.currentInjectorData.Effects[effectName] then return end
 
-    local effectData = self.currentInjectorData.Effects[effectName]
-    local schemaFields = EFFECT_SCHEMA[effectName]
+    self.propertiesPanel:addScrollBars()
+    self.propertiesPanel:setScrollChildren(true)
+    if self.propertiesPanel.vscroll then
+        self.propertiesPanel.vscroll.doSetStencil = true
+    end
+
+    self.dynamicInputs = {}
+    if not effectKey or not self.currentInjectorData.Effects[effectKey] then return end
+
+    local effectData = self.currentInjectorData.Effects[effectKey]
+
+    local baseEffect, index = string.match(effectKey, "^([a-zA-Z]+)_(%d+)$")
+    baseEffect = baseEffect or effectKey
+
+    local schemaFields = EFFECT_SCHEMA[baseEffect]
     if not schemaFields then return end
 
     local innerY = UI_BORDER_SPACING
     local labelWidth = 100
     local inputWidth = 120
+    local scrollBarWid = 16
 
-    local uiMeta = EFFECT_UI[effectName]
+    local uiMeta = EFFECT_UI[baseEffect]
 
-    local titleLabel = ISLabel:new(UI_BORDER_SPACING, innerY, FONT_HGT_MEDIUM, effectName, 1, 1, 1, 1, UIFont.Medium, true)
+    local titleLabel = ISLabel:new(UI_BORDER_SPACING, innerY, FONT_HGT_MEDIUM, baseEffect, 1, 1, 1, 1, UIFont.Medium, true)
     titleLabel:initialise()
     self.propertiesPanel:addChild(titleLabel)
+
+    if index then
+        local cornerX = self.propertiesPanel:getWidth() - UI_BORDER_SPACING - scrollBarWid
+        local indexLabel = ISLabel:new(cornerX, innerY, FONT_HGT_MEDIUM, "#" .. index, 0.5, 0.5, 0.5, 0.6, UIFont.Medium, false)
+        indexLabel:initialise()
+        self.propertiesPanel:addChild(indexLabel)
+    end
+
     innerY = innerY + FONT_HGT_MEDIUM + UI_BORDER_SPACING
 
     if uiMeta and uiMeta.notes then
@@ -281,18 +326,27 @@ function InjectorConstructorUI:buildPropertiesUI(effectName)
             innerY = innerY + BUTTON_HGT + UI_BORDER_SPACING
         end
     end
+
+    self.propertiesPanel:setScrollHeight(innerY + UI_BORDER_SPACING)
 end
 
 function InjectorConstructorUI:onAddEffect()
-    local effectToAdd = self.effectTypeCombo:getOptionText(self.effectTypeCombo.selected)
-    if not self.currentInjectorData.Effects[effectToAdd] then
-        local newEffectData = {}
-        for _, fieldName in ipairs(EFFECT_SCHEMA[effectToAdd]) do
-            newEffectData[fieldName] = 0
-        end
-        self.currentInjectorData.Effects[effectToAdd] = newEffectData
-        self:refreshEffectList()
+    local baseEffect = self.effectTypeCombo:getOptionText(self.effectTypeCombo.selected)
+
+    local index = 1
+    while self.currentInjectorData.Effects[baseEffect .. "_" .. index] do
+        index = index + 1
     end
+
+    local newEffectKey = baseEffect .. "_" .. index
+
+    local newEffectData = {}
+    for _, fieldName in ipairs(EFFECT_SCHEMA[baseEffect]) do
+        newEffectData[fieldName] = 0
+    end
+
+    self.currentInjectorData.Effects[newEffectKey] = newEffectData
+    self:refreshEffectList()
 end
 
 function InjectorConstructorUI:onRemoveEffect()

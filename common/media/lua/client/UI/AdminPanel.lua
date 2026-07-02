@@ -48,10 +48,6 @@ function InjectorsAdminWindow:createChildren()
         {
             text = "Set Maximum Applicable Pain",
             command = "SetMaximumPain"
-        },
-        {
-            text = "Dump Inventory Items",
-            command = "DumpInventoryIDs"
         }
     }
 

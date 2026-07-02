@@ -1,8 +1,8 @@
 -- server only
 if not isServer() then return end
 
+local FileLogger = require "Injectors/Utils/FileLogger"
 local Roles = require "Injectors/Utils/Roles"
-local Logging = require "Injectors/Utils/Logging"
 
 ---@param module string
 ---@param command string
@@ -13,10 +13,12 @@ local function OnClientCommand(module, command, player, clientArgs)
     if command ~= "SetMaximumPain" then return end
 
     if not player then return end
-    local username = player:getUsername()
 
     if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
-        Logging.Warning(username .. " denied set maximum pain: missing CanMedicalCheat capability")
+        FileLogger.Warn(string.format(
+            "%s was denied set maximum pain: missing CanMedicalCheat capability.",
+            FileLogger.FormatPlayer(player)
+        ))
         return
     end
 
@@ -24,7 +26,10 @@ local function OnClientCommand(module, command, player, clientArgs)
     if not stats then return end
 
     stats:set(CharacterStat.PAIN, 999)
-    Logging.Info(username .. " set maximum pain (Debug)")
+    FileLogger.Info(string.format(
+        "%s set maximum pain (debug).",
+        FileLogger.FormatPlayer(player)
+    ))
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

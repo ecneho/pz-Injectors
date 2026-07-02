@@ -29,13 +29,6 @@ local function OnMendBleedingTick(player, ticks, args)
             if clamped ~= bleedingTime then
                 part:setBleedingTime(clamped)
             end
-
-            print("part: " .. tostring(partType))
-            print("bleeding time: " .. bleedingTime)
-            print("updated: " .. updated)
-            print("clamped: " .. clamped)
-            print("delta: " .. delta)
-            print("ticks left: " .. ticks)
         end
     end
 end

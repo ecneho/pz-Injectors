@@ -22,11 +22,6 @@ local function OnHungerTick(player, ticks, args)
     if changed then
         stats:set(HUNGER_STAT, clamped)
     end
-
-    print("hunger: " .. hunger)
-    print("hunger updated: " .. updated)
-    print("hunger clamped: " .. clamped)
-    print("hunger tick: " .. args.amount .. ". ticks left: " .. ticks)
 end
 
 System.RegisterEffect("ChangeHungerEffect", OnHungerTick)

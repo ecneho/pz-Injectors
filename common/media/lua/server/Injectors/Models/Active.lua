@@ -1,13 +1,13 @@
 -- server only
 if not isServer() then return end
 
-local Data = {}
+local Active = {}
 
 -- tables are cached for performance:
 --- @type table|nil
 local activeList = nil
 
-function Data.GetActiveList()
+function Active.GetActiveList()
     if not activeList then
         activeList = ModData.getOrCreate("Injectors_ActiveList")
     end
@@ -15,4 +15,4 @@ function Data.GetActiveList()
     return activeList
 end
 
-return Data
+return Active

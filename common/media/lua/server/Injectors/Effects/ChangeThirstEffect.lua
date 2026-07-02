@@ -22,11 +22,6 @@ local function OnThirstTick(player, ticks, args)
     if changed then
         stats:set(THIRST_STAT, clamped)
     end
-
-    print("thirst: " .. thirst)
-    print("thirst updated: " .. updated)
-    print("thirst clamped: " .. clamped)
-    print("thirst tick: " .. args.amount .. ". ticks left: " .. ticks)
 end
 
 System.RegisterEffect("ChangeThirstEffect", OnThirstTick)

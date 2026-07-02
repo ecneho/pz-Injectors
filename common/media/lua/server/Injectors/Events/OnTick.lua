@@ -1,15 +1,15 @@
 -- server only
 if not isServer() then return end
 
+local FileLogger = require "Injectors/Utils/FileLogger"
 local System = require "Injectors/System"
-local Data = require "Injectors/Utils/Data"
-local Logging = require "Injectors/Utils/Logging"
+local Active = require "Injectors/Models/Active"
 local Common = require "Injectors/Variables/Common"
 local Overdose = require "Injectors/Models/Overdose"
 
 -- effect ticking
 local function onEffectTick()
-    local activeList = Data.GetActiveList()
+    local activeList = Active.GetActiveList()
     local onlinePlayers = getOnlinePlayers()
 
     if not onlinePlayers or onlinePlayers:size() == 0 then return end
@@ -32,7 +32,10 @@ local function onEffectTick()
                         if type(effectFunction) == "function" then
                             effectFunction(player, effect.ticksLeft, effect.customArgs)
                         else
-                            Logging.Info("Error: Missing function for effect ID '" .. tostring(effect.effectId) .. "'")
+                            FileLogger.Error(string.format(
+                                "Effect [%s] has no registered function. Unable to apply effect.",
+                                effect.effectId
+                            ))
                         end
 
                         effect.procCounter = effect.rate - 1
@@ -44,7 +47,10 @@ local function onEffectTick()
 
                     if effect.ticksLeft <= 0 then
                         table.remove(effects, j)
-                        Logging.Info("Effect[" .. j .. "] expired for " .. username)
+                        FileLogger.Info(string.format(
+                            "Effect [%d] has expired for character %s.",
+                            j, FileLogger.FormatPlayer(player)
+                        ))
                     end
                 end
             end
@@ -82,14 +88,23 @@ local function onOverdoseTick()
             local next = math.max(0, current - Common.OVERDOSE_DECAY)
 
             if next == 0 then
-                Logging.Info("Overdose fully decayed for " .. username)
+                FileLogger.Info(string.format(
+                    "Character %s overdose has fully decayed.",
+                    FileLogger.FormatPlayer(player)
+                ))
                 Overdose.Clear(username)
             else
                 Overdose.Set(username, next)
             end
 
-            if Common.OVERDOSE_DEATH_ENABLED and next >= Common.OVERDOSE_THRESHOLD then
-                player:getBodyDamage():ReduceGeneralHealth(999)
+            if next >= Common.OVERDOSE_THRESHOLD then
+                FileLogger.Info(string.format(
+                    "Character %s overdose has exceeded threshold.",
+                    FileLogger.FormatPlayer(player)
+                ))
+                if Common.OVERDOSE_DEATH_ENABLED then
+                    player:getBodyDamage():ReduceGeneralHealth(999)
+                end
             end
         end
     end

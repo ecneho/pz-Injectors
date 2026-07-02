@@ -1,7 +1,7 @@
 -- server only
 if not isServer() then return end
 
-local Logging = require "Injectors/Utils/Logging"
+local FileLogger = require "Injectors/Utils/FileLogger"
 local System = require "Injectors/System"
 local Overdose = require "Injectors/Data/Overdose"
 
@@ -16,7 +16,10 @@ local function onPlayerDeath(character)
         return
     end
 
-    Logging.Info("Character " .. username .. " died. Clearing effects and overdose...")
+    FileLogger.Info(string.format(
+        "Character %s has died.",
+        FileLogger.FormatPlayer(character)
+    ))
 
     System.RemovePlayerEffect(username)
     Overdose.Clear(username)

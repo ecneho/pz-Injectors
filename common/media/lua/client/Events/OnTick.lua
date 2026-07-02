@@ -3,6 +3,7 @@ if isServer() then return end
 
 local counter = 0
 
+-- TODO: move to ui update instead
 local function onTick()
     local rate = SandboxVars.Injectors.GLOBAL_EFFECT_POLLING_RATE
     if not rate then return end

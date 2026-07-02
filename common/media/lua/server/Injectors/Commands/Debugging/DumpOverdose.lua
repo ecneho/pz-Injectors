@@ -1,8 +1,8 @@
 -- server only
 if not isServer() then return end
 
+local FileLogger = require "Injectors/Utils/FileLogger"
 local Roles = require "Injectors/Utils/Roles"
-local Logging = require "Injectors/Utils/Logging"
 local Overdose = require "Injectors/Models/Overdose"
 
 ---@param module string
@@ -17,12 +17,18 @@ local function OnClientCommand(module, command, player, clientArgs)
     local username = player:getUsername()
 
     if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
-        Logging.Warning(username .. " denied overdose dump: missing CanMedicalCheat capability")
+        FileLogger.Warn(string.format(
+            "%s was denied overdose dump: missing CanMedicalCheat capability.",
+            FileLogger.FormatPlayer(player)
+        ))
         return
     end
 
-    Logging.Info(username .. " dumping overdose value...")
-    print(Overdose.Get(username))
+    FileLogger.Info(string.format(
+        "%s dumped overdose value: %s",
+        FileLogger.FormatPlayer(player),
+        tostring(Overdose.Get(username))
+    ))
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

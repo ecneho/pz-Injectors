@@ -21,16 +21,6 @@ local function OnOverdoseTick(player, ticks, args)
     if clamped ~= overdose then
         Overdose.Set(username, clamped)
     end
-
-    print("---- Overdose Args ----")
-    print("args.base: " .. args.base)
-    print("-----------------------")
-    print("Player: " .. username)
-    print("OD current: " .. overdose)
-    print("OD updated: " .. updated)
-    print("OD clamped: " .. clamped)
-    print("OD delta: " .. args.base)
-    print("OD tick. ticks left: " .. ticks)
 end
 
 System.RegisterEffect("ChangeOverdoseEffect", OnOverdoseTick)

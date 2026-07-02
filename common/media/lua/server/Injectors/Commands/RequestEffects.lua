@@ -1,11 +1,11 @@
 -- server only
 if not isServer() then return end
 
-local Data = require "Injectors/Utils/Data"
+local FileLogger = require "Injectors/Utils/FileLogger"
+local Active = require "Injectors/Models/Active"
 local Overdose = require "Injectors/Models/Overdose"
 local Common = require "Injectors/Variables/Common"
 local Roles = require "Injectors/Utils/Roles"
-local Logging = require "Injectors/Utils/Logging"
 
 local function OnClientCommand(module, command, player, args)
     if module ~= "InjectorsModule" then return end
@@ -14,11 +14,14 @@ local function OnClientCommand(module, command, player, args)
     local username = player:getUsername()
 
     if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
-        Logging.Warning(username .. " denied effect request: missing CanMedicalCheat capability")
+        FileLogger.Warn(string.format(
+            "%s was denied effect request: missing CanMedicalCheat capability.",
+            FileLogger.FormatPlayer(player)
+        ))
         return
     end
 
-    local activeEffects = Data.GetActiveList()[username] or {}
+    local activeEffects = Active.GetActiveList()[username] or {}
 
     local response = {
         overdoseLevel = Overdose.Get(username),

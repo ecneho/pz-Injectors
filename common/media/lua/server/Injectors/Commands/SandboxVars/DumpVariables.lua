@@ -1,12 +1,9 @@
 -- server only
 if not isServer() then return end
 
+local FileLogger = require "Injectors/Utils/FileLogger"
 local Roles = require "Injectors/Utils/Roles"
-local Logging = require "Injectors/Utils/Logging"
 local Common = require "Injectors/Variables/Common"
-local Epinephrine = require "Injectors/Variables/Epinephrine"
-local Hemostatic = require "Injectors/Variables/Hemostatic"
-local Propital = require "Injectors/Variables/Propital"
 
 ---@param module string
 ---@param command string
@@ -17,18 +14,20 @@ local function OnClientCommand(module, command, player, clientArgs)
     if command ~= "DumpVariables" then return end
 
     if not player then return end
-    local username = player:getUsername()
 
     if not Roles.hasCapability(player, Capability.SandboxOptions) then
-        Logging.Warning(username .. " denied variables dump: missing SandboxOptions capability")
+        FileLogger.Warn(string.format(
+            "%s was denied sandbox variables dump: missing SandboxOptions capability.",
+            FileLogger.FormatPlayer(player)
+        ))
         return
     end
 
-    Logging.Info(username .. " dumping sandbox variables...")
+    FileLogger.Info(string.format(
+        "%s requested sandbox variables dump.",
+        FileLogger.FormatPlayer(player)
+    ))
     Common.DumpVariables()
-    Propital.DumpVariables()
-    Epinephrine.DumpVariables()
-    Hemostatic.DumpVariables()
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

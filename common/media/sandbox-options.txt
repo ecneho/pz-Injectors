@@ -57,3 +57,13 @@ option Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED {
     page = Injectors_global,
     translation = Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED,
 }
+
+option Injectors.GLOBAL_LOGGER_OFFSET {
+    type = integer,
+    default = 0,
+    min = -24,
+    max = 24,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_LOGGER_OFFSET,
+}

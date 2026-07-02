@@ -37,21 +37,6 @@ local function OnPainTick(player, ticks, args)
     if changed then
         stats:set(PAIN_STAT, clamped)
     end
-
-    print("---- args ----")
-    print("args.base: " .. args.base)
-    print("args.minRange: " .. args.minRange)
-    print("args.maxRange: " .. args.maxRange)
-    print("args.minScale: " .. args.minScale)
-    print("args.maxScale: " .. args.maxScale)
-    print("--------------")
-
-    print("pain: " .. pain)
-    print("pain updated: " .. updated)
-    print("pain clamped: " .. clamped)
-    print("pain scale: " .. scaled)
-    print("pain delta: " .. delta)
-    print("pain tick. ticks left: " .. ticks)
 end
 
 System.RegisterEffect("ChangePainEffect", OnPainTick)

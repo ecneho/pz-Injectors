@@ -1,8 +1,8 @@
 -- server only
 if not isServer() then return end
 
+local FileLogger = require "Injectors/Utils/FileLogger"
 local Roles = require "Injectors/Utils/Roles"
-local Logging = require "Injectors/Utils/Logging"
 
 local bleedingParts = {
     BodyPartType.ForeArm_L,
@@ -29,10 +29,12 @@ local function OnClientCommand(module, command, player, clientArgs)
     if command ~= "ApplyBleedingDeepWounds" then return end
 
     if not player then return end
-    local username = player:getUsername()
 
     if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
-        Logging.Warning(username .. " denied apply bleeding and deep wounds: missing CanMedicalCheat capability")
+        FileLogger.Warn(string.format(
+            "%s was denied apply bleeding and deep wounds: missing CanMedicalCheat capability.",
+            FileLogger.FormatPlayer(player)
+        ))
         return
     end
 
@@ -55,7 +57,10 @@ local function OnClientCommand(module, command, player, clientArgs)
         end
     end
 
-    Logging.Info(username .. " applied bleeding and deep wounds (Debug)")
+    FileLogger.Info(string.format(
+        "%s applied bleeding and deep wounds (debug).",
+        FileLogger.FormatPlayer(player)
+    ))
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

@@ -33,11 +33,6 @@ local function OnGeneralHealthTick(player, ticks, args)
     elseif delta < 0 then
         damage:ReduceGeneralHealth(-delta)
     end
-
-    print("health: " .. health)
-    print("scale: " .. scaled)
-    print("delta: " .. delta)
-    print("ticks left: " .. ticks)
 end
 
 System.RegisterEffect("ChangeGeneralHealthEffect", OnGeneralHealthTick)

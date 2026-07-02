@@ -33,13 +33,6 @@ local function OnMendDeepWoundTick(player, ticks, args)
             if clamped <= 3 then
                 part:setDeepWounded(false)
             end
-
-            print("part: " .. tostring(partType))
-            print("deep wound time: " .. deepWoundTime)
-            print("updated: " .. updated)
-            print("clamped: " .. clamped)
-            print("delta: " .. delta)
-            print("ticks left: " .. ticks)
         end
     end
 end

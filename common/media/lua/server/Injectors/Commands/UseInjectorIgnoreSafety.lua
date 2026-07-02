@@ -1,8 +1,8 @@
 -- server only
 if not isServer() then return end
 
+local FileLogger = require "Injectors/Utils/FileLogger"
 local Roles = require "Injectors/Utils/Roles"
-local Logging = require "Injectors/Utils/Logging"
 local UsedInjector = require "Injectors/Settings/UsedInjector"
 
 ---@param module string
@@ -16,15 +16,20 @@ local function OnClientCommand(module, command, player, clientArgs)
     if not player then return end
     if not clientArgs then return end
 
-    local username = player:getUsername()
     local id = clientArgs.id
 
     if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
-        Logging.Warning(username .. " denied Injector (" .. id ..") admin override: missing CanMedicalCheat capability")
+        FileLogger.Warn(string.format(
+            "%s was denied Injector [%s] admin override: missing CanMedicalCheat capability.",
+            FileLogger.FormatPlayer(player), tostring(id)
+        ))
         return
     end
 
-    Logging.Info(username .. " used Injector " .. id .. " (Admin Override)")
+    FileLogger.Info(string.format(
+        "%s used Injector '%s' with admin override.",
+        FileLogger.FormatPlayer(player), tostring(id)
+    ))
     UsedInjector.Used(player, id)
 end
 

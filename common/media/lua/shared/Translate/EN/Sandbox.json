@@ -13,4 +13,6 @@
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_THRESHOLD_tooltip": "Maximum character overdose level.",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED": "Overdose Death",
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED_tooltip": "Whether to force character death when overdose reaches 100%.",
+	"Sandbox_Injectors.GLOBAL_LOGGER_OFFSET": "Logger Time Offset",
+	"Sandbox_Injectors.GLOBAL_LOGGER_OFFSET_tooltip": "Timezone offset applied to log timestamps in hours."
 }

@@ -2,8 +2,8 @@
 if not isServer() then return end
 
 local System = {}
-local Data = require "Injectors/Utils/Data"
-local Logging = require "Injectors/Utils/Logging"
+local Active = require "Injectors/Models/Active"
+local FileLogger = require "Injectors/Utils/FileLogger"
 
 System.EffectRegistry = {}
 
@@ -11,25 +11,33 @@ System.EffectRegistry = {}
 ---@param tickFunction function
 function System.RegisterEffect(effectId, tickFunction)
     System.EffectRegistry[effectId] = tickFunction
-    Logging.Info("Registered new effect function: " .. effectId)
+    FileLogger.Info(string.format(
+        "Registered new effect function for [%s].",
+        tostring(effectId)
+    ))
 end
 
----@param username string
+---@param player IsoPlayer
 ---@param effectId string
 ---@param duration number
 ---@param delay number
 ---@param rate number
 ---@param customArgs table|nil
-function System.AddPlayerEffect(username, effectId, duration, delay, rate, customArgs)
+function System.AddPlayerEffect(player, effectId, duration, delay, rate, customArgs)
     if type(duration) ~= "number" or duration <= 0 then return end
 
+    local username = player:getUsername()
+
     if not System.EffectRegistry[effectId] then
-        Logging.Error("No registered effect found for ID '" .. tostring(effectId) .. "'.")
+        FileLogger.Error(string.format(
+            "Effect [%s] has no registered effect in EffectRegistry.",
+            tostring(effectId)
+        ))
         return
     end
 
     rate = math.max(1, rate)
-    local activeList = Data.GetActiveList()
+    local activeList = Active.GetActiveList()
 
     if type(activeList[username]) ~= "table" then
         activeList[username] = {}
@@ -46,16 +54,20 @@ function System.AddPlayerEffect(username, effectId, duration, delay, rate, custo
         customArgs = customArgs or {}
     })
 
-    Logging.Info("Player: " .. username)
-    Logging.Info("Effect ID: " .. effectId)
-    Logging.Info("Duration: " .. tostring(duration))
-    Logging.Info("Delay: " .. tostring(delay))
-    Logging.Info("Rate: " .. tostring(rate))
+    FileLogger.Info(string.format(
+        "Added effect to character %s:",
+        FileLogger.FormatPlayer(player)
+    ))
+
+    FileLogger.Raw(string.format("    Effect   : %s", tostring(effectId)))
+    FileLogger.Raw(string.format("    Duration : %s", tostring(duration)))
+    FileLogger.Raw(string.format("    Delay    : %s", tostring(delay)))
+    FileLogger.Raw(string.format("    Rate     : %s", tostring(rate)))
 end
 
 ---@param username string
 function System.RemovePlayerEffect(username)
-    local activeList = Data.GetActiveList()
+    local activeList = Active.GetActiveList()
 
     if activeList[username] then
         activeList[username] = nil

@@ -34,10 +34,6 @@ function InjectorsAdminWindow:createChildren()
             command = "DumpOverdose"
         },
         {
-            text = "Test External Logs",
-            command = "TestExternalLogs"
-        },
-        {
             text = "Clear Injector Effects",
             command = "ClearEffects"
         },

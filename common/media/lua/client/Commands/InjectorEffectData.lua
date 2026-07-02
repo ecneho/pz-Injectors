@@ -1,3 +1,6 @@
+-- non-server only
+if isServer() then return end
+
 InjectorData = {
     overdoseLevel = 0,
     maxOverdose = 100,

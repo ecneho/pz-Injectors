@@ -9,7 +9,8 @@ local Settings = {}
 ---@param player IsoPlayer
 ---@param id string
 function Settings.Used(player, id)
-    local username = player:getUsername()
+    if not player then print("no player") return end
+
     local injector = Injectors.Get(id)
 
     if not injector then print("no injector") return end
@@ -22,7 +23,7 @@ function Settings.Used(player, id)
         local handler = Handlers[name]
         if handler then
             print("found handler")
-            handler(username, data)
+            handler(player, data)
         else
             print("no handler")
             -- TODO: log error

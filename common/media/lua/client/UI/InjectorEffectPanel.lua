@@ -33,6 +33,8 @@ function InjectorEffectPanelUI:createChildren()
     self.effectList.borderColor = self.borderColor
 
     self:addChild(self.effectList)
+
+    sendClientCommand("InjectorsModule", "RequestEffects", {})
 end
 
 function InjectorEffectPanelUI:loadData()
@@ -72,7 +74,12 @@ function InjectorEffectPanelUI:render()
     self:drawRect(barX, barY, barWidth * fillRatio, barHeight, 1, r, g, b)
     self:drawRectBorder(barX, barY, barWidth, barHeight, 1, 0.5, 0.5, 0.5)
 
-    local text = "Overdose Level: " .. tostring(math.floor(self.overdoseLevel)) .. " / " .. tostring(self.maxOverdose)
+    local text = "pending..."
+
+    if self.overdoseLevel and self.maxOverdose and self.maxOverdose > 0 then
+        text = "Overdose Level: " .. self.overdoseLevel .. " / " .. self.maxOverdose
+    end
+
     self:drawTextCentre(text, barX + (barWidth / 2), barY + (barHeight / 2) - (FONT_HGT_SMALL / 2), 1, 1, 1, 1, UIFont.Small)
 end
 
@@ -86,7 +93,7 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     local eff = item.item
     local contentWidth = self:getWidth() - (UI_BORDER_SPACING * 2)
 
-    local statusText = (eff.delayLeft > 0) and string.format("Delay: %ds", eff.delayLeft) or string.format("Time: %ds", eff.ticksLeft)
+    local statusText = (eff.delayLeft > 0) and string.format("Delay: %ds", eff.delayLeft) or string.format("Time: %d", eff.ticksLeft)
     self:drawText(eff.effectId, UI_BORDER_SPACING, y + 2, 1, 1, 1, 0.9, UIFont.Small)
     self:drawTextRight(statusText, self:getWidth() - UI_BORDER_SPACING, y + 2, 0.7, 0.7, 0.7, 0.9, UIFont.Small)
 
@@ -124,11 +131,3 @@ function InjectorEffectPanelUI:new(x, y, width, height)
 
     return o
 end
-
-function OpenInjectorCharacterInfo()
-    local ui = InjectorEffectPanelUI:new(0, 0, 350, 400)
-    ui:initialise()
-    ui:addToUIManager()
-end
-
-Events.OnGameStart.Add(OpenInjectorCharacterInfo)

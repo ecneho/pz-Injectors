@@ -410,14 +410,6 @@ function InjectorConstructorUI:new(x, y, width, height)
     return o
 end
 
--- open ui
-function OpenInjectorConstructor()
-    local ui = InjectorConstructorUI:new(0, 0, 600, 450)
-    ui:initialise()
-    ui:addToUIManager()
-    ActiveInjectorUI = ui
-end
-
 -- network load request
 function InjectorConstructorUI:onLoad()
     local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
@@ -457,5 +449,3 @@ local function OnServerCommand(module, command, args)
     end
 end
 Events.OnServerCommand.Add(OnServerCommand)
-
-Events.OnGameStart.Add(OpenInjectorConstructor)

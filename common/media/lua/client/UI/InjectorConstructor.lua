@@ -407,6 +407,8 @@ function InjectorConstructorUI:new(x, y, width, height)
     o.backgroundColor = {r=0, g=0, b=0, a=0.8}
     o.buttonBorderColor = {r=0.7, g=0.7, b=0.7, a=0.5}
 
+    InjectorConstructorUI.instance = o
+
     return o
 end
 
@@ -439,13 +441,23 @@ function InjectorConstructorUI:onInvoke()
     end
 end
 
+function InjectorConstructorUI:close()
+    InjectorConstructorUI.instance = nil
+    ISCollapsableWindow.close(self)
+end
+
 -- server commands
 local function OnServerCommand(module, command, args)
     if module ~= "InjectorsModule" then return end
-    if command == "ReceiveInjectorOptions" and ActiveInjectorUI then
-        ActiveInjectorUI.currentInjectorData = args.data
-        ActiveInjectorUI.currentInjectorData.Effects = ActiveInjectorUI.currentInjectorData.Effects or {}
-        ActiveInjectorUI:refreshEffectList()
-    end
+    if command ~= "ReceiveInjectorOptions" then return end
+
+    local ui = InjectorConstructorUI.instance
+    if not ui then return end
+
+    ui.currentInjectorData = args.data or {}
+    ui.currentInjectorData.Effects = ui.currentInjectorData.Effects or {}
+    ui:refreshEffectList()
 end
+
+Events.OnServerCommand.Add(OnServerCommand)
 Events.OnServerCommand.Add(OnServerCommand)

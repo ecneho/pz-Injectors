@@ -3,7 +3,7 @@ if not isServer() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local System = require "Injectors/System"
-local Overdose = require "Injectors/Data/Overdose"
+local Overdose = require "Injectors/Models/Overdose"
 
 ---@param character IsoPlayer -- *IsoGameCharacter
 local function onPlayerDeath(character)
@@ -17,12 +17,12 @@ local function onPlayerDeath(character)
     end
 
     FileLogger.Info(string.format(
-        "Character %s has died.",
+        "Character %s has died. Removing effects and overdose.",
         FileLogger.FormatPlayer(character)
     ))
 
     System.RemovePlayerEffect(username)
-    Overdose.Clear(username)
+    Overdose.Set(username, 0)
 end
 
 Events.OnCharacterDeath.Add(onPlayerDeath)

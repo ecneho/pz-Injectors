@@ -98,11 +98,12 @@ local function onOverdoseTick()
             end
 
             if next >= Common.OVERDOSE_THRESHOLD then
-                FileLogger.Info(string.format(
-                    "Character %s overdose has exceeded threshold.",
-                    FileLogger.FormatPlayer(player)
-                ))
                 if Common.OVERDOSE_DEATH_ENABLED then
+                    FileLogger.Info(string.format(
+                        "Character %s overdose has exceeded threshold.",
+                        FileLogger.FormatPlayer(player)
+                    ))
+
                     player:getBodyDamage():ReduceGeneralHealth(999)
                 end
             end

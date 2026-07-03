@@ -5,12 +5,12 @@ module Injectors {
 
     item injector_blue
     {
-        DisplayName = Blue Injector,
+        DisplayName = injector_blue,
         ItemType = base:normal,
         DisplayCategory = FirstAid,
-        Icon = epinephrine,
-        WorldStaticModel = epinephrine-closed,
-        Tooltip = Tooltip_epinephrine,
+        Icon = injector_blue,
+        WorldStaticModel = injector_blue-closed,
+        Tooltip = Tooltip_blue,
         StaticModel = Injector,
         Weight = 0.05,
         CantBeFrozen = TRUE,
@@ -19,12 +19,12 @@ module Injectors {
 
     item injector_red
     {
-        DisplayName = Red Injector,
+        DisplayName = injector_red,
         ItemType = base:normal,
         DisplayCategory = FirstAid,
-        Icon = hemostatic,
-        WorldStaticModel = hemostatic-closed,
-        Tooltip = Tooltip_hemostatic,
+        Icon = injector_red,
+        WorldStaticModel = injector_red-closed,
+        Tooltip = Tooltip_red,
         StaticModel = Injector,
         Weight = 0.05,
         CantBeFrozen = TRUE,
@@ -33,12 +33,12 @@ module Injectors {
 
     item injector_green
     {
-        DisplayName = Green Injector,
+        DisplayName = injector_green,
         ItemType = base:normal,
         DisplayCategory = FirstAid,
-        Icon = propital,
-        WorldStaticModel = propital-closed,
-        Tooltip = Tooltip_propital,
+        Icon = injector_green,
+        WorldStaticModel = injector_green-closed,
+        Tooltip = Tooltip_green,
         StaticModel = Injector,
         Weight = 0.05,
         CantBeFrozen = TRUE,
@@ -50,7 +50,7 @@ module Injectors {
         DisplayName = Empty Injector Cartridge,
         DisplayCategory = Junk,
         ItemType = base:normal,
-        Icon = empty,
+        Icon = injector_empty,
         WorldStaticModel = injector-empty,
     }
 }

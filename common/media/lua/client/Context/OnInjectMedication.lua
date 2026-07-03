@@ -28,8 +28,7 @@ local function OnInjectContext(player, context, items)
     end
 
     if injector then
-        -- TODO: add locale support, getText()
-        context:addOption("Inject Medication", playerObj, OnInject, injector, nil)
+        context:addOption(getText("ContextMenu_InjectMedication"), playerObj, OnInject, injector, nil)
     end
 end
 

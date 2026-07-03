@@ -1,5 +1,5 @@
 {
-    "Tooltip_epinephrine": "<BR>An adrenal hormone.<BR>Helps regulate visceral functions during stress responses.<BR>+ Relieves [Pain].",
-    "Tooltip_hemostatic": "<BR>A coagulant compound.<BR>Rapidly seals deep wounds and aids in faster blood clotting.<BR>+ Stops [Bleeding].<BR>+ Seals [Deep Wounds].",
-    "Tooltip_propital": "<BR>A regenerative agent.<BR>Promotes rapid tissue recovery.<BR>+ Improves [Overall Health]."
+    "Tooltip_blue": "<BR>placeholder.<BR>placeholder.<BR>placeholder.",
+    "Tooltip_red": "<BR>placeholder.<BR>placeholder.<BR>placeholder.",
+    "Tooltip_green": "<BR>placeholder.<BR>placeholder.<BR>placeholder."
 }

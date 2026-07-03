@@ -1,5 +1,5 @@
 {
-    "Injectors.injector_epinephrine": "Emergency Response Epinephrine Injector",
-    "Injectors.injector_hemostatic": "Hemostatic Agent Injector",
-    "Injectors.injector_propital": "Propital Regenerative Stimulant Injector"
+    "Injectors.injector_blue": "Blue Injector",
+    "Injectors.injector_red": "Red Injector",
+    "Injectors.injector_green": "Green Injector"
 }

@@ -3,24 +3,24 @@ module injectors {
         Base
     }
 
-    model hemostatic-closed
+    model injector_red-closed
     {
         mesh    = injectorclosed,
-        texture = WorldItems/hemostatic,
+        texture = WorldItems/injector_red,
         scale   = 0.17,
     }
 
-    model epinephrine-closed
+    model injector_blue-closed
     {
         mesh    = injectorclosed,
-        texture = WorldItems/epinephrine,
+        texture = WorldItems/injector_blue,
         scale   = 0.17,
     }
 
-    model propital-closed
+    model injector_green-closed
     {
         mesh    = injectorclosed,
-        texture = WorldItems/propital,
+        texture = WorldItems/injector_green,
         scale   = 0.17,
     }
 

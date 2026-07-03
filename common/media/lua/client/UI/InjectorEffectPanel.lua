@@ -1,6 +1,7 @@
 require "ISUI/ISCollapsableWindow"
 require "ISUI/ISScrollingListBox"
 require "ISUI/ISLabel"
+require "ISUI/ISButton"
 
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
 local UI_BORDER_SPACING = 10
@@ -19,9 +20,11 @@ function InjectorEffectPanelUI:createChildren()
     local barY = self:titleBarHeight() + UI_BORDER_SPACING
     local yOff = barY + barHeight + UI_BORDER_SPACING
 
-    self.effectList = ISScrollingListBox:new(UI_BORDER_SPACING, yOff,
-        self.width - (UI_BORDER_SPACING * 2),
-        self.height - yOff - UI_BORDER_SPACING)
+    local buttonHeight = 25
+    local buttonGap = UI_BORDER_SPACING
+    local buttonY = self.height - buttonHeight - UI_BORDER_SPACING
+
+    self.effectList = ISScrollingListBox:new(UI_BORDER_SPACING, yOff, self.width - (UI_BORDER_SPACING * 2), buttonY - yOff - UI_BORDER_SPACING)
 
     self.effectList:initialise()
     self.effectList:instantiate()
@@ -34,7 +37,34 @@ function InjectorEffectPanelUI:createChildren()
 
     self:addChild(self.effectList)
 
+    local totalWidth = self.width - (UI_BORDER_SPACING * 2)
+    local buttonWidth = (totalWidth - buttonGap) / 2
+
+    self.requestButton = ISButton:new(UI_BORDER_SPACING, buttonY, buttonWidth, buttonHeight, "Request Effects", self, self.onRequestEffects)
+    self.requestButton:initialise()
+    self.requestButton:instantiate()
+    self.requestButton.backgroundColor = self.backgroundColor
+    self.requestButton.backgroundColorMouseOver = { r = 0.2, g = 0.2, b = 0.2, a = 1 }
+    self.requestButton.borderColor = self.buttonBorderColor
+    self:addChild(self.requestButton)
+
+    self.clearButton = ISButton:new(UI_BORDER_SPACING + buttonWidth + buttonGap, buttonY, buttonWidth, buttonHeight, "Clear Effects", self, self.onClearEffects)
+    self.clearButton:initialise()
+    self.clearButton:instantiate()
+    self.clearButton.backgroundColor = self.backgroundColor
+    self.clearButton.backgroundColorMouseOver = { r = 0.2, g = 0.2, b = 0.2, a = 1 }
+    self.clearButton.borderColor = self.buttonBorderColor
+    self:addChild(self.clearButton)
+
     sendClientCommand("InjectorsModule", "RequestEffects", {})
+end
+
+function InjectorEffectPanelUI:onRequestEffects()
+    sendClientCommand("InjectorsModule", "RequestEffects", {})
+end
+
+function InjectorEffectPanelUI:onClearEffects()
+    sendClientCommand("InjectorsModule", "ClearEffects", {})
 end
 
 function InjectorEffectPanelUI:loadData()
@@ -93,7 +123,8 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     local eff = item.item
     local contentWidth = self:getWidth() - (UI_BORDER_SPACING * 2)
 
-    local statusText = (eff.delayLeft > 0) and string.format("Delay: %ds", eff.delayLeft) or string.format("Time: %d", eff.ticksLeft)
+    local statusText = (eff.delayLeft > 0) and string.format("Delay: %d", eff.delayLeft) or string.format("Time: %d", eff.ticksLeft)
+
     self:drawText(eff.effectId, UI_BORDER_SPACING, y + 2, 1, 1, 1, 0.9, UIFont.Small)
     self:drawTextRight(statusText, self:getWidth() - UI_BORDER_SPACING, y + 2, 0.7, 0.7, 0.7, 0.9, UIFont.Small)
 
@@ -101,6 +132,7 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     local barR, barG, barB = (eff.delayLeft > 0) and 0.8 or 0.2, (eff.delayLeft > 0) and 0.5 or 0.7, 0.1
 
     local barY = y + FONT_HGT_SMALL + 6
+
     self:drawRect(UI_BORDER_SPACING, barY, contentWidth, 6, 0.5, 0.1, 0.1, 0.1)
     self:drawRect(UI_BORDER_SPACING, barY, contentWidth * fillRatio, 6, 0.8, barR, barG, barB)
 
@@ -117,17 +149,13 @@ function InjectorEffectPanelUI:new(x, y, width, height)
         x = (getCore():getScreenWidth() / 2) - (width / 2)
         y = (getCore():getScreenHeight() / 2) - (height / 2)
     end
-
     local o = ISCollapsableWindow.new(self, x, y, width, height)
     setmetatable(o, self)
     self.__index = self
-
     o.resizable = false
     o.moveWithMouse = true
-
-    o.borderColor = {r=0.4, g=0.4, b=0.4, a=1}
-    o.backgroundColor = {r=0, g=0, b=0, a=0.8}
-    o.buttonBorderColor = {r=0.7, g=0.7, b=0.7, a=0.5}
-
+    o.backgroundColor = {r=0,g=0,b=0,a=0.85}
+    o.borderColor = {r=0.4,g=0.4,b=0.4,a=1}
+    o.buttonBorderColor = {r=0.7,g=0.7,b=0.7,a=0.5}
     return o
 end

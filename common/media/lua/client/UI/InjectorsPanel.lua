@@ -20,13 +20,11 @@ function InjectorsAdminWindow:createChildren()
 
     -- Command buttons
     local commands = {
-        { text = "Reload Sandbox Variables", command = "ReloadVariables" },
         { text = "Dump Sandbox Variables", command = "DumpVariables" },
-        { text = "Dump Overdose Value", command = "DumpOverdose" },
-        { text = "Clear Injector Effects", command = "ClearEffects" },
         { text = "Reduce General Health", command = "ReduceGeneralHealth" },
         { text = "Apply Bleeding and Deep Wounds", command = "ApplyBleedingDeepWounds" },
         { text = "Set Maximum Applicable Pain", command = "SetMaximumPain" },
+        { text = "Reload Sandbox Variables", command = "ReloadVariables" },
     }
 
     for _, c in ipairs(commands) do

@@ -72,7 +72,7 @@ local EFFECT_UI = {
                 { value = "rate", notes = "update frequency" }
             },
             Values = {
-                { value = "base", notes = "base pain delta applied each activation" }
+                { value = "base", notes = "base pain delta applied each activation" },
             },
             Scaling = {
                 { value = "minRange", notes = "minimum linear scaling range" },
@@ -112,19 +112,25 @@ function InjectorConstructorUI:createChildren()
     self.btnLoad = ISButton:new(UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, "Load", self, self.onLoad)
     self.btnLoad:initialise()
     self.btnLoad:instantiate()
-    self.btnLoad.borderColor = self.buttonBorderColor
+    -- Copy the table so they don't share the same reference
+    self.btnLoad.borderColor = { r = self.buttonBorderColor.r, g = self.buttonBorderColor.g, b = self.buttonBorderColor.b, a = self.buttonBorderColor.a }
     self:addChild(self.btnLoad)
 
     self.btnSave = ISButton:new(self.btnLoad:getRight() + UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, "Save", self, self.onSave)
     self.btnSave:initialise()
     self.btnSave:instantiate()
-    self.btnSave.borderColor = self.buttonBorderColor
+    self.btnSave.borderColor = { r = self.buttonBorderColor.r, g = self.buttonBorderColor.g, b = self.buttonBorderColor.b, a = self.buttonBorderColor.a }
     self:addChild(self.btnSave)
+    
+    -- Save the default colors so we can revert back to them cleanly
+    self.btnSaveDefaultBG = { r = self.btnSave.backgroundColor.r, g = self.btnSave.backgroundColor.g, b = self.btnSave.backgroundColor.b, a = self.btnSave.backgroundColor.a }
+    self.btnSaveDefaultBorder = { r = self.btnSave.borderColor.r, g = self.btnSave.borderColor.g, b = self.btnSave.borderColor.b, a = self.btnSave.borderColor.a }
+    self.btnSaveDefaultHover = { r = self.btnSave.backgroundColorMouseOver.r, g = self.btnSave.backgroundColorMouseOver.g, b = self.btnSave.backgroundColorMouseOver.b, a = self.btnSave.backgroundColorMouseOver.a }
 
     self.btnInvoke = ISButton:new(self.btnSave:getRight() + UI_BORDER_SPACING, yOff, 60, BUTTON_HGT, "Invoke", self, self.onInvoke)
     self.btnInvoke:initialise()
     self.btnInvoke:instantiate()
-    self.btnInvoke.borderColor = self.buttonBorderColor
+    self.btnInvoke.borderColor = { r = self.buttonBorderColor.r, g = self.buttonBorderColor.g, b = self.buttonBorderColor.b, a = self.buttonBorderColor.a }
     self:addChild(self.btnInvoke)
 
     yOff = self.btnLoad:getBottom() + UI_BORDER_SPACING
@@ -195,6 +201,38 @@ function InjectorConstructorUI:createChildren()
     self.currentInjectorData = { id = "injector_red", Effects = {} }
     self.selectedEffectName = nil
     self:onLoad()
+end
+
+-- Tracks and toggles the unsaved changes state for the Save button
+function InjectorConstructorUI:setUnsavedChanges(hasChanges)
+    if not self.btnSave then return end
+    
+    if hasChanges then
+        -- Mimics Zomboid's enableAcceptColor() without permanently altering behavior
+        self.btnSave.backgroundColor = { r = 0, g = 0.5, b = 0, a = 1 }
+        self.btnSave.borderColor = { r = 0, g = 1, b = 0, a = 0.7 }
+        self.btnSave.backgroundColorMouseOver = { r = 0, g = 1, b = 0, a = 0.5 }
+    else
+        -- Restore default colors
+        self.btnSave.backgroundColor = { 
+            r = self.btnSaveDefaultBG.r, 
+            g = self.btnSaveDefaultBG.g, 
+            b = self.btnSaveDefaultBG.b, 
+            a = self.btnSaveDefaultBG.a 
+        }
+        self.btnSave.borderColor = { 
+            r = self.btnSaveDefaultBorder.r, 
+            g = self.btnSaveDefaultBorder.g, 
+            b = self.btnSaveDefaultBorder.b, 
+            a = self.btnSaveDefaultBorder.a 
+        }
+        self.btnSave.backgroundColorMouseOver = { 
+            r = self.btnSaveDefaultHover.r, 
+            g = self.btnSaveDefaultHover.g, 
+            b = self.btnSaveDefaultHover.b, 
+            a = self.btnSaveDefaultHover.a 
+        }
+    end
 end
 
 -- rendering
@@ -300,6 +338,10 @@ function InjectorConstructorUI:buildPropertiesUI(effectKey)
                 local input = ISTextEntryBox:new(tostring(effectData[fieldName] or "0"), UI_BORDER_SPACING + labelWidth, innerY - 2, inputWidth, BUTTON_HGT)
                 input:initialise()
                 input:instantiate()
+                
+                -- Hook into the text change event to light up the save button
+                input.onTextChange = function(box) self:setUnsavedChanges(true) end
+                
                 self.propertiesPanel:addChild(input)
 
                 self.dynamicInputs[fieldName] = input
@@ -319,6 +361,10 @@ function InjectorConstructorUI:buildPropertiesUI(effectKey)
             local input = ISTextEntryBox:new(tostring(effectData[fieldName] or "0"), UI_BORDER_SPACING + labelWidth, innerY - 2, inputWidth, BUTTON_HGT)
             input:initialise()
             input:instantiate()
+            
+            -- Hook into the text change event to light up the save button
+            input.onTextChange = function(box) self:setUnsavedChanges(true) end
+                
             self.propertiesPanel:addChild(input)
 
             self.dynamicInputs[fieldName] = input
@@ -345,22 +391,46 @@ function InjectorConstructorUI:onAddEffect()
         newEffectData[fieldName] = 0
     end
 
+    if self.selectedEffectName then
+        self:saveCurrentPropertiesToTable()
+    end
+
     self.currentInjectorData.Effects[newEffectKey] = newEffectData
     self:refreshEffectList()
+    
+    -- Flag changes when adding
+    self:setUnsavedChanges(true)
+
+    for i, item in ipairs(self.effectList.items) do
+        if item.text == newEffectKey then
+            self.effectList.selected = i
+            self:onSelectEffectInList()
+            break
+        end
+    end
 end
 
 function InjectorConstructorUI:onRemoveEffect()
     if not self.selectedEffectName then return end
+
+    local oldIndex = self.effectList.selected
     self.currentInjectorData.Effects[self.selectedEffectName] = nil
     self.selectedEffectName = nil
     self.propertiesPanel:clearChildren()
     self:refreshEffectList()
+    
+    -- Flag changes when removing
+    self:setUnsavedChanges(true)
+
+    if #self.effectList.items > 0 then
+        self.effectList.selected = math.min(oldIndex, #self.effectList.items)
+        self:onSelectEffectInList()
+    end
 end
 
 function InjectorConstructorUI:onSelectEffectInList()
     local selectedItem = self.effectList.items[self.effectList.selected]
     if selectedItem then
-        self:saveCurrentPropertiesToTable()
         self.selectedEffectName = selectedItem.text
         self:buildPropertiesUI(self.selectedEffectName)
     end
@@ -419,6 +489,9 @@ function InjectorConstructorUI:onLoad()
     self.effectList:clear()
     self.propertiesPanel:clearChildren()
     self.selectedEffectName = nil
+    
+    -- Reset button immediately visually
+    self:setUnsavedChanges(false)
 
     sendClientCommand(getPlayer(), "InjectorsModule", "LoadInjectorOptions", { id = selectedId })
 end
@@ -430,6 +503,9 @@ function InjectorConstructorUI:onSave()
     self.currentInjectorData.id = selectedId
 
     sendClientCommand(getPlayer(), "InjectorsModule", "SaveInjectorOptions", { id = selectedId, data = self.currentInjectorData })
+    
+    -- Reset color once saved
+    self:setUnsavedChanges(false)
 end
 
 -- network invoke request
@@ -457,7 +533,17 @@ local function OnServerCommand(module, command, args)
     ui.currentInjectorData = args.data or {}
     ui.currentInjectorData.Effects = ui.currentInjectorData.Effects or {}
     ui:refreshEffectList()
+    
+    -- Ensure fresh data turns the button state off
+    ui:setUnsavedChanges(false)
+
+    if #ui.effectList.items > 0 then
+        ui.effectList.selected = 1
+        ui:onSelectEffectInList()
+    else
+        ui.selectedEffectName = nil
+        ui.propertiesPanel:clearChildren()
+    end
 end
 
-Events.OnServerCommand.Add(OnServerCommand)
 Events.OnServerCommand.Add(OnServerCommand)

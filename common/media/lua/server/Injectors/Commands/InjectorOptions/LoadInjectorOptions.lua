@@ -2,24 +2,9 @@ if not isServer() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local Ini = require "Injectors/Utils/Ini"
+local File = require "Injectors/Utils/File"
 local Injectors = require "Injectors/Models/Injectors"
 local Roles = require "Injectors/Utils/Roles"
-
-local function readAllLines(path)
-    local reader = getFileReader(path, false)
-    if not reader then return nil end
-
-    local lines = {}
-    local line = reader:readLine()
-
-    while line do
-        table.insert(lines, line)
-        line = reader:readLine()
-    end
-
-    reader:close()
-    return lines
-end
 
 local function OnClientCommand(module, command, player, args)
     if module ~= "InjectorsModule" then return end
@@ -39,7 +24,7 @@ local function OnClientCommand(module, command, player, args)
     local injectorData = Injectors.Get(id)
 
     if not injectorData then
-        local lines = readAllLines("Injectors/" .. id .. ".ini")
+        local lines = File.ReadLines("Injectors/" .. id .. ".ini")
 
         if lines then
             injectorData = Ini.parse(lines)

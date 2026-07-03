@@ -6,17 +6,13 @@ module Injectors {
     item injector_blue
     {
         DisplayName = Blue Injector,
-        ItemType = base:food,
+        ItemType = base:normal,
         DisplayCategory = FirstAid,
         Icon = epinephrine,
         WorldStaticModel = epinephrine-closed,
         Tooltip = Tooltip_epinephrine,
-        OnEat = Epinephrine_OnInject,
         StaticModel = Injector,
-        EatType = Injector,
-        HungerChange = 0,
         Weight = 0.05,
-        CustomContextMenu = Inject,
         CantBeFrozen = TRUE,
         CustomEatSound = ,
     }
@@ -24,17 +20,13 @@ module Injectors {
     item injector_red
     {
         DisplayName = Red Injector,
-        ItemType = base:food,
+        ItemType = base:normal,
         DisplayCategory = FirstAid,
         Icon = hemostatic,
         WorldStaticModel = hemostatic-closed,
         Tooltip = Tooltip_hemostatic,
-        OnEat = Hemostatic_OnInject,
         StaticModel = Injector,
-        EatType = Injector,
-        HungerChange = 0,
         Weight = 0.05,
-        CustomContextMenu = Inject,
         CantBeFrozen = TRUE,
         CustomEatSound = ,
     }
@@ -42,17 +34,13 @@ module Injectors {
     item injector_green
     {
         DisplayName = Green Injector,
-        ItemType = base:food,
+        ItemType = base:normal,
         DisplayCategory = FirstAid,
         Icon = propital,
         WorldStaticModel = propital-closed,
         Tooltip = Tooltip_propital,
-        OnEat = Propital_OnInject,
         StaticModel = Injector,
-        EatType = Injector,
-        HungerChange = 0,
         Weight = 0.05,
-        CustomContextMenu = Inject,
         CantBeFrozen = TRUE,
         CustomEatSound = ,
     }

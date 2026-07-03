@@ -3,9 +3,9 @@ if not isServer() then return end
 
 local System = require "Injectors/System"
 
--- TODO: move each handler into respective effect definitions
 local Handlers = {}
 
+-- pain
 Handlers.ChangePainEffect = function(username, data)
     System.AddPlayerEffect(
         username,
@@ -23,6 +23,7 @@ Handlers.ChangePainEffect = function(username, data)
     )
 end
 
+-- hunger
 Handlers.ChangeHungerEffect = function(username, data)
     System.AddPlayerEffect(
         username,
@@ -36,6 +37,7 @@ Handlers.ChangeHungerEffect = function(username, data)
     )
 end
 
+-- thirst
 Handlers.ChangeThirstEffect = function(username, data)
     System.AddPlayerEffect(
         username,
@@ -49,6 +51,7 @@ Handlers.ChangeThirstEffect = function(username, data)
     )
 end
 
+-- overdose
 Handlers.ChangeOverdoseEffect = function(username, data)
     System.AddPlayerEffect(
         username,
@@ -62,6 +65,7 @@ Handlers.ChangeOverdoseEffect = function(username, data)
     )
 end
 
+-- id parsing
 setmetatable(Handlers, {
     __index = function(t, key)
         if type(key) == "string" then

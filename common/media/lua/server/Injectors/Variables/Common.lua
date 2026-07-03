@@ -20,7 +20,8 @@ function Common.InitVariables()
     Common.OVERDOSE_RATE = ensure(SandboxVars.Injectors.GLOBAL_OVERDOSE_RATE, "GLOBAL_OVERDOSE_RATE is nil")
     Common.OVERDOSE_THRESHOLD = ensure(SandboxVars.Injectors.GLOBAL_OVERDOSE_THRESHOLD, "GLOBAL_OVERDOSE_THRESHOLD is nil")
     Common.PAINKILLERS_OVERDOSE_PENALTY = ensure(SandboxVars.Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY, "GLOBAL_PAINKILLERS_OVERDOSE_PENALTY is nil")
-    Common.GLOBAL_LOGGER_OFFSET = ensure(SandboxVars.Injectors.GLOBAL_LOGGER_OFFSET, "GLOBAL_LOGGER_OFFSET is nil")
+    Common.LOGGER_OFFSET = ensure(SandboxVars.Injectors.GLOBAL_LOGGER_OFFSET, "GLOBAL_LOGGER_OFFSET is nil")
+    Common.INJECTION_DURATION = ensure(SandboxVars.Injectors.GLOBAL_INJECTION_DURATION, "GLOBAL_INJECTION_DURATION is nil")
 
     FileLogger.Info("Sandbox variables loaded.")
 end
@@ -32,7 +33,8 @@ function Common.DumpVariables()
     FileLogger.Raw("    OVERDOSE_RATE: " .. Common.OVERDOSE_RATE)
     FileLogger.Raw("    OVERDOSE_THRESHOLD: " .. Common.OVERDOSE_THRESHOLD)
     FileLogger.Raw("    PAINKILLERS_OVERDOSE_PENALTY: " .. Common.PAINKILLERS_OVERDOSE_PENALTY)
-    FileLogger.Raw("    GLOBAL_LOGGER_OFFSET: " .. Common.GLOBAL_LOGGER_OFFSET)
+    FileLogger.Raw("    LOGGER_OFFSET: " .. Common.LOGGER_OFFSET)
+    FileLogger.Raw("    INJECTION_DURATION: " .. Common.INJECTION_DURATION)
 end
 
 return Common

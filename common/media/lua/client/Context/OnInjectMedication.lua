@@ -1,8 +1,12 @@
-local InjectorsIDs = {
-    ["Injectors.injector_epinephrine"] = true,
-    ["Injectors.injector_propital"] = true,
-    ["Injectors.injector_hemostatic"] = true
+local Injectable = {
+    ["Injectors.injector_red"] = true,
+    ["Injectors.injector_blue"] = true,
+    ["Injectors.injector_green"] = true
 }
+
+local function isInjectable(item)
+    return Injectable[item:getFullType()]
+end
 
 local function OnInject(playerObj, item, bodyPart)
     ISTimedActionQueue.add(ISInjectMedicationAction:new(playerObj, item, bodyPart))
@@ -17,7 +21,7 @@ local function OnInjectContext(player, context, items)
             item = item.items[1]
         end
 
-        if InjectorsIDs[item:getFullType()] then
+        if isInjectable(item) then
             injector = item
             break
         end

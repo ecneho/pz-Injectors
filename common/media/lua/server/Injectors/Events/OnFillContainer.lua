@@ -4,9 +4,9 @@ if not isServer() then return end
 local hash = require "Injectors/Utils/Hash"
 
 local injectors = {
-    { Id = "Injectors.injector_hemostatic" },
-    { Id = "Injectors.injector_epinephrine" },
-    { Id = "Injectors.injector_propital" }
+    { Id = "Injectors.injector_red" },
+    { Id = "Injectors.injector_blue" },
+    { Id = "Injectors.injector_green" }
 }
 
 local function ReplaceDummies(container)

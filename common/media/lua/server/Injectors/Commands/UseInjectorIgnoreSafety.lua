@@ -30,7 +30,7 @@ local function OnClientCommand(module, command, player, clientArgs)
         "%s used Injector '%s' with admin override.",
         FileLogger.FormatPlayer(player), tostring(id)
     ))
-    UsedInjector.Used(player, id)
+    UsedInjector.Used(player, nil, id)
 end
 
 Events.OnClientCommand.Add(OnClientCommand)

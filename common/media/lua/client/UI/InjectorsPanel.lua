@@ -20,11 +20,11 @@ function InjectorsAdminWindow:createChildren()
 
     -- Command buttons
     local commands = {
-        { text = "Dump Sandbox Variables", command = "DumpVariables" },
-        { text = "Reduce General Health", command = "ReduceGeneralHealth" },
-        { text = "Apply Bleeding and Deep Wounds", command = "ApplyBleedingDeepWounds" },
-        { text = "Set Maximum Applicable Pain", command = "SetMaximumPain" },
-        { text = "Reload Sandbox Variables", command = "ReloadVariables" },
+        { text = getText("UI_Injectors_Admin_BtnDumpVars"), command = "DumpVariables" },
+        { text = getText("UI_Injectors_Admin_BtnReduceHealth"), command = "ReduceGeneralHealth" },
+        { text = getText("UI_Injectors_Admin_BtnApplyWounds"), command = "ApplyBleedingDeepWounds" },
+        { text = getText("UI_Injectors_Admin_BtnSetMaxPain"), command = "SetMaximumPain" },
+        { text = getText("UI_Injectors_Admin_BtnReloadVars"), command = "ReloadVariables" },
     }
 
     for _, c in ipairs(commands) do
@@ -38,7 +38,7 @@ function InjectorsAdminWindow:createChildren()
     end
 
     -- InjectorConstructorUI button
-    local openConstructor = ISButton:new(x, y, btnWid, BUTTON_HGT, "Open Injector Constructor", self,
+    local openConstructor = ISButton:new(x, y, btnWid, BUTTON_HGT, getText("UI_Injectors_Admin_BtnOpenConstructor"), self,
         function()
             if InjectorConstructorUI then
                 if InjectorConstructorUI.instance then
@@ -58,7 +58,7 @@ function InjectorsAdminWindow:createChildren()
     table.insert(self.buttons, openConstructor)
 
     -- InjectorEffectPanelUI button
-    local openEffects = ISButton:new(x, y, btnWid, BUTTON_HGT, "Open Injector Effects Panel", self,
+    local openEffects = ISButton:new(x, y, btnWid, BUTTON_HGT, getText("UI_Injectors_Admin_BtnOpenEffects"), self,
         function()
             if InjectorEffectPanelUI then
                 if InjectorEffectPanelUI.instance then
@@ -78,7 +78,7 @@ function InjectorsAdminWindow:createChildren()
     table.insert(self.buttons, openEffects)
 
     -- Close button
-    local close = ISButton:new(x, y, btnWid, BUTTON_HGT, "CLOSE", self, InjectorsAdminWindow.onClose)
+    local close = ISButton:new(x, y, btnWid, BUTTON_HGT, getText("UI_Injectors_Admin_BtnClose"), self, InjectorsAdminWindow.onClose)
     close:initialise()
     close:instantiate()
     close.borderColor = self.buttonBorderColor
@@ -98,7 +98,7 @@ function InjectorsAdminWindow:createChildren()
 end
 
 function InjectorsAdminWindow:render()
-    local title = "INJECTORS PANEL"
+    local title = getText("UI_Injectors_Admin_Title")
     self:drawText(title,
         self.width / 2 - (getTextManager():MeasureStringX(UIFont.Medium, title) / 2),
         UI_BORDER_SPACING,

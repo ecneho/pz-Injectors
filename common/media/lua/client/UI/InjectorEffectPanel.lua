@@ -10,7 +10,7 @@ InjectorEffectPanelUI = ISCollapsableWindow:derive("InjectorEffectPanelUI")
 
 function InjectorEffectPanelUI:initialise()
     ISCollapsableWindow.initialise(self)
-    self.title = "Injector Effects"
+    self.title = getText("UI_Injectors_Effects_Title")
 end
 
 function InjectorEffectPanelUI:createChildren()
@@ -40,7 +40,7 @@ function InjectorEffectPanelUI:createChildren()
     local totalWidth = self.width - (UI_BORDER_SPACING * 2)
     local buttonWidth = (totalWidth - buttonGap) / 2
 
-    self.requestButton = ISButton:new(UI_BORDER_SPACING, buttonY, buttonWidth, buttonHeight, "Request Effects", self, self.onRequestEffects)
+    self.requestButton = ISButton:new(UI_BORDER_SPACING, buttonY, buttonWidth, buttonHeight, getText("UI_Injectors_Effects_BtnRequest"), self, self.onRequestEffects)
     self.requestButton:initialise()
     self.requestButton:instantiate()
     self.requestButton.backgroundColor = self.backgroundColor
@@ -48,7 +48,7 @@ function InjectorEffectPanelUI:createChildren()
     self.requestButton.borderColor = self.buttonBorderColor
     self:addChild(self.requestButton)
 
-    self.clearButton = ISButton:new(UI_BORDER_SPACING + buttonWidth + buttonGap, buttonY, buttonWidth, buttonHeight, "Clear Effects", self, self.onClearEffects)
+    self.clearButton = ISButton:new(UI_BORDER_SPACING + buttonWidth + buttonGap, buttonY, buttonWidth, buttonHeight, getText("UI_Injectors_Effects_BtnClear"), self, self.onClearEffects)
     self.clearButton:initialise()
     self.clearButton:instantiate()
     self.clearButton.backgroundColor = self.backgroundColor
@@ -104,10 +104,10 @@ function InjectorEffectPanelUI:render()
     self:drawRect(barX, barY, barWidth * fillRatio, barHeight, 1, r, g, b)
     self:drawRectBorder(barX, barY, barWidth, barHeight, 1, 0.5, 0.5, 0.5)
 
-    local text = "pending..."
+    local text = getText("UI_Injectors_Effects_Pending")
 
     if self.overdoseLevel and self.maxOverdose and self.maxOverdose > 0 then
-        text = "Overdose Level: " .. self.overdoseLevel .. " / " .. self.maxOverdose
+        text = getText("UI_Injectors_Effects_OverdoseLevel", tostring(self.overdoseLevel), tostring(self.maxOverdose))
     end
 
     self:drawTextCentre(text, barX + (barWidth / 2), barY + (barHeight / 2) - (FONT_HGT_SMALL / 2), 1, 1, 1, 1, UIFont.Small)
@@ -123,7 +123,13 @@ function InjectorEffectPanelUI:drawEffectListItem(y, item, alt)
     local eff = item.item
     local contentWidth = self:getWidth() - (UI_BORDER_SPACING * 2)
 
-    local statusText = (eff.delayLeft > 0) and string.format("Delay: %d", eff.delayLeft) or string.format("Time: %d", eff.ticksLeft)
+    local statusText
+
+    if eff.delayLeft > 0 then
+        statusText = getText("UI_Injectors_Effects_Delay", tostring(eff.delayLeft))
+    else
+        statusText = getText("UI_Injectors_Effects_Time", tostring(eff.ticksLeft))
+    end
 
     self:drawText(eff.effectId, UI_BORDER_SPACING, y + 2, 1, 1, 1, 0.9, UIFont.Small)
     self:drawTextRight(statusText, self:getWidth() - UI_BORDER_SPACING, y + 2, 0.7, 0.7, 0.7, 0.9, UIFont.Small)

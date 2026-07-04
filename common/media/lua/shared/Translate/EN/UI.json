@@ -1,0 +1,55 @@
+{
+    "UI_Injectors_Title": "Injector Constructor",
+    "UI_Injectors_BtnLoad": "Load",
+    "UI_Injectors_BtnSave": "Save",
+    "UI_Injectors_BtnInvoke": "Invoke",
+    "UI_Injectors_BtnAddEffect": "Add Effect",
+    "UI_Injectors_BtnRemoveEffect": "Remove",
+
+    "UI_Injectors_Group_Timing": "Timing",
+    "UI_Injectors_Group_Time": "Time",
+    "UI_Injectors_Group_Values": "Values",
+    "UI_Injectors_Group_Scaling": "Scaling",
+
+    "UI_Injectors_Notes_ChangeHunger": "Controls hunger stat value. (range: 0-1)",
+    "UI_Injectors_Notes_ChangeThirst": "Controls thirst stat value. (range: 0-1)",
+    "UI_Injectors_Notes_ChangeOverdose": "Applies overdose penalty over time.",
+    "UI_Injectors_Notes_ChangePain": "Controls pain stat value. (range: 0-100)",
+
+    "UI_Injectors_Note_Duration": "how long the effect lasts",
+    "UI_Injectors_Note_PainDuration": "effect duration",
+    "UI_Injectors_Note_Delay": "delay before activation",
+    "UI_Injectors_Note_PainDelay": "activation delay",
+    "UI_Injectors_Note_Rate": "update frequency",
+
+    "UI_Injectors_Note_HungerAmount": "hunger delta applied each activation",
+    "UI_Injectors_Note_ThirstAmount": "thirst delta applied each activation",
+    "UI_Injectors_Note_OverdoseBase": "fixed overdose penalty applied each tick",
+    "UI_Injectors_Note_PainBase": "base pain delta applied each activation",
+
+    "UI_Injectors_Note_MinRange": "minimum linear scaling range",
+    "UI_Injectors_Note_MaxRange": "maximum linear scaling range",
+    "UI_Injectors_Note_MinScale": "minimum linear scaling multiplier",
+    "UI_Injectors_Note_MaxScale": "maximum linear scaling multiplier",
+
+    "UI_Injectors_Effects_Title": "Injector Effects",
+    "UI_Injectors_Effects_BtnRequest": "Request Effects",
+    "UI_Injectors_Effects_BtnClear": "Clear Effects",
+    
+    "UI_Injectors_Effects_Pending": "pending...",
+    "UI_Injectors_Effects_OverdoseLevel": "Overdose Level: %1$s / %2$s",
+    "UI_Injectors_Effects_Delay": "Delay: %1$s",
+    "UI_Injectors_Effects_Time": "Time: %1$s",
+
+    "UI_Injectors_Admin_Title": "INJECTORS PANEL",
+    "UI_Injectors_Admin_BtnDumpVars": "Dump Sandbox Variables",
+    "UI_Injectors_Admin_BtnReduceHealth": "Reduce General Health",
+    "UI_Injectors_Admin_BtnApplyWounds": "Apply Bleeding and Deep Wounds",
+    "UI_Injectors_Admin_BtnSetMaxPain": "Set Maximum Applicable Pain",
+    "UI_Injectors_Admin_BtnReloadVars": "Reload Sandbox Variables",
+    "UI_Injectors_Admin_BtnOpenConstructor": "Open Injector Constructor",
+    "UI_Injectors_Admin_BtnOpenEffects": "Open Injector Effects Panel",
+    "UI_Injectors_Admin_BtnClose": "CLOSE",
+
+    "UI_Injectors_Admin_BtnTools": "Injector Tools"
+}

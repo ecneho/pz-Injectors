@@ -22,63 +22,63 @@ local EFFECT_SCHEMA = {
 
 local EFFECT_UI = {
     ChangeHungerEffect = {
-        notes = "Controls hunger stat value. (range: 0-1)",
+        notes = getText("UI_Injectors_Notes_ChangeHunger"),
         groups = {
-            Timing = {
-                { value = "duration", notes = "how long the effect lasts" },
-                { value = "delay", notes = "delay before activation" },
-                { value = "rate", notes = "update frequency" }
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
             },
-            Values = {
-                { value = "amount", notes = "hunger delta applied each activation" }
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_HungerAmount") }
             }
         }
     },
 
     ChangeThirstEffect = {
-        notes = "Controls thirst stat value. (range: 0-1)",
+        notes = getText("UI_Injectors_Notes_ChangeThirst"),
         groups = {
-            Timing = {
-                { value = "duration", notes = "how long the effect lasts" },
-                { value = "delay", notes = "delay before activation" },
-                { value = "rate", notes = "update frequency" }
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
             },
-            Values = {
-                { value = "amount", notes = "thirst delta applied each activation" }
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_ThirstAmount") }
             }
         }
     },
 
     ChangeOverdoseEffect = {
-        notes = "Applies overdose penalty over time.",
+        notes = getText("UI_Injectors_Notes_ChangeOverdose"),
         groups = {
-            Timing = {
-                { value = "duration", notes = "how long the effect lasts" },
-                { value = "delay", notes = "delay before activation" },
-                { value = "rate", notes = "update frequency" }
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
             },
-            Values = {
-                { value = "base", notes = "fixed overdose penalty applied each tick" }
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "base", notes = getText("UI_Injectors_Note_OverdoseBase") }
             }
         }
     },
 
     ChangePainEffect = {
-        notes = "Controls pain stat value. (range: 0-100)",
+        notes = getText("UI_Injectors_Notes_ChangePain"),
         groups = {
-            Time = {
-                { value = "duration", notes = "effect duration" },
-                { value = "delay", notes = "activation delay" },
-                { value = "rate", notes = "update frequency" }
+            [getText("UI_Injectors_Group_Time")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_PainDuration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_PainDelay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
             },
-            Values = {
-                { value = "base", notes = "base pain delta applied each activation" },
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "base", notes = getText("UI_Injectors_Note_PainBase") },
             },
-            Scaling = {
-                { value = "minRange", notes = "minimum linear scaling range" },
-                { value = "maxRange", notes = "maximum linear scaling range" },
-                { value = "minScale", notes = "minimum linear scaling multiplier" },
-                { value = "maxScale", notes = "maximum linear scaling multiplier" }
+            [getText("UI_Injectors_Group_Scaling")] = {
+                { value = "minRange", notes = getText("UI_Injectors_Note_MinRange") },
+                { value = "maxRange", notes = getText("UI_Injectors_Note_MaxRange") },
+                { value = "minScale", notes = getText("UI_Injectors_Note_MinScale") },
+                { value = "maxScale", notes = getText("UI_Injectors_Note_MaxScale") }
             }
         }
     }
@@ -91,7 +91,7 @@ InjectorConstructorUI = ISCollapsableWindow:derive("InjectorConstructorUI")
 
 function InjectorConstructorUI:initialise()
     ISCollapsableWindow.initialise(self)
-    self.title = "Injector Constructor"
+    self.title = getText("UI_Injectors_Title")
 end
 
 function InjectorConstructorUI:createChildren()
@@ -109,25 +109,24 @@ function InjectorConstructorUI:createChildren()
 
     yOff = self.injectorCombo:getBottom() + UI_BORDER_SPACING
 
-    self.btnLoad = ISButton:new(UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, "Load", self, self.onLoad)
+    self.btnLoad = ISButton:new(UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, getText("UI_Injectors_BtnLoad"), self, self.onLoad)
     self.btnLoad:initialise()
     self.btnLoad:instantiate()
-    -- Copy the table so they don't share the same reference
+
     self.btnLoad.borderColor = { r = self.buttonBorderColor.r, g = self.buttonBorderColor.g, b = self.buttonBorderColor.b, a = self.buttonBorderColor.a }
     self:addChild(self.btnLoad)
 
-    self.btnSave = ISButton:new(self.btnLoad:getRight() + UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, "Save", self, self.onSave)
+    self.btnSave = ISButton:new(self.btnLoad:getRight() + UI_BORDER_SPACING, yOff, 50, BUTTON_HGT, getText("UI_Injectors_BtnSave"), self, self.onSave)
     self.btnSave:initialise()
     self.btnSave:instantiate()
     self.btnSave.borderColor = { r = self.buttonBorderColor.r, g = self.buttonBorderColor.g, b = self.buttonBorderColor.b, a = self.buttonBorderColor.a }
     self:addChild(self.btnSave)
-    
-    -- Save the default colors so we can revert back to them cleanly
+
     self.btnSaveDefaultBG = { r = self.btnSave.backgroundColor.r, g = self.btnSave.backgroundColor.g, b = self.btnSave.backgroundColor.b, a = self.btnSave.backgroundColor.a }
     self.btnSaveDefaultBorder = { r = self.btnSave.borderColor.r, g = self.btnSave.borderColor.g, b = self.btnSave.borderColor.b, a = self.btnSave.borderColor.a }
     self.btnSaveDefaultHover = { r = self.btnSave.backgroundColorMouseOver.r, g = self.btnSave.backgroundColorMouseOver.g, b = self.btnSave.backgroundColorMouseOver.b, a = self.btnSave.backgroundColorMouseOver.a }
 
-    self.btnInvoke = ISButton:new(self.btnSave:getRight() + UI_BORDER_SPACING, yOff, 60, BUTTON_HGT, "Invoke", self, self.onInvoke)
+    self.btnInvoke = ISButton:new(self.btnSave:getRight() + UI_BORDER_SPACING, yOff, 60, BUTTON_HGT, getText("UI_Injectors_BtnInvoke"), self, self.onInvoke)
     self.btnInvoke:initialise()
     self.btnInvoke:instantiate()
     self.btnInvoke.borderColor = { r = self.buttonBorderColor.r, g = self.buttonBorderColor.g, b = self.buttonBorderColor.b, a = self.buttonBorderColor.a }
@@ -162,13 +161,13 @@ function InjectorConstructorUI:createChildren()
     local actionBtnY = self.effectTypeCombo:getBottom() + UI_BORDER_SPACING
     local actionBtnWidth = (leftPanelWidth - UI_BORDER_SPACING) / 2
 
-    self.btnAddEffect = ISButton:new(UI_BORDER_SPACING, actionBtnY, actionBtnWidth, BUTTON_HGT, "Add Effect", self, self.onAddEffect)
+    self.btnAddEffect = ISButton:new(UI_BORDER_SPACING, actionBtnY, actionBtnWidth, BUTTON_HGT, getText("UI_Injectors_BtnAddEffect"), self, self.onAddEffect)
     self.btnAddEffect:initialise()
     self.btnAddEffect:instantiate()
     self.btnAddEffect:enableAcceptColor()
     self:addChild(self.btnAddEffect)
 
-    self.btnRemoveEffect = ISButton:new(self.btnAddEffect:getRight() + UI_BORDER_SPACING, actionBtnY, actionBtnWidth, BUTTON_HGT, "Remove", self, self.onRemoveEffect)
+    self.btnRemoveEffect = ISButton:new(self.btnAddEffect:getRight() + UI_BORDER_SPACING, actionBtnY, actionBtnWidth, BUTTON_HGT, getText("UI_Injectors_BtnRemoveEffect"), self, self.onRemoveEffect)
     self.btnRemoveEffect:initialise()
     self.btnRemoveEffect:instantiate()
     self.btnRemoveEffect:enableCancelColor()
@@ -203,34 +202,31 @@ function InjectorConstructorUI:createChildren()
     self:onLoad()
 end
 
--- Tracks and toggles the unsaved changes state for the Save button
 function InjectorConstructorUI:setUnsavedChanges(hasChanges)
     if not self.btnSave then return end
-    
+
     if hasChanges then
-        -- Mimics Zomboid's enableAcceptColor() without permanently altering behavior
         self.btnSave.backgroundColor = { r = 0, g = 0.5, b = 0, a = 1 }
         self.btnSave.borderColor = { r = 0, g = 1, b = 0, a = 0.7 }
         self.btnSave.backgroundColorMouseOver = { r = 0, g = 1, b = 0, a = 0.5 }
     else
-        -- Restore default colors
-        self.btnSave.backgroundColor = { 
-            r = self.btnSaveDefaultBG.r, 
-            g = self.btnSaveDefaultBG.g, 
-            b = self.btnSaveDefaultBG.b, 
-            a = self.btnSaveDefaultBG.a 
+        self.btnSave.backgroundColor = {
+            r = self.btnSaveDefaultBG.r,
+            g = self.btnSaveDefaultBG.g,
+            b = self.btnSaveDefaultBG.b,
+            a = self.btnSaveDefaultBG.a
         }
         self.btnSave.borderColor = { 
-            r = self.btnSaveDefaultBorder.r, 
-            g = self.btnSaveDefaultBorder.g, 
-            b = self.btnSaveDefaultBorder.b, 
-            a = self.btnSaveDefaultBorder.a 
+            r = self.btnSaveDefaultBorder.r,
+            g = self.btnSaveDefaultBorder.g,
+            b = self.btnSaveDefaultBorder.b,
+            a = self.btnSaveDefaultBorder.a
         }
-        self.btnSave.backgroundColorMouseOver = { 
-            r = self.btnSaveDefaultHover.r, 
-            g = self.btnSaveDefaultHover.g, 
-            b = self.btnSaveDefaultHover.b, 
-            a = self.btnSaveDefaultHover.a 
+        self.btnSave.backgroundColorMouseOver = {
+            r = self.btnSaveDefaultHover.r,
+            g = self.btnSaveDefaultHover.g,
+            b = self.btnSaveDefaultHover.b,
+            a = self.btnSaveDefaultHover.a
         }
     end
 end
@@ -338,12 +334,9 @@ function InjectorConstructorUI:buildPropertiesUI(effectKey)
                 local input = ISTextEntryBox:new(tostring(effectData[fieldName] or "0"), UI_BORDER_SPACING + labelWidth, innerY - 2, inputWidth, BUTTON_HGT)
                 input:initialise()
                 input:instantiate()
-                
-                -- Hook into the text change event to light up the save button
-                input.onTextChange = function(box) self:setUnsavedChanges(true) end
-                
-                self.propertiesPanel:addChild(input)
 
+                input.onTextChange = function(box) self:setUnsavedChanges(true) end
+                self.propertiesPanel:addChild(input)
                 self.dynamicInputs[fieldName] = input
 
                 innerY = innerY + BUTTON_HGT + UI_BORDER_SPACING
@@ -361,10 +354,9 @@ function InjectorConstructorUI:buildPropertiesUI(effectKey)
             local input = ISTextEntryBox:new(tostring(effectData[fieldName] or "0"), UI_BORDER_SPACING + labelWidth, innerY - 2, inputWidth, BUTTON_HGT)
             input:initialise()
             input:instantiate()
-            
-            -- Hook into the text change event to light up the save button
+
             input.onTextChange = function(box) self:setUnsavedChanges(true) end
-                
+
             self.propertiesPanel:addChild(input)
 
             self.dynamicInputs[fieldName] = input
@@ -397,8 +389,7 @@ function InjectorConstructorUI:onAddEffect()
 
     self.currentInjectorData.Effects[newEffectKey] = newEffectData
     self:refreshEffectList()
-    
-    -- Flag changes when adding
+
     self:setUnsavedChanges(true)
 
     for i, item in ipairs(self.effectList.items) do
@@ -418,8 +409,7 @@ function InjectorConstructorUI:onRemoveEffect()
     self.selectedEffectName = nil
     self.propertiesPanel:clearChildren()
     self:refreshEffectList()
-    
-    -- Flag changes when removing
+
     self:setUnsavedChanges(true)
 
     if #self.effectList.items > 0 then
@@ -489,8 +479,6 @@ function InjectorConstructorUI:onLoad()
     self.effectList:clear()
     self.propertiesPanel:clearChildren()
     self.selectedEffectName = nil
-    
-    -- Reset button immediately visually
     self:setUnsavedChanges(false)
 
     sendClientCommand(getPlayer(), "InjectorsModule", "LoadInjectorOptions", { id = selectedId })
@@ -503,8 +491,6 @@ function InjectorConstructorUI:onSave()
     self.currentInjectorData.id = selectedId
 
     sendClientCommand(getPlayer(), "InjectorsModule", "SaveInjectorOptions", { id = selectedId, data = self.currentInjectorData })
-    
-    -- Reset color once saved
     self:setUnsavedChanges(false)
 end
 
@@ -533,8 +519,6 @@ local function OnServerCommand(module, command, args)
     ui.currentInjectorData = args.data or {}
     ui.currentInjectorData.Effects = ui.currentInjectorData.Effects or {}
     ui:refreshEffectList()
-    
-    -- Ensure fresh data turns the button state off
     ui:setUnsavedChanges(false)
 
     if #ui.effectList.items > 0 then

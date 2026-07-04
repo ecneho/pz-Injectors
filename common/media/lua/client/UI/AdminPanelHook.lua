@@ -6,7 +6,7 @@ function ISAdminPanelUI:createChildren()
     local btnWid = 200
     local btnHgt = getTextManager():getFontHeight(UIFont.Small) + 6
 
-    self.injectorsBtn = ISButton:new(10, 10, btnWid, btnHgt, "Injector Tools", self, function()
+    self.injectorsBtn = ISButton:new(10, 10, btnWid, btnHgt, getText("UI_Injectors_Admin_BtnTools"), self, function()
         if InjectorsAdminWindow.instance then
             InjectorsAdminWindow.instance:removeFromUIManager()
         end

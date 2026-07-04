@@ -24,6 +24,9 @@ function Common.InitVariables()
     Common.LOGGER_OFFSET = ensure(SandboxVars.Injectors.GLOBAL_LOGGER_OFFSET, "GLOBAL_LOGGER_OFFSET is nil")
     Common.INJECTION_DURATION = ensure(SandboxVars.Injectors.GLOBAL_INJECTION_DURATION, "GLOBAL_INJECTION_DURATION is nil")
     Common.INJECTOR_EQUIP_SPEED = ensure(SandboxVars.Injectors.GLOBAL_INJECTOR_EQUIP_SPEED, "GLOBAL_INJECTOR_EQUIP_SPEED is nil")
+    Common.RED_INJECTOR_SPAWN_WEIGHT = ensure(SandboxVars.Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT, "GLOBAL_RED_INJECTOR_SPAWN_WEIGHT is nil")
+    Common.BLUE_INJECTOR_SPAWN_WEIGHT = ensure(SandboxVars.Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT, "GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT is nil")
+    Common.GREEN_INJECTOR_SPAWN_WEIGHT = ensure(SandboxVars.Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT, "GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT is nil")
 
     FileLogger.Info("Sandbox variables loaded.")
 end
@@ -34,11 +37,14 @@ function Common.DumpVariables()
     FileLogger.Raw("    OVERDOSE_DECAY: " .. Common.OVERDOSE_DECAY)
     FileLogger.Raw("    OVERDOSE_RATE: " .. Common.OVERDOSE_RATE)
     FileLogger.Raw("    OVERDOSE_THRESHOLD: " .. Common.OVERDOSE_THRESHOLD)
-    FileLogger.Raw("    OVERDOSE_DEATH_ENABLED: " .. Common.OVERDOSE_DEATH_ENABLED)
+    FileLogger.Raw("    OVERDOSE_DEATH_ENABLED: " .. tostring(Common.OVERDOSE_DEATH_ENABLED))
     FileLogger.Raw("    PAINKILLERS_OVERDOSE_PENALTY: " .. Common.PAINKILLERS_OVERDOSE_PENALTY)
     FileLogger.Raw("    LOGGER_OFFSET: " .. Common.LOGGER_OFFSET)
     FileLogger.Raw("    INJECTION_DURATION: " .. Common.INJECTION_DURATION)
     FileLogger.Raw("    INJECTOR_EQUIP_SPEED: " .. Common.INJECTOR_EQUIP_SPEED)
+    FileLogger.Raw("    RED_INJECTOR_SPAWN_WEIGHT: " .. Common.RED_INJECTOR_SPAWN_WEIGHT)
+    FileLogger.Raw("    BLUE_INJECTOR_SPAWN_WEIGHT: " .. Common.BLUE_INJECTOR_SPAWN_WEIGHT)
+    FileLogger.Raw("    GREEN_INJECTOR_SPAWN_WEIGHT: " .. Common.GREEN_INJECTOR_SPAWN_WEIGHT)
 end
 
 return Common

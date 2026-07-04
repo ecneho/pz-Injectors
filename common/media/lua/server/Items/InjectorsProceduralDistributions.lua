@@ -1,50 +1,56 @@
 local spawner = "Injectors.injector_empty"
-local myDistribution = {
-    MedicalCabinet = {
-        items = { spawner, 5 }
-    },
-    HospitalRoomCounter = {
-        items = { spawner, 5 }
-    },
-    HospitalRoomShelves = {
-        items = { spawner, 5 }
-    },
-    MedicalStorageOutfit = {
-        items = { spawner, 5 }
-    },
-    MedicalStorageTools = {
-        items = { spawner, 5 }
-    },
-    BinHospital = {
-        items = { spawner, 5 }
-    },
-    HospitalLockers = {
-        items = { spawner, 5 }
-    },
-    MedicalClinicTools = {
-        items = { spawner, 5 }
-    },
-    MedicalClinicDrugs = {
-        items = { spawner, 5 }
-    }
-}
+local CONFIG_FILE = "Injectors/distribution.ini"
 
----@diagnostic disable-next-line Undefined field `list`
-local ProceduralDistributions_list = ProceduralDistributions.list
-local table_insert = table.insert
+local function injectItem(containerName, item, weight)
+    ---@diagnostic disable-next-line Undefined field `list`
+    local container = ProceduralDistributions.list[containerName]
+    table.insert(container.items, item)
+    table.insert(container.items, weight)
+end
 
-local function insertInDistribution(distrib)
-    for k,v in pairs(distrib) do
-        local ProceduralDistributions_list_k = ProceduralDistributions_list[k]
-
-        local items = v.items
-        local ProceduralDistributions_list_k_items = ProceduralDistributions_list_k.items
-        if items then
-            for i = 1,#items do
-                table_insert(ProceduralDistributions_list_k_items,items[i])
-            end
-        end
+local function initializeFile()
+    local writer = getFileWriter(CONFIG_FILE, false, false)
+    if writer then
+        writer:write("10\n")
+        writer:write("MedicalCabinet\n")
+        writer:write("HospitalRoomCounter\n")
+        writer:write("HospitalRoomShelves\n")
+        writer:write("MedicalStorageOutfit\n")
+        writer:write("MedicalStorageTools\n")
+        writer:write("BinHospital\n")
+        writer:write("HospitalLockers\n")
+        writer:write("MedicalClinicTools\n")
+        writer:write("MedicalClinicDrugs\n")
+        writer:close()
     end
 end
 
-insertInDistribution(myDistribution)
+local function loadCustomDistributions()
+    local reader = getFileReader(CONFIG_FILE, false)
+    if not reader then
+        initializeFile()
+        reader = getFileReader(CONFIG_FILE, false)
+    end
+
+    if not reader then return end
+
+    local chanceStr = reader:readLine()
+    if not chanceStr then
+        reader:close()
+        return
+    end
+
+    local chance = tonumber(chanceStr) or 10
+
+    local containerName = reader:readLine()
+    while containerName ~= nil do
+        if containerName ~= "" then
+            injectItem(containerName, spawner, chance)
+        end
+        containerName = reader:readLine()
+    end
+
+    reader:close()
+end
+
+loadCustomDistributions()

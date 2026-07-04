@@ -87,3 +87,33 @@ option Injectors.GLOBAL_LOGGER_OFFSET {
     page = Injectors_global,
     translation = Injectors.GLOBAL_LOGGER_OFFSET,
 }
+
+option Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT,
+}

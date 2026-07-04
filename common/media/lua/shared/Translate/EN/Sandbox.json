@@ -18,5 +18,11 @@
 	"Sandbox_Injectors.GLOBAL_INJECTOR_EQUIP_SPEED": "Injector Equip Speed",
 	"Sandbox_Injectors.GLOBAL_INJECTOR_EQUIP_SPEED_tooltip": "How much time it takes to equip an injector.",
 	"Sandbox_Injectors.GLOBAL_LOGGER_OFFSET": "Logger Time Offset",
-	"Sandbox_Injectors.GLOBAL_LOGGER_OFFSET_tooltip": "Timezone offset applied to log timestamps in hours."
+	"Sandbox_Injectors.GLOBAL_LOGGER_OFFSET_tooltip": "Timezone offset applied to log timestamps in hours.",
+	"Sandbox_Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT": "Red Injector Spawn Weight",
+	"Sandbox_Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT_tooltip": "Chance for the red injector to take place of the spawned dummy injector.<BR>Uses custom weights. Total custom spawn weight must not exceed 100.",
+	"Sandbox_Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT": "Blue Injector Spawn Weight",
+	"Sandbox_Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT_tooltip": "Chance for the blue injector to take place of the spawned dummy injector.<BR>Uses custom weights. Total custom spawn weight must not exceed 100.",
+	"Sandbox_Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT": "Green Injector Spawn Weight",
+	"Sandbox_Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT_tooltip": "Chance for the green injector to take place of the spawned dummy injector.<BR>Uses custom weights. Total custom spawn weight must not exceed 100."
 }

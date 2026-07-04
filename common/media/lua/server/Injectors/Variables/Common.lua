@@ -23,6 +23,7 @@ function Common.InitVariables()
     Common.PAINKILLERS_OVERDOSE_PENALTY = ensure(SandboxVars.Injectors.GLOBAL_PAINKILLERS_OVERDOSE_PENALTY, "GLOBAL_PAINKILLERS_OVERDOSE_PENALTY is nil")
     Common.LOGGER_OFFSET = ensure(SandboxVars.Injectors.GLOBAL_LOGGER_OFFSET, "GLOBAL_LOGGER_OFFSET is nil")
     Common.INJECTION_DURATION = ensure(SandboxVars.Injectors.GLOBAL_INJECTION_DURATION, "GLOBAL_INJECTION_DURATION is nil")
+    Common.INJECTOR_EQUIP_SPEED = ensure(SandboxVars.Injectors.GLOBAL_INJECTOR_EQUIP_SPEED, "GLOBAL_INJECTOR_EQUIP_SPEED is nil")
 
     FileLogger.Info("Sandbox variables loaded.")
 end
@@ -37,6 +38,7 @@ function Common.DumpVariables()
     FileLogger.Raw("    PAINKILLERS_OVERDOSE_PENALTY: " .. Common.PAINKILLERS_OVERDOSE_PENALTY)
     FileLogger.Raw("    LOGGER_OFFSET: " .. Common.LOGGER_OFFSET)
     FileLogger.Raw("    INJECTION_DURATION: " .. Common.INJECTION_DURATION)
+    FileLogger.Raw("    INJECTOR_EQUIP_SPEED: " .. Common.INJECTOR_EQUIP_SPEED)
 end
 
 return Common

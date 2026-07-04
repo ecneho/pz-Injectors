@@ -58,6 +58,16 @@ option Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED {
     translation = Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED,
 }
 
+option Injectors.GLOBAL_INJECTOR_EQUIP_SPEED {
+    type = integer,
+    default = 10,
+    min = 1,
+    max = 1000,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_INJECTOR_EQUIP_SPEED,
+}
+
 option Injectors.GLOBAL_INJECTION_DURATION {
     type = integer,
     default = 10,

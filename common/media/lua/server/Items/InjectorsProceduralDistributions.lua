@@ -1,4 +1,4 @@
-local spawner = "injectorItems.injector_empty"
+local spawner = "Injectors.injector_empty"
 local myDistribution = {
     MedicalCabinet = {
         items = { spawner, 5 }

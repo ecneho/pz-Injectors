@@ -15,6 +15,8 @@
 	"Sandbox_Injectors.GLOBAL_OVERDOSE_DEATH_ENABLED_tooltip": "Whether to force character death when overdose reaches 100%.",
 	"Sandbox_Injectors.GLOBAL_INJECTION_DURATION": "Injection Duration",
 	"Sandbox_Injectors.GLOBAL_INJECTION_DURATION_tooltip": "Duration of the timed action required to apply an injector.",
+	"Sandbox_Injectors.GLOBAL_INJECTOR_EQUIP_SPEED": "Injector Equip Speed",
+	"Sandbox_Injectors.GLOBAL_INJECTOR_EQUIP_SPEED_tooltip": "How much time it takes to equip an injector.",
 	"Sandbox_Injectors.GLOBAL_LOGGER_OFFSET": "Logger Time Offset",
 	"Sandbox_Injectors.GLOBAL_LOGGER_OFFSET_tooltip": "Timezone offset applied to log timestamps in hours."
 }

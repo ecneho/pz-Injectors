@@ -36,7 +36,10 @@ function Settings.Used(player, item, id)
                 FileLogger.FormatPlayer(player), tostring(itemID), tostring(generatedSignature), tostring(itemSignature)
             ))
         else
-            FileLogger.Info(string.format("Injector signature matched for ID: %s", tostring(itemID)))
+            FileLogger.Info(string.format(
+                "Injector signature match. Player: %s, ItemID: %s, Expected: %s, Received: %s",
+                FileLogger.FormatPlayer(player), tostring(itemID), tostring(generatedSignature), tostring(itemSignature)
+            ))
         end
     end
 

@@ -37,9 +37,9 @@
     "UI_Injectors_Effects_BtnClear": "Clear Effects",
     
     "UI_Injectors_Effects_Pending": "pending...",
-    "UI_Injectors_Effects_OverdoseLevel": "Overdose Level: %1$s / %2$s",
-    "UI_Injectors_Effects_Delay": "Delay: %1$s",
-    "UI_Injectors_Effects_Time": "Time: %1$s",
+    "UI_Injectors_Effects_OverdoseLevel": "Overdose Level: %1 / %2",
+    "UI_Injectors_Effects_Delay": "Delay: %1",
+    "UI_Injectors_Effects_Time": "Time: %1",
 
     "UI_Injectors_Admin_Title": "INJECTORS PANEL",
     "UI_Injectors_Admin_BtnDumpVars": "Dump Sandbox Variables",

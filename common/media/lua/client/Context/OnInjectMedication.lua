@@ -1,3 +1,5 @@
+require "luautils"
+
 local Injectable = {
     ["Injectors.injector_red"] = true,
     ["Injectors.injector_blue"] = true,
@@ -8,8 +10,16 @@ local function isInjectable(item)
     return Injectable[item:getFullType()]
 end
 
-local function OnInject(playerObj, item, bodyPart)
-    ISTimedActionQueue.add(ISInjectMedicationAction:new(playerObj, item, bodyPart))
+local function OnInject(playerObj, item)
+    if luautils.haveToBeTransfered(playerObj, item) then
+        ISTimedActionQueue.add(ISInventoryTransferAction:new(playerObj, item, item:getContainer(), playerObj:getInventory()))
+    end
+
+    if not playerObj:isHandItem(item) then
+        ISTimedActionQueue.add(ISEquipWeaponAction:new(playerObj, item, SandboxVars.Injectors.GLOBAL_INJECTOR_EQUIP_SPEED, true, false))
+    end
+
+    ISTimedActionQueue.add(ISInjectMedicationAction:new(playerObj, item))
 end
 
 local function OnInjectContext(player, context, items)

@@ -15,22 +15,24 @@ local function OnMendDeepWoundTick(player, ticks, args)
 
     for i = 0, parts:size() - 1 do
         local part = parts:get(i) ---@type BodyPart
+        local partType = part:getType()
+
+        local coefficient = args.coefficients[partType] or 1.0
+        local delta = args.base * coefficient
+
+        if delta < 0 and not part:isDeepWounded() then
+            part:setDeepWounded(true)
+        end
 
         if part:isDeepWounded() then
-            local partType = part:getType()
-            local coefficient = args.coefficients[partType] or 1.0
-
             local deepWoundTime = part:getDeepWoundTime()
-            local delta = args.base * coefficient
+            local updated = math.max(0, deepWoundTime - delta)
 
-            local updated = deepWoundTime - delta
-            local clamped = math.max(0, updated)
-
-            if clamped ~= deepWoundTime then
-                part:setDeepWoundTime(clamped)
+            if updated ~= deepWoundTime then
+                part:setDeepWoundTime(updated)
             end
 
-            if clamped <= 3 then
+            if delta > 0 and updated <= 3 then
                 part:setDeepWounded(false)
             end
         end

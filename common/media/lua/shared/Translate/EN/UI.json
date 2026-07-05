@@ -16,6 +16,50 @@
     "UI_Injectors_Notes_ChangeOverdose": "Applies overdose penalty over time.",
     "UI_Injectors_Notes_ChangePain": "Controls pain stat value. (range: 0-100)",
 
+    "UI_Injectors_Notes_ChangeIntoxication": "Controls intoxication level over time. (range: 0-100)",
+    "UI_Injectors_Notes_ChangeZombieInfection": "Controls zombie infection progression. (range: 0-100)",
+    "UI_Injectors_Notes_ChangeFoodSickness": "Controls food sickness level. (range: 0-100)",
+    "UI_Injectors_Notes_ChangeEndurance": "Controls endurance recovery or drain. (range: 0-1)",
+    "UI_Injectors_Notes_ChangeTemperature": "Controls body temperature over time. (range: 20-40)",
+
+    "UI_Injectors_Notes_ChangeGeneralHealth": "Controls general health. (range: 0-100)",
+
+    "UI_Injectors_Note_GeneralHealthDuration": "effect duration",
+    "UI_Injectors_Note_GeneralHealthDelay": "activation delay",
+    "UI_Injectors_Note_GeneralHealthBase": "base health delta applied each activation",
+
+    "UI_Injectors_Notes_MendBleeding": "Reduces bleeding time on affected body parts.",
+    "UI_Injectors_Notes_MendDeepWound": "Reduces deep wound healing time on affected body parts.",
+
+    "UI_Injectors_Group_BodyParts": "Body Parts",
+
+    "UI_Injectors_Note_MendBleedingBase": "base bleeding reduction per activation",
+    "UI_Injectors_Note_MendDeepWoundBase": "base deep wound reduction per activation",
+
+    "UI_Injectors_Note_IntoxicationAmount": "intoxication delta per tick",
+    "UI_Injectors_Note_ZombieInfectionAmount": "infection delta per tick",
+    "UI_Injectors_Note_FoodSicknessAmount": "sickness delta per tick",
+    "UI_Injectors_Note_EnduranceAmount": "endurance delta per tick",
+    "UI_Injectors_Note_TemperatureAmount": "temperature delta per tick",
+
+    "UI_Injectors_Note_Head": "Head coefficient",
+    "UI_Injectors_Note_Neck": "Neck coefficient",
+    "UI_Injectors_Note_TorsoUpper": "Upper torso coefficient",
+    "UI_Injectors_Note_TorsoLower": "Lower torso coefficient",
+    "UI_Injectors_Note_LeftUpperArm": "Left upper arm coefficient",
+    "UI_Injectors_Note_RightUpperArm": "Right upper arm coefficient",
+    "UI_Injectors_Note_LeftForeArm": "Left forearm coefficient",
+    "UI_Injectors_Note_RightForeArm": "Right forearm coefficient",
+    "UI_Injectors_Note_LeftHand": "Left hand coefficient",
+    "UI_Injectors_Note_RightHand": "Right hand coefficient",
+    "UI_Injectors_Note_Groin": "Groin coefficient",
+    "UI_Injectors_Note_LeftUpperLeg": "Left upper leg coefficient",
+    "UI_Injectors_Note_RightUpperLeg": "Right upper leg coefficient",
+    "UI_Injectors_Note_LeftLowerLeg": "Left lower leg coefficient",
+    "UI_Injectors_Note_RightLowerLeg": "Right lower leg coefficient",
+    "UI_Injectors_Note_LeftFoot": "Left foot coefficient",
+    "UI_Injectors_Note_RightFoot": "Right foot coefficient",
+
     "UI_Injectors_Note_Duration": "how long the effect lasts",
     "UI_Injectors_Note_PainDuration": "effect duration",
     "UI_Injectors_Note_Delay": "delay before activation",

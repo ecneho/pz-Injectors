@@ -15,20 +15,29 @@ local function OnMendBleedingTick(player, ticks, args)
 
     for i = 0, parts:size() - 1 do
         local part = parts:get(i) ---@type BodyPart
+        local partType = part:getType()
 
-        if part:bleeding() then
-            local partType = part:getType()
-            local coefficient = args.coefficients[partType] or 0.0
+        local coefficient = args.coefficients[partType] or 0.0
+        local delta = args.base * coefficient
+
+        if delta > 0 then
+            if part:bleeding() then
+                local bleedingTime = part:getBleedingTime()
+                local clamped = math.max(0, bleedingTime - delta)
+
+                if clamped ~= bleedingTime then
+                    part:setBleedingTime(clamped)
+                end
+            end
+        end
+
+        if delta < 0 then
+            if not part:bleeding() then
+                part:setBleeding(true)
+            end
 
             local bleedingTime = part:getBleedingTime()
-            local delta = args.base * coefficient
-
-            local updated = bleedingTime - delta
-            local clamped = math.max(0, updated)
-
-            if clamped ~= bleedingTime then
-                part:setBleedingTime(clamped)
-            end
+            part:setBleedingTime(bleedingTime + math.abs(delta))
         end
     end
 end

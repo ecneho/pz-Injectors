@@ -12,12 +12,68 @@ local UI_BORDER_SPACING = 10
 local BUTTON_HGT = FONT_HGT_SMALL + 6
 local COMBO_HGT = FONT_HGT_SMALL + 8
 
+local BODY_PARTS = {
+    "Head",
+    "Neck",
+    "Torso_Upper",
+    "Torso_Lower",
+    "UpperArm_L",
+    "UpperArm_R",
+    "ForeArm_L",
+    "ForeArm_R",
+    "Hand_L",
+    "Hand_R",
+    "Groin",
+    "UpperLeg_L",
+    "UpperLeg_R",
+    "LowerLeg_L",
+    "LowerLeg_R",
+    "Foot_L",
+    "Foot_R",
+}
+
+local BODY_PART_GROUPS = {
+    { value = "Head",         notes = getText("UI_Injectors_Note_Head") },
+    { value = "Neck",         notes = getText("UI_Injectors_Note_Neck") },
+
+    { value = "Torso_Upper",  notes = getText("UI_Injectors_Note_TorsoUpper") },
+    { value = "Torso_Lower",  notes = getText("UI_Injectors_Note_TorsoLower") },
+
+    { value = "UpperArm_L",   notes = getText("UI_Injectors_Note_LeftUpperArm") },
+    { value = "UpperArm_R",   notes = getText("UI_Injectors_Note_RightUpperArm") },
+
+    { value = "ForeArm_L",    notes = getText("UI_Injectors_Note_LeftForeArm") },
+    { value = "ForeArm_R",    notes = getText("UI_Injectors_Note_RightForeArm") },
+
+    { value = "Hand_L",       notes = getText("UI_Injectors_Note_LeftHand") },
+    { value = "Hand_R",       notes = getText("UI_Injectors_Note_RightHand") },
+
+    { value = "Groin",        notes = getText("UI_Injectors_Note_Groin") },
+
+    { value = "UpperLeg_L",   notes = getText("UI_Injectors_Note_LeftUpperLeg") },
+    { value = "UpperLeg_R",   notes = getText("UI_Injectors_Note_RightUpperLeg") },
+
+    { value = "LowerLeg_L",   notes = getText("UI_Injectors_Note_LeftLowerLeg") },
+    { value = "LowerLeg_R",   notes = getText("UI_Injectors_Note_RightLowerLeg") },
+
+    { value = "Foot_L",       notes = getText("UI_Injectors_Note_LeftFoot") },
+    { value = "Foot_R",       notes = getText("UI_Injectors_Note_RightFoot") },
+}
+
 -- effect schemas
 local EFFECT_SCHEMA = {
+    ChangeGeneralHealthEffect = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" },
     ChangeHungerEffect = { "duration", "delay", "rate", "amount" },
     ChangeThirstEffect = { "duration", "delay", "rate", "amount" },
     ChangeOverdoseEffect = { "duration", "delay", "rate", "base" },
-    ChangePainEffect   = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" }
+    ChangePainEffect = { "duration", "delay", "rate", "base", "minRange", "maxRange", "minScale", "maxScale" },
+    ChangeIntoxicationEffect = { "duration", "delay", "rate", "amount" },
+    ChangeZombieInfectionEffect = { "duration", "delay", "rate", "amount" },
+    ChangeFoodSicknessEffect = { "duration", "delay", "rate", "amount" },
+    ChangeEnduranceEffect = { "duration", "delay", "rate", "amount" },
+    ChangeTemperatureEffect = { "duration", "delay", "rate", "amount" },
+    MendBleedingEffect = { "duration", "delay", "rate", "base", unpack(BODY_PARTS) },
+    MendDeepWoundEffect = { "duration", "delay", "rate", "base", unpack(BODY_PARTS) }
 }
 
 local EFFECT_UI = {
@@ -81,10 +137,128 @@ local EFFECT_UI = {
                 { value = "maxScale", notes = getText("UI_Injectors_Note_MaxScale") }
             }
         }
+    },
+
+    ChangeIntoxicationEffect = {
+        notes = getText("UI_Injectors_Notes_ChangeIntoxication"),
+        groups = {
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+            },
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_IntoxicationAmount") }
+            }
+        }
+    },
+
+    ChangeZombieInfectionEffect = {
+        notes = getText("UI_Injectors_Notes_ChangeZombieInfection"),
+        groups = {
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+            },
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_ZombieInfectionAmount") }
+            }
+        }
+    },
+
+    ChangeFoodSicknessEffect = {
+        notes = getText("UI_Injectors_Notes_ChangeFoodSickness"),
+        groups = {
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+            },
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_FoodSicknessAmount") }
+            }
+        }
+    },
+
+    ChangeEnduranceEffect = {
+        notes = getText("UI_Injectors_Notes_ChangeEndurance"),
+        groups = {
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+            },
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_EnduranceAmount") }
+            }
+        }
+    },
+
+    ChangeTemperatureEffect = {
+        notes = getText("UI_Injectors_Notes_ChangeTemperature"),
+        groups = {
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+            },
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_TemperatureAmount") }
+            }
+        }
+    },
+}
+
+EFFECT_UI.MendBleedingEffect = {
+    notes = getText("UI_Injectors_Notes_MendBleeding"),
+    groups = {
+        [getText("UI_Injectors_Group_Timing")] = {
+            { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+            { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+            { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+        },
+        [getText("UI_Injectors_Group_Values")] = {
+            { value = "base", notes = getText("UI_Injectors_Note_MendBleedingBase") }
+        },
+        [getText("UI_Injectors_Group_BodyParts")] = BODY_PART_GROUPS
     }
 }
 
-local ActiveInjectorUI = nil
+EFFECT_UI.MendDeepWoundEffect = {
+    notes = getText("UI_Injectors_Notes_MendDeepWound"),
+    groups = {
+        [getText("UI_Injectors_Group_Timing")] = {
+            { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+            { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+            { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+        },
+        [getText("UI_Injectors_Group_Values")] = {
+            { value = "base", notes = getText("UI_Injectors_Note_MendDeepWoundBase") }
+        },
+        [getText("UI_Injectors_Group_BodyParts")] = BODY_PART_GROUPS
+    }
+}
+
+EFFECT_UI.ChangeGeneralHealthEffect = {
+    notes = getText("UI_Injectors_Notes_ChangeGeneralHealth"),
+    groups = {
+        [getText("UI_Injectors_Group_Time")] = {
+            { value = "duration", notes = getText("UI_Injectors_Note_GeneralHealthDuration") },
+            { value = "delay", notes = getText("UI_Injectors_Note_GeneralHealthDelay") },
+            { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+        },
+        [getText("UI_Injectors_Group_Values")] = {
+            { value = "base", notes = getText("UI_Injectors_Note_GeneralHealthBase") },
+        },
+        [getText("UI_Injectors_Group_Scaling")] = {
+            { value = "minRange", notes = getText("UI_Injectors_Note_MinRange") },
+            { value = "maxRange", notes = getText("UI_Injectors_Note_MaxRange") },
+            { value = "minScale", notes = getText("UI_Injectors_Note_MinScale") },
+            { value = "maxScale", notes = getText("UI_Injectors_Note_MaxScale") }
+        }
+    }
+}
 
 -- ui class
 InjectorConstructorUI = ISCollapsableWindow:derive("InjectorConstructorUI")

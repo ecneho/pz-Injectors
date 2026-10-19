@@ -1,4 +1,4 @@
-if not isServer() then return end
+if isClient() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local Injectors = require "Injectors/Models/Injectors"
@@ -10,7 +10,7 @@ local function OnClientCommand(module, command, player, args)
 
     if not player then return end
 
-    if not Roles.hasCapability(player, Capability.SandboxOptions) then
+    if not Roles.hasCapability(player, "SandboxOptions") then
         FileLogger.Warn(string.format(
             "%s was denied injector save: missing SandboxOptions capability.",
             FileLogger.FormatPlayer(player)

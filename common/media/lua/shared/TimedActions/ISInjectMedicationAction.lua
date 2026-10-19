@@ -29,7 +29,7 @@ end
 function ISInjectMedicationAction:serverStart()
     local FileLogger = require "Injectors/Utils/FileLogger"
 
-    if FileLogger then
+    if type(FileLogger) == "table" then
         FileLogger.Info(string.format(
             "%s started injector timed action.",
             FileLogger.FormatPlayer(self.character)
@@ -43,7 +43,7 @@ end
 function ISInjectMedicationAction:serverStop()
     local FileLogger = require "Injectors/Utils/FileLogger"
 
-    if FileLogger then
+    if type(FileLogger) == "table" then
         FileLogger.Info(string.format(
             "%s stopped injector timed action.",
             FileLogger.FormatPlayer(self.character)
@@ -95,7 +95,7 @@ function ISInjectMedicationAction:complete()
 
     local FileLogger = require "Injectors/Utils/FileLogger"
 
-    if FileLogger then
+    if type(FileLogger) == "table" then
         FileLogger.Info(string.format(
             "%s finished injector timed action.",
             FileLogger.FormatPlayer(self.character)
@@ -104,7 +104,9 @@ function ISInjectMedicationAction:complete()
         print("injectors: logger not loaded")
     end
 
-    if isServer() then
+    if not isClient() then
+        if self.injected then return false end
+
         local character = self.character ---@type IsoPlayer
         local item = self.item ---@type InventoryItem
 
@@ -127,6 +129,7 @@ function ISInjectMedicationAction:complete()
 
         if status then
             print("injectors: success")
+            self.injected = true
             local inventory = character:getInventory()
 
             if not inventory:contains(item) then
@@ -134,7 +137,10 @@ function ISInjectMedicationAction:complete()
             end
 
             inventory:DoRemoveItem(item)
-            sendRemoveItemFromContainer(inventory, item)
+            if isServer() then
+                sendRemoveItemFromContainer(inventory, item)
+            end
+
             return true
         else
             print("injectors: failure")

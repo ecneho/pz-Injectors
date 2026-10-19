@@ -1,6 +1,8 @@
 -- non-server only
 if isServer() then return end
 
+local Net = require "Injectors/Utils/Net"
+
 local counter = 0
 
 -- TODO: move to ui update instead
@@ -10,7 +12,7 @@ local function onTick()
 
     counter = counter + 1
     if counter % rate == 0 then
-        sendClientCommand("InjectorsModule", "RequestEffects", {})
+        Net.Send("RequestEffects", {})
     end
 end
 

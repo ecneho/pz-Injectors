@@ -1,9 +1,9 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local System = {}
 local Active = require "Injectors/Models/Active"
 local FileLogger = require "Injectors/Utils/FileLogger"
+local Players = require "Injectors/Utils/Players"
 
 System.EffectRegistry = {}
 
@@ -26,7 +26,7 @@ end
 function System.AddPlayerEffect(player, effectId, duration, delay, rate, customArgs)
     if type(duration) ~= "number" or duration <= 0 then return end
 
-    local username = player:getUsername()
+    local username = Players.Key(player)
 
     if not System.EffectRegistry[effectId] then
         FileLogger.Error(string.format(

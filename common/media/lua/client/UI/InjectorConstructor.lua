@@ -4,6 +4,8 @@ require "ISUI/ISComboBox"
 require "ISUI/ISTextEntryBox"
 require "ISUI/ISButton"
 require "ISUI/ISLabel"
+local Net = require "Injectors/Utils/Net"
+local Registry = require "Injectors/Registry"
 
 -- constants
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
@@ -274,12 +276,13 @@ function InjectorConstructorUI:createChildren()
     local yOff = self:titleBarHeight() + UI_BORDER_SPACING
     local leftPanelWidth = 240
 
-    self.injectorCombo = ISComboBox:new(UI_BORDER_SPACING, yOff, 120, COMBO_HGT, self, self.onSelectInjector)
+    self.injectorCombo = ISComboBox:new(UI_BORDER_SPACING, yOff, leftPanelWidth, COMBO_HGT, self, self.onSelectInjector)
     self.injectorCombo:initialise()
     self:addChild(self.injectorCombo)
-    self.injectorCombo:addOption("injector_red")
-    self.injectorCombo:addOption("injector_blue")
-    self.injectorCombo:addOption("injector_green")
+
+    for _, id in ipairs(Registry.Ids) do
+        self.injectorCombo:addOption(id)
+    end
 
     yOff = self.injectorCombo:getBottom() + UI_BORDER_SPACING
 
@@ -371,7 +374,7 @@ function InjectorConstructorUI:createChildren()
 
     self:addChild(self.propertiesPanel)
     self.dynamicInputs = {}
-    self.currentInjectorData = { id = "injector_red", Effects = {} }
+    self.currentInjectorData = { id = Registry.Ids[1], Effects = {} }
     self.selectedEffectName = nil
     self:onLoad()
 end
@@ -655,7 +658,7 @@ function InjectorConstructorUI:onLoad()
     self.selectedEffectName = nil
     self:setUnsavedChanges(false)
 
-    sendClientCommand(getPlayer(), "InjectorsModule", "LoadInjectorOptions", { id = selectedId })
+    Net.Send("LoadInjectorOptions", { id = selectedId })
 end
 
 -- network save request
@@ -664,7 +667,7 @@ function InjectorConstructorUI:onSave()
     local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
     self.currentInjectorData.id = selectedId
 
-    sendClientCommand(getPlayer(), "InjectorsModule", "SaveInjectorOptions", { id = selectedId, data = self.currentInjectorData })
+    Net.Send("SaveInjectorOptions", { id = selectedId, data = self.currentInjectorData })
     self:setUnsavedChanges(false)
 end
 
@@ -673,7 +676,7 @@ function InjectorConstructorUI:onInvoke()
     local selectedId = self.injectorCombo:getOptionText(self.injectorCombo.selected)
 
     if selectedId then
-        sendClientCommand(getPlayer(), "InjectorsModule", "UseInjectorIgnoreSafety", { id = selectedId })
+        Net.Send("UseInjectorIgnoreSafety", { id = selectedId })
     end
 end
 

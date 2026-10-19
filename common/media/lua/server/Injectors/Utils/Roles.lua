@@ -1,12 +1,13 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local Roles = {}
 
 ---@param player IsoPlayer
----@param capability Capability
+---@param capability string
 function Roles.hasCapability(player, capability)
-    return player:getRole():hasCapability(capability)
+    if not isServer() then return true end
+
+    return player:getRole():hasCapability(Capability[capability])
 end
 
 return Roles

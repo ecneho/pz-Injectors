@@ -1,5 +1,24 @@
 {
-    "Injectors.injector_blue": "Blue Injector",
-    "Injectors.injector_red": "Red Injector",
-    "Injectors.injector_green": "Green Injector"
+    "Injectors.injector_brown_lightbrown": "Brown Lightbrown Injector",
+    "Injectors.injector_red_lightblue": "Red Lightblue Injector",
+    "Injectors.injector_black_yellow": "Black Yellow Injector",
+    "Injectors.injector_red_green": "Red Green Injector",
+    "Injectors.injector_olive_lightblue": "Olive Lightblue Injector",
+    "Injectors.injector_bright_green": "Bright Green Injector",
+    "Injectors.injector_dark_bluegrey": "Dark Bluegrey Injector",
+    "Injectors.injector_deep_blue": "Deep Blue Injector",
+    "Injectors.injector_olive_pink": "Olive Pink Injector",
+    "Injectors.injector_navy_blue": "Navy Blue Injector",
+    "Injectors.injector_black_cyan": "Black Cyan Injector",
+    "Injectors.injector_black_cyan_red": "Black Cyan Red Injector",
+    "Injectors.injector_teal_green": "Teal Green Injector",
+    "Injectors.injector_grey_bloodred": "Grey Bloodred Injector",
+    "Injectors.injector_grey_brown": "Grey Brown Injector",
+    "Injectors.injector_teal_black": "Teal Black Injector",
+    "Injectors.injector_purple_red": "Purple Red Injector",
+    "Injectors.injector_yellow_silver": "Yellow Silver Injector",
+    "Injectors.injector_maroon_silver": "Maroon Silver Injector",
+    "Injectors.injector_charcoal_orange": "Charcoal Orange Injector",
+    "Injectors.injector_slate_purple": "Slate Purple Injector",
+    "Injectors.injector_deep_purple": "Deep Purple Injector"
 }

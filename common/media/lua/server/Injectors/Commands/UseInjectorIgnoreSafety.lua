@@ -1,5 +1,4 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local Roles = require "Injectors/Utils/Roles"
@@ -18,7 +17,7 @@ local function OnClientCommand(module, command, player, clientArgs)
 
     local id = clientArgs.id
 
-    if not Roles.hasCapability(player, Capability.CanMedicalCheat) then
+    if not Roles.hasCapability(player, "CanMedicalCheat") then
         FileLogger.Warn(string.format(
             "%s was denied Injector [%s] admin override: missing CanMedicalCheat capability.",
             FileLogger.FormatPlayer(player), tostring(id)

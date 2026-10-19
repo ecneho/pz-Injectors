@@ -1,9 +1,9 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local System = require "Injectors/System"
 local Overdose = require "Injectors/Models/Overdose"
+local Players = require "Injectors/Utils/Players"
 
 ---@param character IsoPlayer -- *IsoGameCharacter
 local function onPlayerDeath(character)
@@ -11,7 +11,7 @@ local function onPlayerDeath(character)
         return
     end
 
-    local username = character:getUsername()
+    local username = Players.Key(character)
     if not username then
         return
     end

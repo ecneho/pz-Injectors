@@ -1,9 +1,9 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local System = require "Injectors/System"
 local Common = require "Injectors/Variables/Common"
 local Overdose = require "Injectors/Models/Overdose"
+local Players = require "Injectors/Utils/Players"
 
 ---@class OverdoseTickArgs
 ---@field base number
@@ -12,7 +12,7 @@ local Overdose = require "Injectors/Models/Overdose"
 ---@param ticks number
 ---@param args OverdoseTickArgs
 local function OnOverdoseTick(player, ticks, args)
-    local username = player:getUsername()
+    local username = Players.Key(player)
     local overdose = Overdose.Get(username)
 
     local updated = overdose + args.base

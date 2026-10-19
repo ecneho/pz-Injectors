@@ -1,5 +1,4 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local File = {}
 

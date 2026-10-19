@@ -1,17 +1,9 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local Overdose = {}
 
----@type table|nil
-local overdoseList = nil
-
 local function getList()
-    if not overdoseList then
-        overdoseList = ModData.getOrCreate("Injectors_OverdoseList")
-    end
-
-    return overdoseList
+    return ModData.getOrCreate("Injectors_OverdoseList")
 end
 
 ---@param username string

@@ -88,32 +88,222 @@ option Injectors.GLOBAL_LOGGER_OFFSET {
     translation = Injectors.GLOBAL_LOGGER_OFFSET,
 }
 
-option Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT {
+option Injectors.GLOBAL_BROWN_LIGHTBROWN_INJECTOR_SPAWN_WEIGHT {
     type = integer,
     default = 0,
     min = 0,
     max = 100,
 
     page = Injectors_global,
-    translation = Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT,
+    translation = Injectors.GLOBAL_BROWN_LIGHTBROWN_INJECTOR_SPAWN_WEIGHT,
 }
 
-option Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT {
+option Injectors.GLOBAL_RED_LIGHTBLUE_INJECTOR_SPAWN_WEIGHT {
     type = integer,
     default = 0,
     min = 0,
     max = 100,
 
     page = Injectors_global,
-    translation = Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT,
+    translation = Injectors.GLOBAL_RED_LIGHTBLUE_INJECTOR_SPAWN_WEIGHT,
 }
 
-option Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT {
+option Injectors.GLOBAL_BLACK_YELLOW_INJECTOR_SPAWN_WEIGHT {
     type = integer,
     default = 0,
     min = 0,
     max = 100,
 
     page = Injectors_global,
-    translation = Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT,
+    translation = Injectors.GLOBAL_BLACK_YELLOW_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_RED_GREEN_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_RED_GREEN_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_OLIVE_LIGHTBLUE_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_OLIVE_LIGHTBLUE_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_BRIGHT_GREEN_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_BRIGHT_GREEN_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_DARK_BLUEGREY_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_DARK_BLUEGREY_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_DEEP_BLUE_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_DEEP_BLUE_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_OLIVE_PINK_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_OLIVE_PINK_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_NAVY_BLUE_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_NAVY_BLUE_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_BLACK_CYAN_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_BLACK_CYAN_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_BLACK_CYAN_RED_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_BLACK_CYAN_RED_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_TEAL_GREEN_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_TEAL_GREEN_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_GREY_BLOODRED_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_GREY_BLOODRED_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_GREY_BROWN_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_GREY_BROWN_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_TEAL_BLACK_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_TEAL_BLACK_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_PURPLE_RED_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_PURPLE_RED_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_YELLOW_SILVER_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_YELLOW_SILVER_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_MAROON_SILVER_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_MAROON_SILVER_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_CHARCOAL_ORANGE_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_CHARCOAL_ORANGE_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_SLATE_PURPLE_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_SLATE_PURPLE_INJECTOR_SPAWN_WEIGHT,
+}
+
+option Injectors.GLOBAL_DEEP_PURPLE_INJECTOR_SPAWN_WEIGHT {
+    type = integer,
+    default = 0,
+    min = 0,
+    max = 100,
+
+    page = Injectors_global,
+    translation = Injectors.GLOBAL_DEEP_PURPLE_INJECTOR_SPAWN_WEIGHT,
 }

@@ -1,5 +1,24 @@
 {
-    "Tooltip_blue": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
-    "Tooltip_red": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
-    "Tooltip_green": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown."
+    "Tooltip_brown_lightbrown": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_red_lightblue": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_black_yellow": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_red_green": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_olive_lightblue": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_bright_green": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_dark_bluegrey": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_deep_blue": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_olive_pink": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_navy_blue": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_black_cyan": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_black_cyan_red": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_teal_green": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_grey_bloodred": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_grey_brown": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_teal_black": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_purple_red": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_yellow_silver": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_maroon_silver": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_charcoal_orange": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_slate_purple": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown.",
+    "Tooltip_deep_purple": "Contains a measured dose of an active chemical solution.<BR>The exact effects of the liquid are unknown."
 }

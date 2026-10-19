@@ -1,5 +1,6 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
+
+local Players = require "Injectors/Utils/Players"
 
 local FileLogger = {}
 
@@ -34,11 +35,11 @@ end
 
 --- @param player IsoPlayer
 function FileLogger.FormatPlayer(player)
-    if not player or not player.getUsername then
+    if not player or not player.getPlayerNum then
         return "#Unknown#"
     end
 
-    return string.format("'%s'", player:getUsername())
+    return string.format("'%s'", Players.Key(player))
 end
 
 function FileLogger.Info(msg)

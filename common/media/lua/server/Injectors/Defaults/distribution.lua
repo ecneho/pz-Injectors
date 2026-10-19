@@ -1,0 +1,12 @@
+return [[
+30
+MedicalCabinet
+HospitalRoomCounter
+HospitalRoomShelves
+MedicalStorageOutfit
+MedicalStorageTools
+BinHospital
+HospitalLockers
+MedicalClinicTools
+MedicalClinicDrugs
+]]

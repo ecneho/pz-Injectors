@@ -1,5 +1,4 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local Injectors = require "Injectors/Models/Injectors"
 local Handlers = require "Injectors/Models/Handlers"
@@ -24,7 +23,7 @@ function Settings.Used(player, item, id)
             "%s is using injector '%s', but the item reference is nil.",
             FileLogger.FormatPlayer(player), tostring(id)
         ))
-    else
+    elseif isServer() then
         local modData = item:getModData()
         local itemID = item:getID()
         local itemSignature = (modData and modData.serverSignature) and modData.serverSignature or "none"

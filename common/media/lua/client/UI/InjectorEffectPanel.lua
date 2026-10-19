@@ -2,6 +2,7 @@ require "ISUI/ISCollapsableWindow"
 require "ISUI/ISScrollingListBox"
 require "ISUI/ISLabel"
 require "ISUI/ISButton"
+local Net = require "Injectors/Utils/Net"
 
 local FONT_HGT_SMALL = getTextManager():getFontHeight(UIFont.Small)
 local UI_BORDER_SPACING = 10
@@ -56,15 +57,15 @@ function InjectorEffectPanelUI:createChildren()
     self.clearButton.borderColor = self.buttonBorderColor
     self:addChild(self.clearButton)
 
-    sendClientCommand("InjectorsModule", "RequestEffects", {})
+    Net.Send("RequestEffects", {})
 end
 
 function InjectorEffectPanelUI:onRequestEffects()
-    sendClientCommand("InjectorsModule", "RequestEffects", {})
+    Net.Send("RequestEffects", {})
 end
 
 function InjectorEffectPanelUI:onClearEffects()
-    sendClientCommand("InjectorsModule", "ClearEffects", {})
+    Net.Send("ClearEffects", {})
 end
 
 function InjectorEffectPanelUI:loadData()

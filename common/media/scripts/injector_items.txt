@@ -3,42 +3,308 @@ module Injectors {
         Base
     }
 
-    item injector_blue
+    item injector_brown_lightbrown
     {
-        DisplayName = injector_blue,
+        DisplayName = injector_brown_lightbrown,
         ItemType = base:normal,
         DisplayCategory = FirstAid,
-        Icon = injector_blue,
-        WorldStaticModel = injector_blue-closed,
-        Tooltip = Tooltip_blue,
+        Icon = injector_brown_lightbrown,
+        WorldStaticModel = injector_brown_lightbrown-closed,
+        Tooltip = Tooltip_brown_lightbrown,
         StaticModel = Injector,
         Weight = 0.05,
         CantBeFrozen = TRUE,
         CustomEatSound = ,
     }
 
-    item injector_red
+    item injector_red_lightblue
     {
-        DisplayName = injector_red,
+        DisplayName = injector_red_lightblue,
         ItemType = base:normal,
         DisplayCategory = FirstAid,
-        Icon = injector_red,
-        WorldStaticModel = injector_red-closed,
-        Tooltip = Tooltip_red,
+        Icon = injector_red_lightblue,
+        WorldStaticModel = injector_red_lightblue-closed,
+        Tooltip = Tooltip_red_lightblue,
         StaticModel = Injector,
         Weight = 0.05,
         CantBeFrozen = TRUE,
         CustomEatSound = ,
     }
 
-    item injector_green
+    item injector_black_yellow
     {
-        DisplayName = injector_green,
+        DisplayName = injector_black_yellow,
         ItemType = base:normal,
         DisplayCategory = FirstAid,
-        Icon = injector_green,
-        WorldStaticModel = injector_green-closed,
-        Tooltip = Tooltip_green,
+        Icon = injector_black_yellow,
+        WorldStaticModel = injector_black_yellow-closed,
+        Tooltip = Tooltip_black_yellow,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_red_green
+    {
+        DisplayName = injector_red_green,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_red_green,
+        WorldStaticModel = injector_red_green-closed,
+        Tooltip = Tooltip_red_green,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_olive_lightblue
+    {
+        DisplayName = injector_olive_lightblue,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_olive_lightblue,
+        WorldStaticModel = injector_olive_lightblue-closed,
+        Tooltip = Tooltip_olive_lightblue,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_bright_green
+    {
+        DisplayName = injector_bright_green,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_bright_green,
+        WorldStaticModel = injector_bright_green-closed,
+        Tooltip = Tooltip_bright_green,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_dark_bluegrey
+    {
+        DisplayName = injector_dark_bluegrey,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_dark_bluegrey,
+        WorldStaticModel = injector_dark_bluegrey-closed,
+        Tooltip = Tooltip_dark_bluegrey,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_deep_blue
+    {
+        DisplayName = injector_deep_blue,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_deep_blue,
+        WorldStaticModel = injector_deep_blue-closed,
+        Tooltip = Tooltip_deep_blue,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_olive_pink
+    {
+        DisplayName = injector_olive_pink,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_olive_pink,
+        WorldStaticModel = injector_olive_pink-closed,
+        Tooltip = Tooltip_olive_pink,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_navy_blue
+    {
+        DisplayName = injector_navy_blue,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_navy_blue,
+        WorldStaticModel = injector_navy_blue-closed,
+        Tooltip = Tooltip_navy_blue,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_black_cyan
+    {
+        DisplayName = injector_black_cyan,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_black_cyan,
+        WorldStaticModel = injector_black_cyan-closed,
+        Tooltip = Tooltip_black_cyan,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_black_cyan_red
+    {
+        DisplayName = injector_black_cyan_red,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_black_cyan_red,
+        WorldStaticModel = injector_black_cyan_red-closed,
+        Tooltip = Tooltip_black_cyan_red,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_teal_green
+    {
+        DisplayName = injector_teal_green,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_teal_green,
+        WorldStaticModel = injector_teal_green-closed,
+        Tooltip = Tooltip_teal_green,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_grey_bloodred
+    {
+        DisplayName = injector_grey_bloodred,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_grey_bloodred,
+        WorldStaticModel = injector_grey_bloodred-closed,
+        Tooltip = Tooltip_grey_bloodred,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_grey_brown
+    {
+        DisplayName = injector_grey_brown,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_grey_brown,
+        WorldStaticModel = injector_grey_brown-closed,
+        Tooltip = Tooltip_grey_brown,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_teal_black
+    {
+        DisplayName = injector_teal_black,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_teal_black,
+        WorldStaticModel = injector_teal_black-closed,
+        Tooltip = Tooltip_teal_black,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_purple_red
+    {
+        DisplayName = injector_purple_red,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_purple_red,
+        WorldStaticModel = injector_purple_red-closed,
+        Tooltip = Tooltip_purple_red,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_yellow_silver
+    {
+        DisplayName = injector_yellow_silver,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_yellow_silver,
+        WorldStaticModel = injector_yellow_silver-closed,
+        Tooltip = Tooltip_yellow_silver,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_maroon_silver
+    {
+        DisplayName = injector_maroon_silver,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_maroon_silver,
+        WorldStaticModel = injector_maroon_silver-closed,
+        Tooltip = Tooltip_maroon_silver,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_charcoal_orange
+    {
+        DisplayName = injector_charcoal_orange,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_charcoal_orange,
+        WorldStaticModel = injector_charcoal_orange-closed,
+        Tooltip = Tooltip_charcoal_orange,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_slate_purple
+    {
+        DisplayName = injector_slate_purple,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_slate_purple,
+        WorldStaticModel = injector_slate_purple-closed,
+        Tooltip = Tooltip_slate_purple,
+        StaticModel = Injector,
+        Weight = 0.05,
+        CantBeFrozen = TRUE,
+        CustomEatSound = ,
+    }
+
+    item injector_deep_purple
+    {
+        DisplayName = injector_deep_purple,
+        ItemType = base:normal,
+        DisplayCategory = FirstAid,
+        Icon = injector_deep_purple,
+        WorldStaticModel = injector_deep_purple-closed,
+        Tooltip = Tooltip_deep_purple,
         StaticModel = Injector,
         Weight = 0.05,
         CantBeFrozen = TRUE,

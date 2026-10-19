@@ -1,10 +1,11 @@
-if not isServer() then return end
+if isClient() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local Ini = require "Injectors/Utils/Ini"
 local File = require "Injectors/Utils/File"
 local Injectors = require "Injectors/Models/Injectors"
 local Roles = require "Injectors/Utils/Roles"
+local Net = require "Injectors/Utils/Net"
 
 local function OnClientCommand(module, command, player, args)
     if module ~= "InjectorsModule" then return end
@@ -12,7 +13,7 @@ local function OnClientCommand(module, command, player, args)
 
     if not player then return end
 
-    if not Roles.hasCapability(player, Capability.SandboxOptions) then
+    if not Roles.hasCapability(player, "SandboxOptions") then
         FileLogger.Warn(string.format(
             "%s was denied injector load: missing SandboxOptions capability.",
             FileLogger.FormatPlayer(player)
@@ -44,7 +45,7 @@ local function OnClientCommand(module, command, player, args)
         FileLogger.FormatPlayer(player)
     ))
 
-    sendServerCommand(player, "InjectorsModule", "ReceiveInjectorOptions", {
+    Net.Reply(player, "ReceiveInjectorOptions", {
         data = injectorData
     })
 end

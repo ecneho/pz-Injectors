@@ -1,4 +1,5 @@
 require "ISUI/ISPanel"
+local Net = require "Injectors/Utils/Net"
 
 InjectorsAdminWindow = ISPanel:derive("InjectorsAdminWindow")
 
@@ -108,7 +109,7 @@ function InjectorsAdminWindow:render()
 end
 
 function InjectorsAdminWindow:onCommand(btn)
-    sendClientCommand("InjectorsModule", btn.internal, {})
+    Net.Send(btn.internal, {})
 end
 
 function InjectorsAdminWindow:onClose()

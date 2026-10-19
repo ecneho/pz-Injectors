@@ -1,5 +1,4 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local Roles = require "Injectors/Utils/Roles"
@@ -15,7 +14,7 @@ local function OnClientCommand(module, command, player, clientArgs)
 
     if not player then return end
 
-    if not Roles.hasCapability(player, Capability.SandboxOptions) then
+    if not Roles.hasCapability(player, "SandboxOptions") then
         FileLogger.Warn(string.format(
             "%s was denied sandbox variables dump: missing SandboxOptions capability.",
             FileLogger.FormatPlayer(player)

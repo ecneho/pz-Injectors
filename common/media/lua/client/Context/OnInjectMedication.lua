@@ -1,10 +1,12 @@
 require "luautils"
 
-local Injectable = {
-    ["Injectors.injector_red"] = true,
-    ["Injectors.injector_blue"] = true,
-    ["Injectors.injector_green"] = true
-}
+local Registry = require "Injectors/Registry"
+
+local Injectable = {}
+
+for _, id in ipairs(Registry.Ids) do
+    Injectable[Registry.GetFullType(id)] = true
+end
 
 local function isInjectable(item)
     return Injectable[item:getFullType()]

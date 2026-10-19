@@ -1,15 +1,18 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local Hash = require "Injectors/Utils/Hash"
+local Registry = require "Injectors/Registry"
 
 local function GetWeightedInjector()
     -- chance sum should not exceed 100
-    local injectors = {
-        { Id = "Injectors.injector_red",   Chance = SandboxVars.Injectors.GLOBAL_RED_INJECTOR_SPAWN_WEIGHT },
-        { Id = "Injectors.injector_blue",  Chance = SandboxVars.Injectors.GLOBAL_BLUE_INJECTOR_SPAWN_WEIGHT },
-        { Id = "Injectors.injector_green", Chance = SandboxVars.Injectors.GLOBAL_GREEN_INJECTOR_SPAWN_WEIGHT }
-    }
+    local injectors = {}
+
+    for _, id in ipairs(Registry.Ids) do
+        table.insert(injectors, {
+            Id = Registry.GetFullType(id),
+            Chance = Registry.GetSpawnWeight(id)
+        })
+    end
 
     local roll = ZombRand(100) + 1
     local cumulative = 0
@@ -39,7 +42,9 @@ local function ReplaceDummies(container)
             print("injectors: trying to spawn an injector...")
 
             container:DoRemoveItem(item)
-            sendRemoveItemFromContainer(container, item)
+            if isServer() then
+                sendRemoveItemFromContainer(container, item)
+            end
 
             local replacement = GetWeightedInjector()
             if replacement then
@@ -52,7 +57,9 @@ local function ReplaceDummies(container)
                     modData.serverSignature = signed
 
                     container:DoAddItem(newItem)
-                    sendAddItemToContainer(container, newItem)
+                    if isServer() then
+                        sendAddItemToContainer(container, newItem)
+                    end
                 end
             end
         end

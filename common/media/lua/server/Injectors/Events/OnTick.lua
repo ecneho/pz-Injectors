@@ -1,22 +1,21 @@
--- server only
-if not isServer() then return end
+if isClient() then return end
 
 local FileLogger = require "Injectors/Utils/FileLogger"
 local System = require "Injectors/System"
 local Active = require "Injectors/Models/Active"
 local Common = require "Injectors/Variables/Common"
 local Overdose = require "Injectors/Models/Overdose"
+local Players = require "Injectors/Utils/Players"
 
 -- effect ticking
 local function onEffectTick()
     local activeList = Active.GetActiveList()
-    local onlinePlayers = getOnlinePlayers()
+    local players = Players.List()
 
-    if not onlinePlayers or onlinePlayers:size() == 0 then return end
+    if #players == 0 then return end
 
-    for i = 0, onlinePlayers:size() - 1 do
-        local player = onlinePlayers:get(i)
-        local username = player:getUsername()
+    for _, player in ipairs(players) do
+        local username = Players.Key(player)
         local effects = activeList[username]
 
         if effects and #effects > 0 then
@@ -72,16 +71,15 @@ local function onOverdoseTick()
         return
     end
 
-    local onlinePlayers = getOnlinePlayers()
+    local players = Players.List()
 
-    if not onlinePlayers or onlinePlayers:size() == 0 then
+    if #players == 0 then
         decayTickCounter = 0
         return
     end
 
-    for i = 0, onlinePlayers:size() - 1 do
-        local player = onlinePlayers:get(i)
-        local username = player:getUsername()
+    for _, player in ipairs(players) do
+        local username = Players.Key(player)
         local current = Overdose.Get(username)
 
         if current > 0 then

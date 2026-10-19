@@ -7,3 +7,10 @@
   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3437429771"><img alt="Update Date" src="https://img.shields.io/steam/update-date/3437429771?logo=steam&color=darkorange&labelColor=1b2838"></a>
   <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3437429771"><img alt="Release Date" src="https://img.shields.io/steam/release-date/3437429771?logo=steam&color=goldenrod&labelColor=1b2838"></a>
 </span>
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [Configuration Guide](docs/configuration_guide.md) | Lua cache configuration options and setup |
+| [ID Cross Reference](docs/id_cross_reference.md) | ID reference and injector mappings |

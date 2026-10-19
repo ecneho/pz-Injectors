@@ -38,7 +38,7 @@ Effects of one injector are independent, so you can stack them: `ChangePainEffec
 
 ## 3. Effects
 
-| Effect | Target | Parameters (besides `duration`, `delay`, `rate`) | What each activation does |
+| Effect | Target | Parameters | What each activation does |
 |---|---|---|---|
 | `ChangeHungerEffect` | HUNGER stat | `amount` | Adds `amount`, clamped. UI range 0 to 1. Higher = hungrier, negative feeds. |
 | `ChangeThirstEffect` | THIRST stat | `amount` | Adds `amount`, clamped. UI range 0 to 1. Higher = thirstier. |

@@ -20,6 +20,8 @@
     "UI_Injectors_Notes_ChangeZombieInfection": "Controls zombie infection progression. (range: 0-100)",
     "UI_Injectors_Notes_ChangeFoodSickness": "Controls food sickness level. (range: 0-100)",
     "UI_Injectors_Notes_ChangeEndurance": "Controls endurance recovery or drain. (range: 0-1)",
+    "UI_Injectors_Notes_ChangeCarryWeight": "Changes the maximum carry weight while the effect is active.",
+    "UI_Injectors_Note_CarryWeightAmount": "Percent of base carry capacity.",
     "UI_Injectors_Notes_ChangeTemperature": "Controls body temperature over time. (range: 20-40)",
 
     "UI_Injectors_Notes_ChangeGeneralHealth": "Controls general health. (range: 0-100)",
@@ -61,6 +63,8 @@
     "UI_Injectors_Note_RightFoot": "Right foot coefficient",
 
     "UI_Injectors_Note_Duration": "how long the effect lasts",
+
+    "UI_Injectors_OverdoseBlocked": "I can't take any more of this right now.",
     "UI_Injectors_Note_PainDuration": "effect duration",
     "UI_Injectors_Note_Delay": "delay before activation",
     "UI_Injectors_Note_PainDelay": "activation delay",
@@ -79,7 +83,7 @@
     "UI_Injectors_Effects_Title": "Injector Effects",
     "UI_Injectors_Effects_BtnRequest": "Request Effects",
     "UI_Injectors_Effects_BtnClear": "Clear Effects",
-    
+
     "UI_Injectors_Effects_Pending": "pending...",
     "UI_Injectors_Effects_OverdoseLevel": "Overdose Level: %1 / %2",
     "UI_Injectors_Effects_Delay": "Delay: %1",

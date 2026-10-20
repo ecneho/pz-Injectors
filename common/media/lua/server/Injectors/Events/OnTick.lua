@@ -6,9 +6,14 @@ local Active = require "Injectors/Models/Active"
 local Common = require "Injectors/Variables/Common"
 local Overdose = require "Injectors/Models/Overdose"
 local Players = require "Injectors/Utils/Players"
+local CarryWeight = require "Injectors/Models/CarryWeight"
+local Time = require "Injectors/Utils/Time"
+
+local MAX_PROCS_PER_TICK = 120
 
 -- effect ticking
 local function onEffectTick()
+    local step = Time.Step()
     local activeList = Active.GetActiveList()
     local players = Players.List()
 
@@ -21,13 +26,24 @@ local function onEffectTick()
         if effects and #effects > 0 then
             for j = #effects, 1, -1 do
                 local effect = effects[j]
+                local remaining = step
 
                 if effect.delayLeft > 0 then
-                    effect.delayLeft = effect.delayLeft - 1
-                else
-                    if effect.procCounter <= 0 then
-                        local effectFunction = System.EffectRegistry[effect.effectId]
+                    local waited = math.min(effect.delayLeft, remaining)
+                    effect.delayLeft = effect.delayLeft - waited
+                    remaining = remaining - waited
+                end
 
+                if effect.delayLeft <= 0 and remaining > 0 then
+                    local before = effect.duration - effect.ticksLeft
+                    local used = math.min(effect.ticksLeft, remaining)
+
+                    effect.ticksLeft = effect.ticksLeft - used
+
+                    local procs = math.ceil((before + used) / effect.rate) - math.ceil(before / effect.rate)
+                    local effectFunction = System.EffectRegistry[effect.effectId]
+
+                    for _ = 1, math.min(procs, MAX_PROCS_PER_TICK) do
                         if type(effectFunction) == "function" then
                             effectFunction(player, effect.ticksLeft, effect.customArgs)
                         else
@@ -35,16 +51,11 @@ local function onEffectTick()
                                 "Effect [%s] has no registered function. Unable to apply effect.",
                                 effect.effectId
                             ))
+                            break
                         end
-
-                        effect.procCounter = effect.rate - 1
-                    else
-                        effect.procCounter = effect.procCounter - 1
                     end
 
-                    effect.ticksLeft = effect.ticksLeft - 1
-
-                    if effect.ticksLeft <= 0 then
+                    if effect.ticksLeft <= 0.000001 then
                         table.remove(effects, j)
                         FileLogger.Info(string.format(
                             "Effect [%d] has expired for character %s.",
@@ -58,6 +69,8 @@ local function onEffectTick()
                 activeList[username] = nil
             end
         end
+
+        CarryWeight.Sync(player)
     end
 end
 
@@ -65,7 +78,7 @@ local decayTickCounter = 0
 
 --- TODO: overdose % rework
 local function onOverdoseTick()
-    decayTickCounter = decayTickCounter + 1
+    decayTickCounter = decayTickCounter + Time.Step()
 
     if decayTickCounter < Common.OVERDOSE_RATE then
         return

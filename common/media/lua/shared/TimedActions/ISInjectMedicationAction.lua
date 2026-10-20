@@ -7,6 +7,26 @@ require "TimedActions/ISBaseTimedAction"
 ISInjectMedicationAction = ISBaseTimedAction:derive("ISInjectMedicationAction");
 
 -- client
+function ISInjectMedicationAction:isBlocked()
+    local Overdose = require "Injectors/Models/Overdose"
+    local Players = require "Injectors/Utils/Players"
+    local Safety = require "Injectors/Utils/Safety"
+    local Net = require "Injectors/Utils/Net"
+
+    if Safety.IsBlocked(Overdose.Get(Players.Key(self.character))) then
+        Net.Reply(self.character, "OverdoseBlocked", {})
+        return true
+    end
+
+    return false
+end
+
+function ISInjectMedicationAction:isValidStart()
+    if isClient() then return true end
+
+    return not self:isBlocked()
+end
+
 function ISInjectMedicationAction:isValid()
     if self.item then
         if isClient() then
@@ -106,6 +126,7 @@ function ISInjectMedicationAction:complete()
 
     if not isClient() then
         if self.injected then return false end
+        if self:isBlocked() then return false end
 
         local character = self.character ---@type IsoPlayer
         local item = self.item ---@type InventoryItem

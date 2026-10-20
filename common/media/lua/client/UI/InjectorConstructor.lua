@@ -74,6 +74,7 @@ local EFFECT_SCHEMA = {
     ChangeFoodSicknessEffect = { "duration", "delay", "rate", "amount" },
     ChangeEnduranceEffect = { "duration", "delay", "rate", "amount" },
     ChangeTemperatureEffect = { "duration", "delay", "rate", "amount" },
+    ChangeCarryWeightEffect = { "duration", "delay", "rate", "amount" },
     MendBleedingEffect = { "duration", "delay", "rate", "base", unpack(BODY_PARTS) },
     MendDeepWoundEffect = { "duration", "delay", "rate", "base", unpack(BODY_PARTS) }
 }
@@ -193,6 +194,20 @@ local EFFECT_UI = {
             },
             [getText("UI_Injectors_Group_Values")] = {
                 { value = "amount", notes = getText("UI_Injectors_Note_EnduranceAmount") }
+            }
+        }
+    },
+
+    ChangeCarryWeightEffect = {
+        notes = getText("UI_Injectors_Notes_ChangeCarryWeight"),
+        groups = {
+            [getText("UI_Injectors_Group_Timing")] = {
+                { value = "duration", notes = getText("UI_Injectors_Note_Duration") },
+                { value = "delay", notes = getText("UI_Injectors_Note_Delay") },
+                { value = "rate", notes = getText("UI_Injectors_Note_Rate") }
+            },
+            [getText("UI_Injectors_Group_Values")] = {
+                { value = "amount", notes = getText("UI_Injectors_Note_CarryWeightAmount") }
             }
         }
     },

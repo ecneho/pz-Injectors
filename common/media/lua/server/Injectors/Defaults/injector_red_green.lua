@@ -1,19 +1,25 @@
 return [[
 [Effects.ChangeEnduranceEffect_1]
-duration = 900
-delay = 1
-rate = 10
-amount = 0.02
+duration = 54000
+delay = 60
+rate = 60
+amount = 0.00066667
+
+[Effects.ChangeHungerEffect_1]
+duration = 54000
+delay = 60
+rate = 60
+amount = -0.00011111
 
 [Effects.ChangeIntoxicationEffect_1]
-duration = 900
-delay = 1
-rate = 20
-amount = 1.5
+duration = 54000
+delay = 60
+rate = 60
+amount = 0.00888889
 
-[Effects.ChangeThirstEffect_1]
-duration = 900
-delay = 1
-rate = 10
-amount = 0.015
+[Effects.ChangeOverdoseEffect_1]
+duration = 1
+delay = 0
+rate = 1
+base = 15
 ]]

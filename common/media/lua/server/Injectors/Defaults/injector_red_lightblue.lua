@@ -1,39 +1,45 @@
 return [[
 [Effects.ChangePainEffect_1]
-duration = 60
+duration = 3900
 delay = 0
-rate = 10
-base = -1.0
+rate = 60
+base = -0.38461538
 minRange = 0
 maxRange = 100
-minScale = 1
-maxScale = 1
+minScale = 0.6
+maxScale = 1.4
 
 [Effects.ChangeGeneralHealthEffect_1]
-duration = 15
-delay = 1
-rate = 1
-base = 0.6
+duration = 900
+delay = 60
+rate = 60
+base = 0.8
 minRange = 0
 maxRange = 100
 minScale = 1.5
 maxScale = 0.5
 
 [Effects.ChangeEnduranceEffect_1]
-duration = 60
-delay = 1
-rate = 10
-amount = 0.05
-
-[Effects.ChangeIntoxicationEffect_1]
-duration = 60
-delay = 45
-rate = 10
-amount = 4.0
+duration = 3600
+delay = 60
+rate = 60
+amount = 0.00833333
 
 [Effects.ChangeThirstEffect_1]
-duration = 30
-delay = 40
-rate = 10
-amount = 0.04
+duration = 1800
+delay = 3000
+rate = 60
+amount = 0.002
+
+[Effects.ChangeIntoxicationEffect_1]
+duration = 1800
+delay = 3000
+rate = 60
+amount = 0.2
+
+[Effects.ChangeOverdoseEffect_1]
+duration = 1
+delay = 0
+rate = 1
+base = 12
 ]]

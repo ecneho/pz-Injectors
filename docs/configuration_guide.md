@@ -50,6 +50,7 @@ Effects of one injector are independent, so you can stack them: `ChangePainEffec
 | `ChangePainEffect` | PAIN stat | `base`, `minRange`, `maxRange`, `minScale`, `maxScale` | `delta = base * scale(current pain)`; adds `delta`, clamped. UI pain range 0 to 100. |
 | `ChangeGeneralHealthEffect` | overall body health | `base`, `minRange`, `maxRange`, `minScale`, `maxScale` | `delta = base * scale(current body health)`. `delta > 0` heals, `delta < 0` damages. UI range 0 to 100. |
 | `ChangeOverdoseEffect` | mod's overdose counter | `base` | Adds `base`, clamped to `0 .. OVERDOSE_THRESHOLD + 10`. Death is handled by the overdose tick. |
+| `ChangeCarryWeightEffect` | max carry weight | `amount` | While the effect is active the player's max carry weight is changed by `amount` percent of base capacity. Several active carry effects add up. Re-applied after relog. |
 | `MendBleedingEffect` | bleeding on each body part | `base` + 17 body-part coefficients | Per part: `delta = base * coefficient`. `delta > 0` shortens bleeding time. `delta < 0` starts bleeding if needed and adds `abs(delta)` bleeding time. |
 | `MendDeepWoundEffect` | deep wounds on each body part | `base` + 17 body-part coefficients | Per part: `delta = base * coefficient`. `delta < 0` creates a deep wound if none. On a deep-wounded part, wound time is reduced by `delta`. |
 

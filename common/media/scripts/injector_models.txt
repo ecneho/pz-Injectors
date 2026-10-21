@@ -3,154 +3,154 @@ module injectors {
         Base
     }
 
-    model injector_brown_lightbrown-closed
+    model injector_brown_lightbrown
     {
         mesh    = injector,
         texture = WorldItems/injector_brown_lightbrown,
         scale   = 0.17,
     }
 
-    model injector_red_lightblue-closed
+    model injector_red_lightblue
     {
         mesh    = injector,
         texture = WorldItems/injector_red_lightblue,
         scale   = 0.17,
     }
 
-    model injector_black_yellow-closed
+    model injector_black_yellow
     {
         mesh    = injector,
         texture = WorldItems/injector_black_yellow,
         scale   = 0.17,
     }
 
-    model injector_red_green-closed
+    model injector_red_green
     {
         mesh    = injector,
         texture = WorldItems/injector_red_green,
         scale   = 0.17,
     }
 
-    model injector_olive_lightblue-closed
+    model injector_olive_lightblue
     {
         mesh    = injector,
         texture = WorldItems/injector_olive_lightblue,
         scale   = 0.17,
     }
 
-    model injector_bright_green-closed
+    model injector_bright_green
     {
         mesh    = injector,
         texture = WorldItems/injector_bright_green,
         scale   = 0.17,
     }
 
-    model injector_dark_bluegrey-closed
+    model injector_dark_bluegrey
     {
         mesh    = injector,
         texture = WorldItems/injector_dark_bluegrey,
         scale   = 0.17,
     }
 
-    model injector_deep_blue-closed
+    model injector_deep_blue
     {
         mesh    = injector,
         texture = WorldItems/injector_deep_blue,
         scale   = 0.17,
     }
 
-    model injector_olive_pink-closed
+    model injector_olive_pink
     {
         mesh    = injector,
         texture = WorldItems/injector_olive_pink,
         scale   = 0.17,
     }
 
-    model injector_navy_blue-closed
+    model injector_navy_blue
     {
         mesh    = injector,
         texture = WorldItems/injector_navy_blue,
         scale   = 0.17,
     }
 
-    model injector_black_cyan-closed
+    model injector_black_cyan
     {
         mesh    = injector,
         texture = WorldItems/injector_black_cyan,
         scale   = 0.17,
     }
 
-    model injector_black_cyan_red-closed
+    model injector_black_cyan_red
     {
         mesh    = injector,
         texture = WorldItems/injector_black_cyan_red,
         scale   = 0.17,
     }
 
-    model injector_teal_green-closed
+    model injector_teal_green
     {
         mesh    = injector,
         texture = WorldItems/injector_teal_green,
         scale   = 0.17,
     }
 
-    model injector_grey_bloodred-closed
+    model injector_grey_bloodred
     {
         mesh    = injector,
         texture = WorldItems/injector_grey_bloodred,
         scale   = 0.17,
     }
 
-    model injector_grey_brown-closed
+    model injector_grey_brown
     {
         mesh    = injector,
         texture = WorldItems/injector_grey_brown,
         scale   = 0.17,
     }
 
-    model injector_teal_black-closed
+    model injector_teal_black
     {
         mesh    = injector,
         texture = WorldItems/injector_teal_black,
         scale   = 0.17,
     }
 
-    model injector_purple_red-closed
+    model injector_purple_red
     {
         mesh    = injector,
         texture = WorldItems/injector_purple_red,
         scale   = 0.17,
     }
 
-    model injector_yellow_silver-closed
+    model injector_yellow_silver
     {
         mesh    = injector,
         texture = WorldItems/injector_yellow_silver,
         scale   = 0.17,
     }
 
-    model injector_maroon_silver-closed
+    model injector_maroon_silver
     {
         mesh    = injector,
         texture = WorldItems/injector_maroon_silver,
         scale   = 0.17,
     }
 
-    model injector_charcoal_orange-closed
+    model injector_charcoal_orange
     {
         mesh    = injector,
         texture = WorldItems/injector_charcoal_orange,
         scale   = 0.17,
     }
 
-    model injector_slate_purple-closed
+    model injector_slate_purple
     {
         mesh    = injector,
         texture = WorldItems/injector_slate_purple,
         scale   = 0.17,
     }
 
-    model injector_deep_purple-closed
+    model injector_deep_purple
     {
         mesh    = injector,
         texture = WorldItems/injector_deep_purple,

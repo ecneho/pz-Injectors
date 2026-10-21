@@ -1,9 +1,9 @@
 return [[
 [Effects.MendBleedingEffect_1]
-duration = 12000
+duration = 7380
 delay = 60
 rate = 60
-base = 0.35
+base = 0.44604445
 Head = 1
 Neck = 1
 Torso_Upper = 1
@@ -23,16 +23,16 @@ Foot_L = 1
 Foot_R = 1
 
 [Effects.ChangeIntoxicationEffect_1]
-duration = 10800
+duration = 6660
 delay = 60
 rate = 60
-amount = 0.04444444
+amount = 0.05648748
 
 [Effects.ChangeThirstEffect_1]
-duration = 2400
-delay = 10200
+duration = 1500
+delay = 6240
 rate = 60
-amount = 0.002
+amount = 0.00250804
 
 [Effects.ChangeOverdoseEffect_1]
 duration = 1

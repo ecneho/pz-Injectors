@@ -234,20 +234,6 @@ Handlers.ChangeTemperatureEffect = function(username, data)
     )
 end
 
--- carry weight
-Handlers.ChangeCarryWeightEffect = function(username, data)
-    System.AddPlayerEffect(
-        username,
-        "ChangeCarryWeightEffect",
-        data.duration,
-        data.delay,
-        data.rate,
-        {
-            amount = data.amount,
-        }
-    )
-end
-
 -- id parsing
 setmetatable(Handlers, {
     __index = function(t, key)

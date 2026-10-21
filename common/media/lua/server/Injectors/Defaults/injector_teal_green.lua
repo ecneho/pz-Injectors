@@ -1,31 +1,25 @@
 return [[
 [Effects.ChangeGeneralHealthEffect_1]
-duration = 36000
+duration = 10080
 delay = 60
 rate = 60
-base = 0.01666667
+base = 0.0314802
 minRange = 0
 maxRange = 100
 minScale = 1.5
 maxScale = 0.5
 
 [Effects.ChangeEnduranceEffect_1]
-duration = 36000
+duration = 10080
 delay = 60
 rate = 60
-amount = 0.00066667
+amount = 0.00125921
 
 [Effects.ChangeIntoxicationEffect_1]
-duration = 36000
+duration = 10080
 delay = 60
 rate = 60
-amount = 0.03333333
-
-[Effects.ChangeCarryWeightEffect_1]
-duration = 36000
-delay = 60
-rate = 60
-amount = 10
+amount = 0.06296037
 
 [Effects.ChangeOverdoseEffect_1]
 duration = 1

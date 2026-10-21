@@ -1,27 +1,21 @@
 return [[
 [Effects.ChangeEnduranceEffect_1]
-duration = 14400
+duration = 7320
 delay = 60
 rate = 60
-amount = 0.00208333
-
-[Effects.ChangeCarryWeightEffect_1]
-duration = 14400
-delay = 60
-rate = 60
-amount = 10
+amount = 0.00291976
 
 [Effects.ChangeThirstEffect_1]
-duration = 7200
-delay = 7200
+duration = 3660
+delay = 3660
 rate = 60
-amount = 0.00066667
+amount = 0.00093433
 
 [Effects.ChangeIntoxicationEffect_1]
-duration = 2700
-delay = 13200
+duration = 1380
+delay = 6720
 rate = 60
-amount = 0.11111111
+amount = 0.15487466
 
 [Effects.ChangeOverdoseEffect_1]
 duration = 1

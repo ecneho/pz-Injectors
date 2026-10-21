@@ -6,7 +6,6 @@ local Active = require "Injectors/Models/Active"
 local Common = require "Injectors/Variables/Common"
 local Overdose = require "Injectors/Models/Overdose"
 local Players = require "Injectors/Utils/Players"
-local CarryWeight = require "Injectors/Models/CarryWeight"
 local Time = require "Injectors/Utils/Time"
 
 local MAX_PROCS_PER_TICK = 120
@@ -69,8 +68,6 @@ local function onEffectTick()
                 activeList[username] = nil
             end
         end
-
-        CarryWeight.Sync(player)
     end
 end
 

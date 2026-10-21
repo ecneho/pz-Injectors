@@ -1,9 +1,9 @@
 return [[
 [Effects.MendBleedingEffect_1]
-duration = 7200
+duration = 7140
 delay = 60
 rate = 60
-base = 0.4
+base = 0.40185844
 Head = 1.2
 Neck = 1.5
 Torso_Upper = 1
@@ -23,10 +23,10 @@ Foot_L = 0.5
 Foot_R = 0.5
 
 [Effects.MendDeepWoundEffect_1]
-duration = 7200
+duration = 7140
 delay = 60
 rate = 60
-base = 0.03
+base = 0.03013938
 Head = 1
 Neck = 1
 Torso_Upper = 1

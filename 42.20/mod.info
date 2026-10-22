@@ -1,7 +1,7 @@
 name=Injectors
 id=Injectors
 authors=Simon "Ecneho"
-description=placeholder.
+description=Injectors is a project that introduces dozens of new injectors with positive and harmful effects.
 icon=icon.png
 poster=poster.png
-modversion=2.0.0-42.20-pvp-v8
+modversion=2.0.0-stable

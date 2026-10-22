@@ -14,3 +14,4 @@
 |---|---|
 | [Configuration Guide](docs/configuration_guide.md) | Lua cache configuration options and setup |
 | [ID Cross Reference](docs/id_cross_reference.md) | ID reference and injector mappings |
+| [Effects Wiki](docs/injectors_wiki.md) | In-game injector effects |

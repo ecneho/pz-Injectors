@@ -1,21 +1,21 @@
 return [[
 [Effects.ChangeIntoxicationEffect_1]
-duration = 3600
-delay = 360
+duration = 1800
+delay = 0
 rate = 60
-amount = -0.58333333
+amount = -1
 
 [Effects.ChangeFoodSicknessEffect_1]
-duration = 3600
-delay = 360
+duration = 1800
+delay = 0
 rate = 60
-amount = -0.5
+amount = -1
 
 [Effects.ChangeGeneralHealthEffect_1]
-duration = 3600
-delay = 360
+duration = 1200
+delay = 0
 rate = 60
-base = 0.1
+base = 0.5
 minRange = 0
 maxRange = 100
 minScale = 1.5

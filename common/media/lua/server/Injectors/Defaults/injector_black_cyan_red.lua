@@ -1,31 +1,31 @@
 return [[
 [Effects.ChangeTemperatureEffect_1]
-duration = 7920
-delay = 60
+duration = 2400
+delay = 0
 rate = 60
-amount = -0.01064076
-
-[Effects.ChangeTemperatureEffect_2]
-duration = 3960
-delay = 7980
-rate = 60
-amount = 0.01418769
+amount = -0.05
 
 [Effects.ChangePainEffect_1]
-duration = 7920
-delay = 60
+duration = 2400
+delay = 0
 rate = 60
-base = -0.07093843
+base = -0.5
 minRange = 0
 maxRange = 100
 minScale = 0.6
 maxScale = 1.4
 
 [Effects.ChangeIntoxicationEffect_1]
-duration = 7920
-delay = 60
+duration = 2400
+delay = 0
 rate = 60
-amount = 0.02128153
+amount = 0.25
+
+[Effects.ChangeTemperatureEffect_2]
+duration = 1800
+delay = 2400
+rate = 60
+amount = 0.05
 
 [Effects.ChangeOverdoseEffect_1]
 duration = 1

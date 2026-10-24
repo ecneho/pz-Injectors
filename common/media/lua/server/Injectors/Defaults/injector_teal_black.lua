@@ -1,19 +1,19 @@
 return [[
 [Effects.ChangeGeneralHealthEffect_1]
-duration = 3600
-delay = 60
+duration = 1200
+delay = 0
 rate = 60
-base = 0.25
+base = 1
 minRange = 0
 maxRange = 100
 minScale = 1.5
 maxScale = 0.5
 
 [Effects.MendBleedingEffect_1]
-duration = 3600
-delay = 60
+duration = 1800
+delay = 0
 rate = 60
-base = 0.3
+base = 1
 Head = 1
 Neck = 1
 Torso_Upper = 1
@@ -33,20 +33,20 @@ Foot_L = 1
 Foot_R = 1
 
 [Effects.ChangeGeneralHealthEffect_2]
-duration = 3600
-delay = 3600
+duration = 1200
+delay = 1800
 rate = 60
-base = -0.06666667
+base = -0.25
 minRange = 0
 maxRange = 100
 minScale = 1
 maxScale = 1
 
 [Effects.ChangeIntoxicationEffect_1]
-duration = 3600
-delay = 3600
+duration = 1200
+delay = 1800
 rate = 60
-amount = 0.13333333
+amount = 0.5
 
 [Effects.ChangeOverdoseEffect_1]
 duration = 1
